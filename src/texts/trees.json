@@ -1,0 +1,32 @@
+{
+  "świek kłujący": {
+    "title": "Świek Kłujący",
+    "description": "Świerk Kłujący (picea pungens), znany również jako świerk srebrny, pochodzi z górskich regionów Ameryki Północnej. Jego charakterystyczne, srebrzystoniebieskie igły są ostre i kłujące, co nadaje mu unikalny wygląd. Jest popularnym drzewem ozdobnym, często sadzonym w parkach i ogrodach ze względu na swoje dekoracyjne igły. Świerk kłujący rośnie stosunkowo wolno i może osiągnąć wysokość od 20 do 30 metrów. Jest odporny na niskie temperatury i dobrze znosi różne warunki glebowe, co czyni go wszechstronnym wyborem do nasadzeń.",
+    "price": "350 zł"
+  },
+  "sosna czarna": {
+    "title": "Sosna Czarna",
+    "description": "Sosna Czarna (pinus nigra) to wytrzymałe drzewo iglaste, pochodzące z rejonów Europy Południowej i Środkowej. Ma gęstą, ciemnozieloną koronę oraz długie, sztywne igły, które mogą osiągać nawet do 15 cm długości. Sosna czarna jest ceniona za swoją zdolność do adaptacji do różnych warunków glebowych i klimatycznych. Drzewo to często rośnie na ubogich, skalistych glebach, gdzie inne drzewa mają trudności z przetrwaniem. Sosna czarna osiąga wysokość od 20 do 50 metrów i jest często wykorzystywana do zalesiania i rekultywacji terenów.",
+    "price": "180 zł"
+  },
+  "świerk serbski": {
+    "title": "Świerk Serbski",
+    "description": "Świerk Serbski (picea omorika) jest gatunkiem drzewa iglastego, naturalnie występującym na Bałkanach, głównie w Serbii i Bośni. Charakteryzuje się wąską, stożkową koroną oraz ciemnozielonymi, błyszczącymi igłami z białymi paskami na spodzie. Jest często sadzony w parkach i ogrodach ze względu na swoją elegancką sylwetkę i odporność na zanieczyszczenia powietrza. Świerk serbski osiąga wysokość od 20 do 30 metrów i jest drzewem szybko rosnącym. Jest odporny na mróz i dobrze znosi miejskie warunki, co czyni go popularnym drzewem ozdobnym.",
+    "price": "130 zł"
+  },
+  "buk": {
+    "title": "Buk Zwyczajny",
+    "description": "Buk Zwyczajny (fagus sylvatica) jest jednym z najbardziej rozpowszechnionych drzew liściastych w Europie. Charakteryzuje się gładką, srebrzystoszarą korą oraz dużymi, owalnymi liśćmi, które jesienią zmieniają kolor na złocisto-brązowy. Buk jest drzewem długowiecznym, mogącym żyć nawet do 300 lat, i osiąga wysokość od 30 do 40 metrów. Jego drewno jest twarde i ciężkie, co sprawia, że jest cenione w stolarstwie i meblarstwie. Buk tworzy gęste, cieniste lasy, które są ważnym siedliskiem dla wielu gatunków roślin i zwierząt.",
+    "price": "250 zł"
+  },
+  "miłorząb dwuklapowy": {
+    "title": "Miłorząb Dwuklapowy",
+    "description": "Miłorząb Dwuklapowy (ginkgo biloba) jest jednym z najstarszych gatunków drzew na świecie, sięgającym swoją historią ponad 200 milionów lat. Charakteryzuje się unikalnymi, wachlarzowatymi liśćmi, które jesienią zmieniają kolor na złocistożółty. Miłorząb jest drzewem odpornym na zanieczyszczenia powietrza, co sprawia, że jest często sadzony w miastach. Może osiągnąć wysokość od 20 do 35 metrów i żyć nawet do 1000 lat. Drzewo to jest również znane ze swoich leczniczych właściwości; ekstrakty z liści miłorzębu są stosowane w medycynie naturalnej.",
+    "price": "290 zł"
+  },
+  "grab zwyczajny": {
+    "title": "Grab Zwyczajny",
+    "description": "Grab Zwyczajny (carpinus betulus) to drzewo liściaste, często spotykane w Europie i Azji Zachodniej. Ma charakterystyczną, gładką korę o szarym kolorze oraz małe, ciemnozielone liście z karbowanymi brzegami. Grab jest często wykorzystywany do tworzenia żywopłotów i formowanych szpalerów ze względu na swoją zdolność do gęstego rozgałęziania. Drzewo to dorasta do wysokości 20-25 metrów i tworzy szeroką, kopulastą koronę. Jego drewno jest bardzo twarde i odporne na zużycie, co czyni je idealnym materiałem do produkcji narzędzi i parkietów.",
+    "price": "20 zł"
+  }
+}
