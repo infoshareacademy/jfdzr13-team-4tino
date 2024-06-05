@@ -1,11 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Homepage from "./components/Homepage/Homepage";
-import Trees from "./components/Trees/Trees";
-import Plates from "./components/Plates/Plates";
-import Dedications from "./components/Dedications/Dedications";
-import Map from "./components/Map/Map";
 import Navbar from "./components/Navbar/Navbar";
+import Login from "./components/Login/Login";
+import Register from "./components/Register/Register";
+import Homepage from "./components/Homepage/Homepage";
 import "./App.css";
 
 function App() {
@@ -15,10 +13,8 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Homepage />}></Route>
-          <Route path="/trees" element={<Trees />}></Route>
-          <Route path="/dedications" element={<Dedications />}></Route>
-          <Route path="/plates" element={<Plates />}></Route>
-          <Route path="/map" element={<Map />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/register" element={<Register />}></Route>
         </Routes>
       </div>
     </Router>

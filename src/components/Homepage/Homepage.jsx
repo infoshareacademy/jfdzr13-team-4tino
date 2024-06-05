@@ -1,20 +1,19 @@
 import React from "react";
 import styles from "./Homepage.module.css";
-import bigLogo from "../../assets/4tino-logo.png";
+import Introduction from "../Introudction/Introduction";
+import HowItWorks from "../HowItworks/HowItWorks";
+import WhyTrustUs from "../WhyTrustUs/WhyTrustUs";
+import About from "../About/About";
 
 const Homepage = () => {
   return (
     <div className={styles.homepage}>
-      <div className={styles.page}>
-        <img className={styles.bigLogo} src={bigLogo} alt="logo" />
-        <h1 className={styles.callToAction}>DLA BLISKICH - DLA OTOCZENIA</h1>
-        <div className={styles.actionPanel}>
-          <button>
-            Posadź drzewo <br /> Zarejestruj się
-          </button>
-          <button>Zaloguj się</button>
-        </div>
-      </div>
+      {/* komponenty here */}
+      <Introduction />
+      <HowItWorks />
+      <WhyTrustUs />
+      <About />
+      {/* <SpanishInquisition/> */}
     </div>
   );
 };

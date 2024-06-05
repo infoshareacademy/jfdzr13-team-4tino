@@ -1,29 +1,6 @@
 .homepage {
   width: 100%;
-  max-height: 100vh;
+  max-height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: white;
-}
-.page {
-  width: 100%;
-  height: auto;
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-.bigLogo {
-  width: 400px;
-  height: 400px;
-}
-.callToAction {
-  color: #042b0e;
-}
-.actionPanel {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 35px;
 }
