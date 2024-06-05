@@ -1,0 +1,34 @@
+.HowItWorksTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 46px;
+  color: #2d8014;
+  font-weight: bolder;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 30px;
+}
+
+.photo {
+  border-radius: 30px;
+  width: 700px;
+  height: auto;
+}
+
+.paragraphs {
+  padding: 18px;
+  font-size: 32px;
+  flex: 1;
+  color: black;
+  font-weight: normal;
+  line-height: 2.3;
+}
+
+.highlight {
+  font-weight: bold;
+}
