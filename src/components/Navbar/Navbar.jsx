@@ -1,7 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { HashLink as Link} from 'react-router-hash-link';
+// import { Link } from "react-router-dom"; aby strona się przewijała do odpowiedniego komponentu dodałem HashLink - slawek
 import styles from "./Navbar.module.css";
 import tinoName from "../../assets/4tino-name.png";
+
+
 
 const Navbar = () => {
   return (
@@ -10,7 +13,9 @@ const Navbar = () => {
         <img className={styles.bigIcon} src={tinoName} alt="icon" />
       </Link>
       <div className={styles.navMenu}>
-        <p>Jak to działa?</p>
+      <Link smooth to="/#howItWorks">
+        <button className={styles.item}>Jak to działa?</button>
+      </Link>
         <p>O nas</p>
         <div className={styles.loginPanel}>
           <Link to="/login">

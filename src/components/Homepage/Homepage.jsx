@@ -5,12 +5,16 @@ import HowItWorks from "../HowItworks/HowItWorks";
 import WhyTrustUs from "../WhyTrustUs/WhyTrustUs";
 import About from "../About/About";
 
+
+
 const Homepage = () => {
   return (
     <div className={styles.homepage}>
       {/* komponenty here */}
       <Introduction />
-      <HowItWorks />
+      <div id="howItWorks">
+        <HowItWorks />
+      </div>
       <WhyTrustUs />
       <About />
       {/* <SpanishInquisition/> */}
@@ -19,3 +23,4 @@ const Homepage = () => {
 };
 
 export default Homepage;
+

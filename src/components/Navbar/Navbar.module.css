@@ -26,3 +26,15 @@
   align-items: center;
   gap: 20px;
 }
+.item {
+  background-color: white;
+  color: black;
+  font-size: 20px;
+  font-weight: 700;
+}
+.item:hover {
+  background-color: white;
+  color: #5da746;
+  font-size: 20px;
+  font-weight: 700;
+}
