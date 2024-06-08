@@ -1,10 +1,13 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar";
-import Login from "./components/Login/Login";
-import Register from "./components/Register/Register";
-import Homepage from "./components/Homepage/Homepage";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
+import Homepage from "./components/Homepage/Homepage";
+import Login from "./components/Login/Login";
+import Navbar from "./components/Navbar/Navbar";
+import Register from "./components/Register/Register";
+
+
+
 
 function App() {
   return (
