@@ -14,9 +14,11 @@ const Homepage = () => {
         <HowItWorks />
       </div>
       <WhyTrustUs />
-      <About />
-      {/* <SpanishInquisition/> */}
-    </div>
+      <div id="about"/>
+        <About />
+      </div>
+      
+    
   );
 };
 
