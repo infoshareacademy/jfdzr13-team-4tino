@@ -6,13 +6,10 @@ const Introduction = () => {
     <div className={styles.introduction}>
       <div className={styles.hero}>
         <h1 className={styles.entryTitle}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Twój prezent dla bliskich i dla przyszłości!
         </h1>
         <p className={styles.entry}>
-          " Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
-          similique rem consectetur voluptas assumenda necessitatibus cupiditate
-          quasi numquam impedit, sequi veritatis vitae quos debitis
-          reprehenderit fuga labore reiciendis aliquid fugit? "
+        Podaruj wyjątkowy prezent, który ma znaczenie - zasadź drzewo w jednym z dostępnych miejsc, wybierz spośród pięciu różnych gatunków drzew i spersonalizuj tabliczkę z dedykacją. Każde drzewo to nowe życie, które pomaga w walce ze zmianami klimatu. Pomóż nam poprawiać jakość powietrza i stworzyć nowy wspaniały zielony zakątek. Wybierz lokalizację i zobacz, jak Twoje drzewo rośnie i przynosi korzyści dla wszystkich! Twój prezent to więcej niż drzewo - to przyszłość dla nas wszystkich!
         </p>
         <button>Chcę zasadzić swoje drzewo!</button>
       </div>
