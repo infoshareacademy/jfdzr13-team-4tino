@@ -1,27 +1,41 @@
 .introduction {
-  height: 800px;
+  display: flex;
+  height: auto;
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  background-color: aliceblue;
+  background-color: rgb(201, 216, 230);
   padding: 30px;
 }
+
 .hero {
-  width: 50%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   gap: 50px;
+  margin-left: 5%;
+  margin-right: 18px;
 }
+
 .entryTitle {
-  font-size: 60px;
+  font-size: 46px;
 }
+
 .entry {
-  font-size: 30px;
+  font-size: 24px;
+  line-height: 1.5;
 }
+
 .map {
-  width: 700px;
+  width: 45%;
   height: 700px;
   background-color: gray;
+  margin-right: 5%;
+}
+
+button {
+  margin-top: 0px;
+  margin-left: 0px;
 }
