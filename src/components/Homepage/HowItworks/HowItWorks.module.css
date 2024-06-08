@@ -5,28 +5,36 @@
   font-size: 46px;
   color: #2d8014;
   font-weight: bolder;
+  padding: 20px;
+  margin-top: 50px;
 }
 
 .container {
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  padding: 30px;
+  width: 90%;
+  margin: 50px 0px 80px 0px;
 }
 
 .photo {
   border-radius: 30px;
-  width: 700px;
+  width: 45vw;
   height: auto;
 }
 
 .paragraphs {
+  padding: 5px;
+  margin: 0px 25px 0px 35px;
   padding: 18px;
-  font-size: 32px;
+  font-size: 24px;
   flex: 1;
   color: black;
   font-weight: normal;
-  line-height: 2.3;
+  line-height: 1.5;
+}
+
+.paragraphs p {
+  padding-bottom: 15px;
 }
 
 .highlight {
