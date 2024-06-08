@@ -82,7 +82,7 @@ const WhyTrustUs = () => {
               </p>
             </div>
           </div>
-
+          <button>Chcę zasadzić swoje drzewo!</button>
         </div>
       </div>
     </div>

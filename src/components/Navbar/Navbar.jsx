@@ -1,8 +1,7 @@
 import React from "react";
-import { HashLink as Link} from 'react-router-hash-link';
-// import { Link } from "react-router-dom"; aby strona się przewijała do odpowiedniego komponentu dodałem HashLink - slawek
-import styles from "./Navbar.module.css";
+import { HashLink as Link } from 'react-router-hash-link';
 import tinoName from "../../assets/4tino-name.png";
+import styles from "./Navbar.module.css";
 
 
 
