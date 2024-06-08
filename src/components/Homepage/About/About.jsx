@@ -1,10 +1,10 @@
 import React from "react";
-import img from '../../images/About/hands.jpg';
+import img from '../../../assets/About/hands.jpg';
 import styles from "../About/About.module.css";
 
 const About = () => {
   return (
-    <div className={styles.AboutTitle}>
+    <div className={styles.aboutTitle}>
       <div>O nas</div>
       <div className={styles.container}>
         <div>
