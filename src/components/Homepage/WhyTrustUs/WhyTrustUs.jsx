@@ -1,16 +1,16 @@
 import React from "react";
-import icon4 from '../../images/WhyTrustUs/calendar_icon.png';
-import icon2 from '../../images/WhyTrustUs/garden_icon.png';
-import icon5 from '../../images/WhyTrustUs/hand_icon.png';
-import icon1 from '../../images/WhyTrustUs/leaf_icon.png';
-import icon3 from '../../images/WhyTrustUs/man_icon.png';
-import icon6 from '../../images/WhyTrustUs/search_icon.png';
+import icon4 from '../../../assets/WhyTrustUs/calendar_icon.png';
+import icon2 from '../../../assets/WhyTrustUs/garden_icon.png';
+import icon5 from '../../../assets/WhyTrustUs/hand_icon.png';
+import icon1 from '../../../assets/WhyTrustUs/leaf_icon.png';
+import icon3 from '../../../assets/WhyTrustUs/man_icon.png';
+import icon6 from '../../../assets/WhyTrustUs/search_icon.png';
 
 import styles from "./WhyTrustUs.module.css";
 
 const WhyTrustUs = () => {
   return (
-    <div className={styles.WhyTrustUsTitle}>
+    <div className={styles.whyTrustUsTitle}>
       <div>Dlaczego warto nam zaufać</div>
       <div className={styles.container}>
         <div className={styles.reason}>

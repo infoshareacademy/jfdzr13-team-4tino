@@ -1,11 +1,9 @@
 import React from "react";
-import styles from "./Homepage.module.css";
+import About from "../Homepage/About/About";
+import HowItWorks from "../Homepage/HowItworks/HowItWorks";
+import WhyTrustUs from "../Homepage/WhyTrustUs/WhyTrustUs";
 import Introduction from "../Introudction/Introduction";
-import HowItWorks from "../HowItworks/HowItWorks";
-import WhyTrustUs from "../WhyTrustUs/WhyTrustUs";
-import About from "../About/About";
-
-
+import styles from "./Homepage.module.css";
 
 const Homepage = () => {
   return (

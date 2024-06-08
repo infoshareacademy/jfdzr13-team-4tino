@@ -1,4 +1,4 @@
-.AboutTitle {
+.howItWorksTitle {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,9 +10,8 @@
 .container {
   display: flex;
   justify-content: space-between;
-  width: 90%;
-  padding: 10px;
-  margin: 20px 0px;
+  width: 100%;
+  padding: 30px;
 }
 
 .photo {
@@ -22,13 +21,12 @@
 }
 
 .paragraphs {
-  padding: 5px;
-  margin: 0px 25px 0px 35px;
-  font-size: 24px;
+  padding: 18px;
+  font-size: 32px;
   flex: 1;
   color: black;
   font-weight: normal;
-  line-height: 1.5;
+  line-height: 2.3;
 }
 
 .highlight {
