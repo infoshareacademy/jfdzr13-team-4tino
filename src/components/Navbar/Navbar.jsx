@@ -22,10 +22,12 @@ const Navbar = () => {
       </Link>
 
         <div className={styles.loginPanel}>
+          
           <Link to="/login">
-            {" "}
-            <p>Zaloguj się</p>
+              <button className={styles.login}>Zaloguj się</button>
           </Link>
+
+
           <Link to="/register">
             <button>Rejestracja </button>
           </Link>
