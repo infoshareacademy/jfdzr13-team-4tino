@@ -1,13 +1,24 @@
 import React, { useState } from 'react';
 import styles from "./Login.module.css";
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../firebase.js'; // Importuj konfigurację Firebase
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(`Email: ${email}, Password: ${password}`);
+    try {
+      // Uwierzytelnianie za pomocą Firebase
+      await signInWithEmailAndPassword(auth, email, password);
+      console.log('Zalogowano pomyślnie');
+      // Tutaj możesz przekierować użytkownika na inną stronę lub wykonać inną akcję
+    } catch (error) {
+      setError('Błędny email lub hasło');
+      console.error('Błąd logowania:', error);
+    }
   };
 
   return (
@@ -37,11 +48,9 @@ const Login = () => {
         </label>
         <button type="submit">Zaloguj</button>
       </form>
-      
-      {/* to nie wiem czy tak powinno być */}
-      <a href="#">Przypomnij Hasło</a> 
+      {error && <p className={styles.error}>{error}</p>}
+      <a href="#">Przypomnij Hasło</a>
       <p>Nie masz konta? <a href="#">Zarejestruj się</a></p>
-      {/* to nie wiem czy tak powinno być */}
     </div>
   );
 };
