@@ -1,9 +1,3 @@
-<<<<<<< Updated upstream
-import React from "react";
-
-const Login = () => {
-  return <div>Login</div>;
-=======
 import React, { useState } from 'react';
 import styles from "./Login.module.css";
 import { signInWithEmailAndPassword } from 'firebase/auth';
@@ -59,7 +53,6 @@ const Login = () => {
       <p>Nie masz konta? <a href="#">Zarejestruj się</a></p>
     </div>
   );
->>>>>>> Stashed changes
 };
 
 export default Login;

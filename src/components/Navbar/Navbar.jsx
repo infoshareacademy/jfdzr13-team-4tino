@@ -12,10 +12,15 @@ const Navbar = () => {
         <img className={styles.bigIcon} src={tinoName} alt="icon" />
       </Link>
       <div className={styles.navMenu}>
+        
       <Link smooth to="/#howItWorks">
         <button className={styles.item}>Jak to działa?</button>
+      </Link>   
+
+      <Link smooth to="/#about">
+        <button className={styles.item}>O nas</button>
       </Link>
-        <p>O nas</p>
+
         <div className={styles.loginPanel}>
           <Link to="/login">
             {" "}

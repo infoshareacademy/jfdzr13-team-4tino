@@ -5,6 +5,7 @@
   font-size: 46px;
   color: #2d8014;
   font-weight: bolder;
+  padding: 20px;
 }
 
 .container {
@@ -12,12 +13,12 @@
   justify-content: space-between;
   width: 90%;
   padding: 10px;
-  margin: 20px 0px;
+  margin: 50px 0px;
 }
 
 .photo {
   border-radius: 30px;
-  width: 700px;
+  width: 50vw;
   height: auto;
 }
 
