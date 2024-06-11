@@ -1,0 +1,16 @@
+.tablets {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 50px;
+}
+.carousel {
+  width: 90%;
+}
+.slide {
+  width: 500px;
+  height: 400px;
+  background: #ddd;
+  text-align: center;
+}

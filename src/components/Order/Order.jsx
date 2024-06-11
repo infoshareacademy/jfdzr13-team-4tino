@@ -9,11 +9,15 @@ import Basket from "./Basket/Basket";
 const Order = () => {
   return (
     <div className={styles.order}>
-      <Trees />
-      <Tablets />
-      <Dedication />
-      <Map />
-      <Basket />
+      <div className={styles.left}>
+        <Trees />
+        <Tablets />
+        <Dedication />
+        <Map />
+      </div>
+      <div className={styles.right}>
+        <Basket />
+      </div>
     </div>
   );
 };
