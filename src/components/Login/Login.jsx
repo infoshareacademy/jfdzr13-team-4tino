@@ -4,17 +4,20 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase.js'; // Importuj konfigurację Firebase
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '../../context/UserContext/UserContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const navigate = useNavigate()
+  const { user } = useUser(); // Pobierz usera z kontekstu
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      console.log(user.email)
       toast.success('Zalogowano pomyślnie');
       navigate("/")
     } catch (error) {
