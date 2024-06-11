@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Introduction.module.css";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import { Link } from "react-router-dom";
 
 const Introduction = () => {
   return (
@@ -20,7 +21,9 @@ const Introduction = () => {
           wszystkich! Twój prezent to więcej niż drzewo - to przyszłość dla nas
           wszystkich!
         </p>
-        <button>Chcę zasadzić swoje drzewo!</button>
+        <Link to="/order">
+          <button>Chcę zasadzić swoje drzewo!</button>
+        </Link>
       </div>
 
       <div className={styles.map}>
@@ -41,12 +44,12 @@ const Introduction = () => {
           </Marker>
           <Marker position={[53, 19.0]}>
             <Popup>
-            lokalizacja 2 <br /> Easily customizable.
+              lokalizacja 2 <br /> Easily customizable.
             </Popup>
           </Marker>
           <Marker position={[51, 19.0]}>
             <Popup>
-            lokalizacja 3 <br /> Easily customizable.
+              lokalizacja 3 <br /> Easily customizable.
             </Popup>
           </Marker>
         </MapContainer>
