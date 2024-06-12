@@ -43,6 +43,9 @@ function SimpleSlider() {
         <Test />
         <Test />
         <Test />
+        <Test />
+        <Test />
+        <Test />
       </Slider>
     </div>
   );

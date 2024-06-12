@@ -9,7 +9,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  background-color: rgb(196, 226, 172);
+  /* background-color: rgb(196, 226, 172); */
+  background-color: rgb(169, 201, 143);
+
   gap: 75px;
   padding: 50px;
   border-radius: 10px;
