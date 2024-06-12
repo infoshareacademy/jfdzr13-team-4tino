@@ -35,7 +35,7 @@ function SimpleSlider() {
     slidesToShow: 1,
     slidesToScroll: 1,
     nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />
+    prevArrow: <SamplePrevArrow />,
   };
   return (
     <div className={styles.carousel}>
