@@ -57,10 +57,8 @@ const Map = () => {
             fillOpacity={location.fillOpacity}
           >
             <Popup className={styles.customPopup}>
-              <h5>{location.name}</h5>
-              <br />
               <button onClick={() => handleButtonClick(location.name)}>
-                Wybierz nadleśnictwo
+                Wybierz {location.name}
               </button>
             </Popup>
           </Circle>

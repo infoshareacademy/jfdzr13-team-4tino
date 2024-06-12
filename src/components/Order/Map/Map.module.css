@@ -21,13 +21,7 @@
   font-size: 16px;
 }
 
-.customPopup {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
 .customPopup button {
   margin-top: 10px;
+  position: relative;
 }
