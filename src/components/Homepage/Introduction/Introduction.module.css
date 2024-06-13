@@ -5,7 +5,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(201, 216, 230);
+  /* background-color: rgb(201, 216, 230); */
+  background-color: rgb(169, 201, 143);
   padding: 30px;
 }
 

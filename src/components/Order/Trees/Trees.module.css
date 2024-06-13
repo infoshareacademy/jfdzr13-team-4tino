@@ -1,0 +1,22 @@
+.trees {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 50px;
+}
+
+.carousel {
+  width: 80%;
+  height: 400px;
+}
+.slick-prev,
+.slick-next {
+  width: 40px;
+  height: 40px;
+  z-index: 1;
+}
+/* ^ nie działa ¯\_(ツ)_/¯ */
+.slick-arrow {
+  right: -50px;
+}
