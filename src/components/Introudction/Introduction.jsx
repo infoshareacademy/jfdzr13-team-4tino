@@ -27,7 +27,7 @@ const Introduction = () => {
         <MapContainer
           center={[52, 19.0]}
           zoom={6}
-          scrollWheelZoom={false}
+          scrollWheelZoom={true}
           style={{ height: "100%", width: "100%" }}
         >
           <TileLayer

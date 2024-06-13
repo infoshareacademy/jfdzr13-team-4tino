@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import styles from "./Login.module.css";
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../firebase.js'; // Importuj konfigurację Firebase
+import { auth } from '../../firebase.js'; 
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -15,9 +16,9 @@ const Login = () => {
     event.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      toast.success('Zalogowano pomyślnie');
-      navigate("/")
-    } catch (error) {
+      toast.success('Zalogowano pomyślnie'),
+      navigate("/");
+   } catch (error) {
       toast.error('Błędny email lub hasło', {
         hideProgressBar: true
       });
@@ -25,34 +26,40 @@ const Login = () => {
   };
 
   return (
+    <div className={styles.loginModule}>
     <div className={styles.loginForm}>
-      <h1>Witaj w 4TINO</h1>
-      <p>Zaloguj się</p>
-      <form onSubmit={handleSubmit}>
+      <h1 className={styles.welcomeTitle}>Witaj w <span className={styles.fourTino}>4TINO</span></h1>
+      <div className={styles.loginTitle}>Zaloguj się</div>
+      <form className={styles.formLogin} onSubmit={handleSubmit}>
         <label>
-          Podaj adres email:
+          <p>Podaj adres email:</p>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="example@gmail.com"
+            placeholder="Adres email: example@gmail.com"
             required
           />
         </label>
 
         <label>
-          Hasło:
+          <p>Podaj Hasło:</p>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder="Hasło"
             required
           />
         </label>
-        <button type="submit">Zaloguj</button>
+        <button className={styles.button} type="submit">Zaloguj</button>
       </form>
-      <a href="#">Przypomnij Hasło</a>
-      <p>Nie masz konta? <a href="#">Zarejestruj się</a></p>
+      <div>
+        <a href="#">Przypomnij Hasło</a>
+        <p className={styles.registerLink}>Nie masz konta? <Link className={styles.link} to="/register">Zarejestruj się</Link></p>
+      </div>
+                          
+    </div>
     </div>
   );
 };
