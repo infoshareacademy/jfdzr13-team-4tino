@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Introduction.module.css";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import { Link } from "react-router-dom";
 
 const Introduction = () => {
   return (
@@ -20,12 +21,14 @@ const Introduction = () => {
           wszystkich! Twój prezent to więcej niż drzewo - to przyszłość dla nas
           wszystkich!
         </p>
-        <button>Chcę zasadzić swoje drzewo!</button>
+        <Link to="/order">
+          <button>Chcę zasadzić swoje drzewo!</button>
+        </Link>
       </div>
 
       <div className={styles.map}>
         <MapContainer
-          center={[52, 19.0]}
+          center={[52, 19]}
           zoom={6}
           scrollWheelZoom={false}
           style={{ height: "100%", width: "100%" }}
@@ -34,20 +37,14 @@ const Introduction = () => {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          <Marker position={[52, 19.0]}>
-            <Popup>
-              lokalizacja 1 <br /> Easily customizable.
-            </Popup>
+          <Marker position={[53.5, 17.5]}>
+            <Popup>Nadleśnictwo 1</Popup>
           </Marker>
-          <Marker position={[53, 19.0]}>
-            <Popup>
-            lokalizacja 2 <br /> Easily customizable.
-            </Popup>
+          <Marker position={[51.5, 19.0]}>
+            <Popup>Nadleśnictwo 2</Popup>
           </Marker>
-          <Marker position={[51, 19.0]}>
-            <Popup>
-            lokalizacja 3 <br /> Easily customizable.
-            </Popup>
+          <Marker position={[52.7, 21.2]}>
+            <Popup>Nadleśnictwo 3</Popup>
           </Marker>
         </MapContainer>
       </div>

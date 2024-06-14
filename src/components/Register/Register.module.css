@@ -1,43 +1,67 @@
+.registerModule {
+  height: 100vh;
+  width: auto;
+  background-image: url("../../assets/LoginRegister/bg.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
 .registerForm {
-  background-color: aliceblue;
-  height: 600px;
-  width: 600px;
+  background-color: whitesmoke;
+  height: 550px;
+  width: 550px;
   border-radius: 30px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 20px;
+  opacity: 85%;
 }
 
 .welcomeTitle {
-  color: aqua;
-  margin-bottom: 20px;
+  color: black;
+  font-size: 20px;
+}
+
+.fourTino {
+  color: green;
 }
 
 .registerTitle {
-  color: rgb(7, 226, 153);
-  font-size: 30px;
-  margin-bottom: 20px;
+  color: black;
+  font-size: 40px;
+  font-weight: bold;
+  margin-top: 40px;
 }
 
 .loginLink {
-  color: blue;
+  color: gray;
   float: right;
-  margin-bottom: 20px;
+  display: grid;
+}
+.link {
+  color: green;
+  text-decoration: none;
 }
 
 .form {
-  display: grid;
-  grid-template-columns: 200px 200px;
-  grid-template-rows: 40px 40px 40px;
-  gap: 20px;
-  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.form input {
+  margin-bottom: 20px;
+}
+
+.form input:first-of-type {
+  margin-right: 10px;
 }
 
 .button {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 30px;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
 }

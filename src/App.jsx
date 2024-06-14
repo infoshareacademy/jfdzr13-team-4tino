@@ -8,9 +8,7 @@ import Homepage from "./components/Homepage/Homepage";
 import Login from "./components/Login/Login";
 import Navbar from "./components/Navbar/Navbar";
 import Register from "./components/Register/Register";
-
-
-
+import Order from "./components/Order/Order";
 
 function App() {
   return (
@@ -24,6 +22,8 @@ function App() {
           <Route path="/dashboard" element={<CustomerDashboard />}></Route>
           <Route path="/dashboard/customerDataEdit" element={<CustomerDataEdit />} />
           <Route path="/dashboard/customerOrders" element={<CustomerOrders />} />
+          <Route path="/order" element={<Order />}></Route>
+
         </Routes>
       </div>
     </Router>
