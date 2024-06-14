@@ -6,6 +6,11 @@ import Login from "./components/Login/Login";
 import Navbar from "./components/Navbar/Navbar";
 import Order from "./components/Order/Order";
 import Register from "./components/Register/Register";
+import AdminDashboard from "./components/AdminDashboard/AdminDashboard";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import UserDashboard from "./components/UserDashboard/UserDashboard";
+
+
 
 function App() {
   return (
@@ -13,10 +18,12 @@ function App() {
       <div>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Homepage />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/register" element={<Register />}></Route>
-          <Route path="/order" element={<Order />}></Route>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/order" element={<Order />} />
+          <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
+          <Route path="/user" element={<UserDashboard />} />
         </Routes>
       </div>
     </Router>

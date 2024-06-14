@@ -9,19 +9,21 @@ export const useUser = () => {
 };
 
 export const UserProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState();
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
+        const login = onAuthStateChanged(auth, (user) => {
             setUser(user);
-
         });
-
-        return () => unsubscribe();
+        return login
     }, []);
 
+    const resetUser = () => {
+        setUser(null);
+    };
+
     return (
-        <UserContext.Provider value={{ user }}>
+        <UserContext.Provider value={{ user, resetUser }}>
             {children}
         </UserContext.Provider>
     );
