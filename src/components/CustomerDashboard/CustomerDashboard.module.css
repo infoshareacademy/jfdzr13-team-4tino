@@ -1,0 +1,64 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(240, 248, 255);
+}
+
+.container p {
+  font-size: 20px;
+  padding: 10px 20px;
+}
+.container h1 {
+  padding: 10px 15px 20px 20px;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  min-width: 160px;
+  height: 100vh;
+  background-color: #2d8014;
+  border-radius: 0px 25px 0px 0px;
+  color: white;
+  padding-top: 10vh;
+  padding-left: 2vw;
+}
+
+.panel p {
+  color: white;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.panel p:hover {
+  font-weight: 700;
+  font-size: 130%;
+}
+
+.panel p:active {
+  text-shadow: 1px 1px 2px #0f3703;
+}
+
+.main {
+  padding-top: 10vh;
+  padding-left: 10vw;
+}
+
+.main p {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+
+/* @media (max-width: 767px) {
+  .container p {
+      margin-left: 10vw; 
+  }
+} */
