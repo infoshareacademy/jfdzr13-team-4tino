@@ -5,11 +5,13 @@
   justify-content: space-between;
   align-items: center;
 }
+
 .bigIcon {
   width: 200px;
   height: 50px;
   margin-left: 25px;
 }
+
 .navMenu {
   display: flex;
   justify-content: center;
@@ -19,6 +21,7 @@
   font-size: 20px;
   font-weight: 700;
 }
+
 .loginPanel {
   display: flex;
   display: flex;
@@ -26,10 +29,11 @@
   align-items: center;
   gap: 20px;
 }
+
 .item {
   background-color: white;
   color: black;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
 }
 
@@ -39,6 +43,7 @@
   font-size: 16px;
   font-weight: 700;
 }
+
 .login {
   background-color: white;
   border: 2px solid #5da746;
@@ -52,17 +57,37 @@
   border-radius: 10px;
 }
 
-button {
-  font-size: 16px;
-  line-height: 1.5;
-  padding: 10px 20px;
-  border-radius: 10px;
-  border: none;
-  color: white;
-  background-color: #2d8014;
-  font-weight: 700;
+.userMenuContainer {
+  position: relative;
 }
-button:hover {
+
+.userIcon {
+  width: 40px;
+  height: 40px;
   cursor: pointer;
-  background-color: #5da746;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+}
+
+.menuItem {
+  display: block;
+  padding: 10px 20px;
+  color: black;
+  text-decoration: none;
+}
+
+.menuItem:hover {
+  background-color: #f0f0f0;
+}
+
+a {
+  text-decoration: none;
 }

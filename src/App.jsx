@@ -7,8 +7,13 @@ import CustomerOrders from "./components/CustomerDashboard/CustomerOrders/Custom
 import Homepage from "./components/Homepage/Homepage";
 import Login from "./components/Login/Login";
 import Navbar from "./components/Navbar/Navbar";
-import Register from "./components/Register/Register";
 import Order from "./components/Order/Order";
+import Register from "./components/Register/Register";
+import AdminDashboard from "./components/AdminDashboard/AdminDashboard";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import UserDashboard from "./components/UserDashboard/UserDashboard";
+
+
 
 function App() {
   return (
@@ -16,14 +21,18 @@ function App() {
       <div>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Homepage />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/register" element={<Register />}></Route>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/order" element={<Order />} />
+          <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
+          <Route path="/user" element={<UserDashboard />} />
+/*
           <Route path="/dashboard" element={<CustomerDashboard />}></Route>
           <Route path="/dashboard/customerDataEdit" element={<CustomerDataEdit />} />
           <Route path="/dashboard/customerOrders" element={<CustomerOrders />} />
-          <Route path="/order" element={<Order />}></Route>
 
+*/
         </Routes>
       </div>
     </Router>
