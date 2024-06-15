@@ -10,6 +10,7 @@ const OrderTable = ({ data }) => {
           <th>Rodzaj zamówienia</th>
           <th>Cena</th>
           <th>Stan realizacji</th>
+          <th>Usuń</th>
         </tr>
       </thead>
       <tbody>
@@ -19,6 +20,7 @@ const OrderTable = ({ data }) => {
             <td>{row.orderType}</td>
             <td>{row.price}</td>
             <td>{row.status}</td>
+            <td>{row.delete}</td>
           </tr>
         ))}
       </tbody>
