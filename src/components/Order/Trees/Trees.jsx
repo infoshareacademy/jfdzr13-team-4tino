@@ -73,7 +73,7 @@ function SimpleSlider() {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 10,
+    speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     nextArrow: <SampleNextArrow />,
@@ -96,6 +96,7 @@ function SimpleSlider() {
                 src={treeImgs[index % treeImgs.length]}
                 // hehe działa ^^ drzewka pasują do obrazków
                 alt={tree.name}
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
               />
             </div>
             <div className={styles.info}>

@@ -14,30 +14,23 @@
 .slide {
   height: 400px;
   width: 800px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 300px, 1fr;
+  grid-template-rows: 1fr;
   background-color: aliceblue;
-  margin-bottom: 50px;
-  border: 2px solid red;
-  box-sizing: border-box;
+  margin-bottom: 10px;
+  align-items: stretch;
 }
 .img {
   width: 300px;
   height: 100%;
-  background-color: gray;
-  flex-shrink: 0;
-  border: 2px solid blue;
-  box-sizing: border-box;
 }
 .info {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
+  border: 2px solid red;
   padding: 20px;
-  flex-grow: 1;
-  border: 2px solid green;
-  overflow: hidden;
-  box-sizing: border-box;
+  flex: 1;
 }
 .type {
   margin-bottom: 10px;
