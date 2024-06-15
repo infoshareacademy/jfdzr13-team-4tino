@@ -12,7 +12,8 @@ input[type="password"] {
   border: 1px solid lightgray;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="tel"] {
   width: 49%;
   height: 50px;
   border-radius: 10px;
