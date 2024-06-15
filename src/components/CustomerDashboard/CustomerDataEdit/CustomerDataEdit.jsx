@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../CustomerDataEdit/CustomerDataEdit.module.css';
 import { Link } from 'react-router-dom';
 import { db } from '../../../firebase';
 import { collection, addDoc } from 'firebase/firestore';
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
+import { useUser } from '../../../context/UserContext/UserContext';
 
 
 const CustomerDataEdit = () => {
@@ -37,11 +39,11 @@ return (
 
 
         <div className={styles.panel}>
-            <Link to="/dashboard/customerOrders" className={styles.link}>
+            <Link to="/user/orders" className={styles.link}>
             <p>Zamówienia</p>
             </Link>
 
-            <Link to="/dashboard/customerDataEdit" className={styles.link}>
+            <Link to="/user/data" className={styles.link}>
             <p className={styles.dataText}>Edytuj dane</p>
             </Link>
             

@@ -2,20 +2,20 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useUser } from '../../context/UserContext/UserContext';
 
-const ProtectedRoute = ({ children }) => {
+const UserProtectedRoute = ({ children }) => {
     const { user } = useUser();
 
     if (!user) {
         // Użytkownik nie jest zalogowany
         return <Navigate to="/login" />;
     }
-    if (user.email === 'admin@admin.com') {
-        // Użytkownik jest administratorem
+    if (user.email != 'admin@admin.com') {
+        // Użytkownik nie jest administratorem
         return children;
     } else {
-        // Użytkownik nie jest administratorem
-        return <Navigate to="/user" />;
+        // Użytkownik jest administratorem
+        return <Navigate to="/admin" />;
     }
 };
 
-export default ProtectedRoute;
+export default UserProtectedRoute;
