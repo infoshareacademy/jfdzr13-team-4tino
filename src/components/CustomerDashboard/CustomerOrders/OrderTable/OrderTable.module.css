@@ -13,13 +13,13 @@
 }
 
 .customTable thead {
-  background-color: rgb(221, 236, 249);
+  background-color: #c6e9bc;
 }
 
 .customTable tbody tr:nth-of-type(even) {
-  background-color: rgb(228, 237, 245);
+  background-color: #e7f9e2;
 }
 
 .customTable tbody tr:hover {
-  background-color: #c6e9bc;
+  background-color: #b4d6ab;
 }
