@@ -11,7 +11,7 @@ const Order = () => {
     <div className={styles.order}>
       <div className={styles.left}>
         <Trees />
-        <Tablets />
+        {/* <Tablets /> */}
         <Dedication />
         <Map />
       </div>

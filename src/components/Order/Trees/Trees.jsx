@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import Test from "./Test/Test";
 import styles from "./Trees.module.css";
+import { collection, getDoc, doc } from "firebase/firestore";
+import { db } from "../../../firebase";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -28,7 +29,41 @@ function SamplePrevArrow(props) {
 }
 
 function SimpleSlider() {
-  var settings = {
+  const [treeData, setTreeData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchTreeData() {
+      try {
+        const docRef = doc(db, "trees", "drzewa");
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          const rawData = docSnap.data();
+          const data = Object.keys(rawData).map((key) => ({
+            id: key,
+            ...rawData[key],
+          }));
+          setTreeData(data);
+          setLoading(false);
+        } else {
+          console.log("dziwne, u mnie działa");
+          setLoading(false);
+        }
+      } catch (error) {
+        console.error("Error getting document:", error);
+        setLoading(false);
+      }
+    }
+
+    fetchTreeData();
+  }, []);
+
+  if (loading) {
+    return <div>Ładowanie...</div>;
+  }
+
+  const settings = {
     dots: true,
     infinite: true,
     speed: 500,
@@ -37,15 +72,23 @@ function SimpleSlider() {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
+
   return (
     <div className={styles.carousel}>
       <Slider {...settings}>
-        <Test />
-        <Test />
-        <Test />
-        <Test />
-        <Test />
-        <Test />
+        {treeData.map((tree) => (
+          <div className={styles.slide} key={tree.id}>
+            <div className={styles.img}></div>
+            <div className={styles.info}>
+              <h3 className={styles.type}>{tree.name}</h3>
+              <p className={styles.desc}>{tree.description}</p>
+              <span className={styles.price}>
+                Cena : {tree.price} zł
+                <button>dodaj do koszyka</button>
+              </span>
+            </div>
+          </div>
+        ))}
       </Slider>
     </div>
   );

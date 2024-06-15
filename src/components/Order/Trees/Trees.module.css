@@ -6,10 +6,18 @@
   gap: 50px;
 }
 
+.slide {
+  height: 400px;
+  width: 100%;
+  background-color: aliceblue;
+  margin-bottom: 50px;
+}
+
 .carousel {
   width: 80%;
   height: 400px;
 }
+
 .slick-prev,
 .slick-next {
   width: 40px;
