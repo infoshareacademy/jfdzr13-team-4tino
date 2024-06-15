@@ -6,25 +6,45 @@
   gap: 50px;
 }
 
+.carousel {
+  max-width: 80%;
+  height: 400px;
+  margin: 0 auto;
+}
 .slide {
   height: 400px;
-  width: 100%;
+  width: 800px;
+  display: flex;
   background-color: aliceblue;
   margin-bottom: 50px;
+  border: 2px solid red;
+  box-sizing: border-box;
 }
-
-.carousel {
-  width: 80%;
-  height: 400px;
+.img {
+  width: 300px;
+  height: 100%;
+  background-color: gray;
+  flex-shrink: 0;
+  border: 2px solid blue;
+  box-sizing: border-box;
 }
-
-.slick-prev,
-.slick-next {
-  width: 40px;
-  height: 40px;
-  z-index: 1;
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  flex-grow: 1;
+  border: 2px solid green;
+  overflow: hidden;
+  box-sizing: border-box;
 }
-/* ^ nie działa ¯\_(ツ)_/¯ */
-.slick-arrow {
-  right: -50px;
+.type {
+  margin-bottom: 10px;
+}
+.desc {
+  margin-bottom: 20px;
+}
+.price {
+  margin-top: auto;
 }

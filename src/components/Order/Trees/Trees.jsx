@@ -6,6 +6,13 @@ import styles from "./Trees.module.css";
 import { collection, getDoc, doc } from "firebase/firestore";
 import { db } from "../../../firebase";
 
+import grab from "../../../assets/drzewka/grab.png";
+import swierk1 from "../../../assets/drzewka/swierk_serbski.png";
+import milarzab from "../../../assets/drzewka/milorzab_dwuklapowy.png";
+import buk from "../../../assets/drzewka/buk.png";
+import swierk2 from "../../../assets/drzewka/swierk_klujacy.png";
+import sosna from "../../../assets/drzewka/sosna_czarna.png";
+
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -35,7 +42,7 @@ function SimpleSlider() {
   useEffect(() => {
     async function fetchTreeData() {
       try {
-        const docRef = doc(db, "trees", "drzewa");
+        const docRef = doc(db, "trees", "drzewa2");
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
@@ -66,19 +73,31 @@ function SimpleSlider() {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 10,
     slidesToShow: 1,
     slidesToScroll: 1,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
 
+  /*  ¯\_(ツ)_/¯ */
+  /* i po co mi to było */
+
+  const treeImgs = [grab, swierk1, milarzab, buk, swierk2, sosna];
+
   return (
     <div className={styles.carousel}>
       <Slider {...settings}>
-        {treeData.map((tree) => (
+        {treeData.map((tree, index) => (
           <div className={styles.slide} key={tree.id}>
-            <div className={styles.img}></div>
+            <div className={styles.img}>
+              <img
+                className={styles.img}
+                src={treeImgs[index % treeImgs.length]}
+                // hehe działa ^^ drzewka pasują do obrazków
+                alt={tree.name}
+              />
+            </div>
             <div className={styles.info}>
               <h3 className={styles.type}>{tree.name}</h3>
               <p className={styles.desc}>{tree.description}</p>
