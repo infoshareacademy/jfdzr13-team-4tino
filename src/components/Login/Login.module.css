@@ -63,3 +63,7 @@
   left: 50%;
   transform: translateX(-50%);
 }
+
+.error {
+  border: 1px solid red;
+}
