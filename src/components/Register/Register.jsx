@@ -1,10 +1,7 @@
-import { createUserWithEmailAndPassword, getAuth, updateProfile } from "firebase/auth";
-import { addDoc, collection } from 'firebase/firestore';
+import { getAuth } from "firebase/auth";
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import { useUser } from '../../context/UserContext/UserContext';
-import { db } from '../../firebase';
 import styles from "./Register.module.css";
 
 
@@ -34,6 +31,14 @@ function Register() {
 
     const auth = getAuth();
 
+    const newErrors = {
+        firstName: "",
+        lastName: "",
+        phone: "",
+        email: "",
+        password: ""
+    }
+
     const validate = (fields) => {
 
         const nameRegex = /^[A-Za-z]{2,30}$/
@@ -41,18 +46,11 @@ function Register() {
         const email = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         const password = /^(?=.*[A-Za-z].*[A-Za-z].*[A-Za-z].*[A-Za-z].*[A-Za-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/
 
-        const newErrors = {
-            firstName: "",
-            lastName: "",
-            phone: "",
-            email: "",
-            password: ""
-        }
+
         setErrors(newErrors)
 
         if (nameRegex.test(fields.firstName) === false) {
             newErrors.firstName = "jest problem"
-            console.log(newErrors)
         }
         if (nameRegex.test(fields.lastName) === false) {
             newErrors.lastName = "jest problem"
@@ -86,11 +84,25 @@ function Register() {
             email,
             password
         });
-        console.log("errors: ", errors)
+        //console.log("validate errors: ", newErrors.firstName, newErrors.lastName, newErrors.phone, newErrors.email, newErrors.password)
 
 
-        console.log("warunek:", (Boolean(errors.firstName || errors.lastName || errors.phone || errors.email || errors.password) === false))
-        if (Boolean(errors.firstName || errors.lastName || errors.phone || errors.email || errors.password) === false) {
+        //console.log("warunek:", (Boolean(errors.firstName || errors.lastName || errors.phone || errors.email || errors.password) === false))
+        // console.log("warunek: ",
+        //     !(
+        //         newErrors.firstName ||
+        //         newErrors.lastName ||
+        //         newErrors.phone ||
+        //         newErrors.email ||
+        //         newErrors.password
+        //     ))
+        if (!(
+            newErrors.firstName ||
+            newErrors.lastName ||
+            newErrors.phone ||
+            newErrors.email ||
+            newErrors.password
+        )) {
             createUserWithEmailAndPassword(auth, email, password)
                 .then((authUser) => {
                     updateProfile(authUser.user, {
@@ -113,10 +125,10 @@ function Register() {
                 <div className={styles.registerTitle}>Rejestracja</div>
                 <form className={styles.form} onSubmit={register}>
                     <input type="text" name="name" placeholder="Imię" required className={Boolean(errors.firstName) ? styles.fieldError : null} />
-                    <input type="text" name="lastName" placeholder="Nazwisko" required />
-                    <input type="tel" name="phone" placeholder="Telefon" required />
-                    <input type="email" name="email" placeholder="Adres email: example@gmail.com" required />
-                    <input type="password" name="password" placeholder="Hasło" required />
+                    <input type="text" name="lastName" placeholder="Nazwisko" required className={Boolean(errors.lastName) ? styles.fieldError : null} />
+                    <input type="tel" name="phone" placeholder="Telefon" required className={Boolean(errors.phone) ? styles.fieldError : null} />
+                    <input type="email" name="email" placeholder="Adres email: example@gmail.com" required className={Boolean(errors.email) ? styles.fieldError : null} />
+                    <input type="password" name="password" placeholder="Hasło" required className={Boolean(errors.password) ? styles.fieldError : null} />
                     <button className={styles.button} type="submit">Zarejestruj</button>
                 </form>
             </div>

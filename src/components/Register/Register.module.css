@@ -68,5 +68,6 @@
 }
 
 .fieldError {
-  border: 1px solid red
+  border: 1px solid red !important
+    /* DO ZMIANY! - usunąć important */
 }
