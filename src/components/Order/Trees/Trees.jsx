@@ -80,29 +80,29 @@ function SimpleSlider() {
     prevArrow: <SamplePrevArrow />,
   };
 
-
   const treeImgs = [grab, swierk1, milarzab, buk, swierk2, sosna];
 
   return (
-    <div className={styles.carousel}>
+    <div className={styles.carousel} id={styles.dupa}>
       <Slider {...settings}>
         {treeData.map((tree, index) => (
-          <div className={styles.slide} key={tree.id}>
-            <div className={styles.img}>
-              <img
-                className={styles.img}
-                src={treeImgs[index % treeImgs.length]}
-                alt={tree.name}
-                // style={{ width: "100%", height: "100%", objectFit: "cover" }}
-              />
-            </div>
-            <div className={styles.info}>
-              <h3 className={styles.type}>{tree.name}</h3>
-              <p className={styles.desc}>{tree.description}</p>
-              <span className={styles.price}>
-                Cena : {tree.price} zł
-                <button>dodaj do koszyka</button>
-              </span>
+          <div>
+            <div className={styles.slide} key={tree.id}>
+              <div className={styles.img}>
+                <img
+                  className={styles.img}
+                  src={treeImgs[index % treeImgs.length]}
+                  alt={tree.name}
+                />
+              </div>
+              <div className={styles.info}>
+                <h3 className={styles.type}>{tree.name}</h3>
+                <p className={styles.desc}>{tree.description}</p>
+                <span className={styles.price}>
+                  Cena : {tree.price} zł
+                  <button>dodaj do koszyka</button>
+                </span>
+              </div>
             </div>
           </div>
         ))}
