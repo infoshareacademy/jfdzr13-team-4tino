@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { doc, getDoc } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-import styles from "./Trees.module.css";
-import { collection, getDoc, doc } from "firebase/firestore";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 import { db } from "../../../firebase";
+import styles from "./Trees.module.css";
 
-import grab from "../../../assets/drzewka/grab.png";
-import swierk1 from "../../../assets/drzewka/swierk_serbski.png";
-import milarzab from "../../../assets/drzewka/milorzab_dwuklapowy.png";
 import buk from "../../../assets/drzewka/buk.png";
-import swierk2 from "../../../assets/drzewka/swierk_klujacy.png";
+import grab from "../../../assets/drzewka/grab.png";
+import milarzab from "../../../assets/drzewka/milorzab_dwuklapowy.png";
 import sosna from "../../../assets/drzewka/sosna_czarna.png";
+import swierk2 from "../../../assets/drzewka/swierk_klujacy.png";
+import swierk1 from "../../../assets/drzewka/swierk_serbski.png";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -80,8 +80,6 @@ function SimpleSlider() {
     prevArrow: <SamplePrevArrow />,
   };
 
-  /*  ¯\_(ツ)_/¯ */
-  /* i po co mi to było */
 
   const treeImgs = [grab, swierk1, milarzab, buk, swierk2, sosna];
 
@@ -94,9 +92,8 @@ function SimpleSlider() {
               <img
                 className={styles.img}
                 src={treeImgs[index % treeImgs.length]}
-                // hehe działa ^^ drzewka pasują do obrazków
                 alt={tree.name}
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                // style={{ width: "100%", height: "100%", objectFit: "cover" }}
               />
             </div>
             <div className={styles.info}>
