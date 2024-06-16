@@ -4,7 +4,7 @@
   align-items: flex-start;
   height: 100vh;
   width: 100vw;
-  background-color: rgb(240, 248, 255);
+  background-color: rgb(226, 245, 212);
 }
 
 .container p {
@@ -55,7 +55,6 @@
   justify-content: start;
   align-items: center;
 }
-
 
 /* @media (max-width: 767px) {
   .container p {

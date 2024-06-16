@@ -1,141 +1,18 @@
 .container {
+  display: flex;
+  flex-direction: column;
   width: auto;
-  height: 100px;
-  background-color: #2d8014;
+  height: 140px;
+  background-color: #1a4b0b;
   color: white;
   font-weight: 500;
-  text-align: center;
+  align-items: center;
+  justify-content: center;
   border-radius: 15px;
-}
-
-
-/* .customTable {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 20px 0;
-  font-size: 18px;
-  text-align: left;
-}
-
-.customTable th, .customTable td {
-  padding: 12px 15px;
-  border: 1px solid rgb(168, 168, 168);
-}
-
-.customTable thead {
-  background-color: rgb(221, 236, 249);
-}
-
-.customTable tbody tr:nth-of-type(even) {
-  background-color: rgb(228, 237, 245);
-}
-
-.customTable tbody tr:hover {
-  background-color: rgb(13, 91, 154);
-}
-
-/* .container {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  height: 100vh;
-  width: 100vw;
-  background-color: rgb(240, 248, 255);
+  font-size: 24px;
 }
 
 .container p {
-  font-size: 20px;
-  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: 400;
 }
-.container h1 {
-  padding: 10px 15px 20px 20px;
-}
-
-.panel {
-  display: flex;
-  flex-direction: column;
-  width: 20%;
-  min-width: 160px;
-  height: 100vh;
-  background-color: #2d8014;
-  border-radius: 0px 25px 0px 0px;
-  padding-top: 10vh;
-  padding-left: 2vw;
-}
-
-.panel p {
-  color: white;
-}
-
-.link {
-  text-decoration: none;
-}
-
-.dataText {
-  font-weight: 700;
-}
-
-.panel p:hover {
-  font-weight: 700;
-  font-size: 130%;
-}
-
-.panel p:active {
-  text-shadow: 1px 1px 2px #0f3703;
-}
-
-.main {
-  padding-top: 10vh;
-  padding-left: 10vw;
-}
-
-.main p {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-} */
-
-
-/* @media (max-width: 767px) {
-  .container p {
-      margin-left: 10vw; 
-  }
-} */
-/* .dataForm {
-  background-color: aliceblue;
-  height: auto;
-  width: 600px;
-  padding: 20px;
-}
-
-.form {
-  display: grid;
-  grid-template-columns: 200px 200px;
-  grid-template-rows: 60px 60px 60px;
-  gap: 20px;
-  justify-content: center;
-}
-
-.inputType p {
-  font-size: 16px;
-  padding-left: 0px;
-}
-
-input {
-  min-height: 35px;
-  width: 200px;
-  border-radius: 8px;
-  border: solid 1px rgb(168, 168, 168);
-  padding: 5px;
-}
-
-input:focus {
-  outline: solid 2px #2d8014;
-}
-
-.button {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 50px;
-} */
