@@ -4,7 +4,7 @@
   align-items: flex-start;
   height: 100vh;
   width: 100vw;
-  background-color: rgb(240, 248, 255);
+  background-color: rgb(226, 245, 212);
 }
 
 .container p {
@@ -66,7 +66,7 @@
 } */
 
 .dataForm {
-  background-color: aliceblue;
+  background-color: (226, 245, 212);
   height: auto;
   width: 600px;
   padding: 20px;
@@ -75,7 +75,7 @@
 .form {
   display: grid;
   grid-template-columns: 200px 200px;
-  grid-template-rows: 60px 60px 60px;
+  grid-template-rows: 90px 90px 90px;
   gap: 20px;
   justify-content: center;
 }
@@ -93,13 +93,19 @@ input {
   padding: 5px;
 }
 
+input[type="text"] {
+  width: 100%;
+}
+
 input:focus {
   outline: solid 2px #2d8014;
 }
 
 .button {
+  grid-area: 4 / 1 / 5 / 3;
   display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: 50px;
+  width: 100px;
 }

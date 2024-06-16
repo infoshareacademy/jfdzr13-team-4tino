@@ -47,6 +47,8 @@ const CountDownTimer = () => {
 
   return (
     <div className={styles.container}>
+      <p>Gratulujemy!</p>
+      <p className={styles.text}>Już niedługo będziesz mieć możliwość obdarowania kolejnej osoby:</p>
       <span>
         {timeLeft.months}m:{formatTime(timeLeft.days)}d:{formatTime(timeLeft.hours)}h:{formatTime(timeLeft.minutes)}m:{formatTime(timeLeft.seconds)}s
       </span>

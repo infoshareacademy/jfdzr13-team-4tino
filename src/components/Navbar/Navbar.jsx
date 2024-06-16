@@ -1,10 +1,10 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { HashLink as Link } from 'react-router-hash-link';
-import tinoName from "../../assets/4tino-name.png";
+import tinoName from "../../assets/4tino-logo.png";
 import userIcon from "../../assets/user.png"; // Importuj obraz user.png
-import styles from "./Navbar.module.css";
 import { useUser } from '../../context/UserContext/UserContext';
 import Logout from '../Logout/Logout';
+import styles from "./Navbar.module.css";
 
 const Navbar = () => {
   const { user } = useUser();
