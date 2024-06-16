@@ -85,7 +85,6 @@ function SimpleSlider() {
   return (
     <div className={styles.carousel} id={styles.dupa}>
       <Slider {...settings}>
-        {/* <div className={styles.test}> */}
         {treeData.map((tree, index) => (
           <div>
             <div className={styles.slide} key={tree.id}>
@@ -107,7 +106,6 @@ function SimpleSlider() {
             </div>
           </div>
         ))}
-        {/* </div> */}
       </Slider>
     </div>
   );

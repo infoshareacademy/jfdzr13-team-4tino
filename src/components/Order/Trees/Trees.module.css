@@ -16,7 +16,6 @@
   max-height: auto;
   width: 800px;
   display: grid;
-  /* ^^ uwaga - react-slick ma style liniowe których nie da się nadpisać ^^ */
   grid-template-columns: 300px 1fr;
   grid-template-rows: 1fr;
   background-color: aliceblue;
@@ -53,3 +52,4 @@
 .price {
   margin-top: auto;
 }
+
