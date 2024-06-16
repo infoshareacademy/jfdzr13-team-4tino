@@ -1,9 +1,17 @@
-import React from "react";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { doc, getDoc } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-import Test from "./Test/Test";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import { db } from "../../../firebase";
 import styles from "./Trees.module.css";
+
+import buk from "../../../assets/drzewka/buk.png";
+import grab from "../../../assets/drzewka/grab.png";
+import milarzab from "../../../assets/drzewka/milorzab_dwuklapowy.png";
+import sosna from "../../../assets/drzewka/sosna_czarna.png";
+import swierk2 from "../../../assets/drzewka/swierk_klujacy.png";
+import swierk1 from "../../../assets/drzewka/swierk_serbski.png";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -28,7 +36,41 @@ function SamplePrevArrow(props) {
 }
 
 function SimpleSlider() {
-  var settings = {
+  const [treeData, setTreeData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchTreeData() {
+      try {
+        const docRef = doc(db, "trees", "drzewa2");
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          const rawData = docSnap.data();
+          const data = Object.keys(rawData).map((key) => ({
+            id: key,
+            ...rawData[key],
+          }));
+          setTreeData(data);
+          setLoading(false);
+        } else {
+          console.log("dziwne, u mnie działa");
+          setLoading(false);
+        }
+      } catch (error) {
+        console.error("Error getting document:", error);
+        setLoading(false);
+      }
+    }
+
+    fetchTreeData();
+  }, []);
+
+  if (loading) {
+    return <div>Ładowanie...</div>;
+  }
+
+  const settings = {
     dots: true,
     infinite: true,
     speed: 500,
@@ -37,15 +79,33 @@ function SimpleSlider() {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
+
+
+  const treeImgs = [grab, swierk1, milarzab, buk, swierk2, sosna];
+
   return (
     <div className={styles.carousel}>
       <Slider {...settings}>
-        <Test />
-        <Test />
-        <Test />
-        <Test />
-        <Test />
-        <Test />
+        {treeData.map((tree, index) => (
+          <div className={styles.slide} key={tree.id}>
+            <div className={styles.img}>
+              <img
+                className={styles.img}
+                src={treeImgs[index % treeImgs.length]}
+                alt={tree.name}
+                // style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
+            </div>
+            <div className={styles.info}>
+              <h3 className={styles.type}>{tree.name}</h3>
+              <p className={styles.desc}>{tree.description}</p>
+              <span className={styles.price}>
+                Cena : {tree.price} zł
+                <button>dodaj do koszyka</button>
+              </span>
+            </div>
+          </div>
+        ))}
       </Slider>
     </div>
   );

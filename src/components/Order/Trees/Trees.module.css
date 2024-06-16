@@ -7,16 +7,53 @@
 }
 
 .carousel {
-  width: 80%;
+  max-width: 80%;
   height: 400px;
+  margin: 0 auto;
 }
-.slick-prev,
-.slick-next {
-  width: 40px;
-  height: 40px;
-  z-index: 1;
+
+element.style {
+  width: 100%;
 }
-/* ^ nie działa ¯\_(ツ)_/¯ */
-.slick-arrow {
-  right: -50px;
+
+.slide {
+  height: auto;
+  width: 800px;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: 1fr;
+  background-color: aliceblue;
+  margin-bottom: 10px;
+  align-items: stretch;
+}
+
+.img {
+  width: 300px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid red;
+  padding: 20px;
+}
+
+.type {
+  margin-bottom: 10px;
+}
+
+.desc {
+  margin-bottom: 20px;
+}
+
+.price {
+  margin-top: auto;
 }
