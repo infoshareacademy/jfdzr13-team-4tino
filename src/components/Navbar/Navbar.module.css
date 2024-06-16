@@ -27,7 +27,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
 }
 
 .item {
@@ -35,12 +34,12 @@
   color: black;
   font-size: 18px;
   font-weight: 700;
+  padding-right: 15px;
 }
 
 .item:hover {
   background-color: white;
   color: #5da746;
-  font-size: 16px;
   font-weight: 700;
 }
 
@@ -50,7 +49,6 @@
   color: black;
   font-size: 20px;
   font-weight: 700;
-
   font-size: 16px;
   line-height: 1.5;
   padding: 10px 20px;

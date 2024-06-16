@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import styles from "./Login.module.css";
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../firebase.js';
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { useNavigate, Link } from 'react-router-dom';
 import { useUser } from '../../context/UserContext/UserContext';
+import { auth } from '../../firebase.js';
+import styles from "./Login.module.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -80,6 +80,8 @@ const Login = () => {
             <p>Podaj adres email:</p>
             <input
               name="email"
+              type="email"
+              value={email}
               placeholder="Adres email: example@gmail.com"
               required
             />
