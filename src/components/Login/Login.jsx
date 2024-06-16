@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import styles from "./Login.module.css";
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../firebase.js';
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../context/UserContext/UserContext';
-import { Link } from 'react-router-dom';
+import { auth } from '../../firebase.js';
+import styles from "./Login.module.css";
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -58,6 +57,7 @@ const Login = () => {
           <label>
             <p>Podaj adres email:</p>
             <input
+              name="email"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
