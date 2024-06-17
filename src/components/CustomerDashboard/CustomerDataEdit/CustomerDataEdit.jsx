@@ -107,7 +107,7 @@ const CustomerDataEdit = () => {
         <div className={styles.container}>
             <div className={styles.panel}>
                 <Link to="/user/orders" className={styles.link}>
-                    <p>Zamówienia</p>
+                    <p className={styles.orderText}>Zamówienia</p>
                 </Link>
 
                 <Link to="/user/data" className={styles.link}>

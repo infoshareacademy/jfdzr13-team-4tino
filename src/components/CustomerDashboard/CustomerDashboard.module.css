@@ -11,13 +11,13 @@
   font-size: 20px;
   padding: 10px 20px 20px 20px;
 }
-.container h1,
-.container h2 {
+.container h1 {
   padding: 10px 15px 20px 20px;
 }
 
 .container h2 {
   margin-top: 20px;
+  padding: 10px 15px 0px 20px;
 }
 
 .panel {
@@ -42,12 +42,13 @@
 }
 
 .panel p:hover {
-  font-weight: 700;
-  font-size: 130%;
+  background-color: white;
+  color: #0f3703;
+  border-radius: 15px 0px 0px 15px;
 }
 
 .panel p:active {
-  text-shadow: 1px 1px 2px #0f3703;
+  transform: scale(0.9);
 }
 
 .main {
