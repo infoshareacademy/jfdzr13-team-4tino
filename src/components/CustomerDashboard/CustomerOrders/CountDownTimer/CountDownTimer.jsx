@@ -47,7 +47,7 @@ const CountDownTimer = () => {
 
   return (
     <div className={styles.container}>
-      <p>Gratulujemy!</p>
+      <p>Gratulujemy! <span className={styles.info} data-tooltip="Ten wyjątkowy prezent jest dostępny tylko raz na 3 miesiące. Nasze drzewko to unikalny i ponadczasowy prezent!">i</span></p>
       <p className={styles.text}>Już niedługo będziesz mieć możliwość obdarowania kolejnej osoby:</p>
       <span>
         {timeLeft.months}m:{formatTime(timeLeft.days)}d:{formatTime(timeLeft.hours)}h:{formatTime(timeLeft.minutes)}m:{formatTime(timeLeft.seconds)}s
