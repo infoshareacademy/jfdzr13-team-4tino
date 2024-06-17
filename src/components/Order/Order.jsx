@@ -18,7 +18,9 @@ const Order = () => {
       <div className={styles.right}>
         <Basket />
       </div>
+      
     </div>
+    
   );
 };
 

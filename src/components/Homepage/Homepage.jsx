@@ -5,6 +5,8 @@ import HowItWorks from "../Homepage/HowItworks/HowItWorks";
 import Introduction from "../Homepage/Introduction/Introduction";
 import WhyTrustUs from "../Homepage/WhyTrustUs/WhyTrustUs";
 import styles from "./Homepage.module.css";
+import Footer from "../Footer/Footer"
+
 
 
 const Homepage = () => {
@@ -19,6 +21,7 @@ const Homepage = () => {
       <WhyTrustUs />
       <div id="about" />
       <About />
+      <Footer />
     </div>
 
 
