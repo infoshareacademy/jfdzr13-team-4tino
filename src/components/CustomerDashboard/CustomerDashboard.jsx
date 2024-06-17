@@ -1,43 +1,34 @@
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs } from 'firebase/firestore'; // Importowanie funkcji Firestore
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { db } from '../../firebase';
-import styles from '../CustomerDashboard/CustomerDashboard.module.css';
+import { db, useAuth } from '../../firebase'; // Importowanie hooka autoryzacji oraz instancji Firebase
+import styles from './CustomerDashboard.module.css';
 import OrderTable from './CustomerOrders/OrderTable/OrderTable';
 
-//   return (
-//     <table className={styles.customTable}>
-//       <thead>
-//         <tr>
-//           <th>Numer zamówienia</th>
-//           <th>Rodzaj zamówienia</th>
-//           <th>Cena</th>
-//           <th>Stan realizacji</th>
-//           <th>Usuń</th>
-//         </tr>
-//       </thead>
-//       <tbody>
-//         {data.map((row) => (
-//           <tr key={row.id}>
-//             <td>{row.id}</td>
-//             <td>{row.orderType}</td>
-//             <td>{row.price}</td>
-//             <td>{row.status}</td>
-//             <td>{row.delete}</td>
-//           </tr>
-//         ))}
-//       </tbody>
-//     </table>
-//   );
-// };
-
-// export default OrderTable;
-
 const CustomerDashboard = () => {
-
-  const [data, setData] = useState([]);
+  const { currentUser } = useAuth(); // Hook autoryzacji do pobrania danych zalogowanego użytkownika
+  const [firstName, setFirstName] = useState(''); // Stan na imię użytkownika
+  const [data, setData] = useState([]); // Stan na dane zamówień użytkownika
 
   useEffect(() => {
+    const fetchUserData = async () => {
+      if (currentUser) {
+        try {
+          const docRef = doc(db, 'users', currentUser.uid); // Referencja do dokumentu użytkownika w Firestore
+          const docSnap = await getDoc(docRef); // Pobranie danych dokumentu
+
+          if (docSnap.exists()) {
+            const userData = docSnap.data(); // Dane użytkownika
+            setFirstName(userData.firstName); // Ustawienie firstName na podstawie danych z Firestore
+          } else {
+            console.log('Dane użytkownika nie znalezione');
+          }
+        } catch (error) {
+          console.error('Błąd pobierania danych użytkownika: ', error);
+        }
+      }
+    };
+
     const fetchOrders = async () => {
       try {
         const querySnapshot = await getDocs(collection(db, 'orders'));
@@ -45,14 +36,15 @@ const CustomerDashboard = () => {
           id: doc.id,
           ...doc.data()
         }));
-        setData(ordersData);
+        setData(ordersData); // Ustawienie danych zamówień
       } catch (error) {
-        console.error('Error fetching orders: ', error);
+        console.error('Błąd pobierania zamówień: ', error);
       }
     };
 
+    fetchUserData();
     fetchOrders();
-  }, []);
+  }, [currentUser]); // Dodanie currentUser do zależności useEffect, aby fetchUserData wywołało się ponownie po zalogowaniu
 
   return (
     <div className={styles.container}>
@@ -70,7 +62,7 @@ const CustomerDashboard = () => {
 
       <div className={styles.main}>
 
-        <h1>Witaj Janusz 😊</h1>
+        <h1>Witaj {firstName} 😊</h1>
         <p>Cieszymy się, że z nami jesteś i pomagasz nam zmieniać świat na lepsze!</p>
         <p>🌳 🌳 🌳 </p>
 

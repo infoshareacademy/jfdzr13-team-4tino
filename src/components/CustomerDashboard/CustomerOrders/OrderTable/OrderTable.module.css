@@ -1,19 +1,29 @@
 .customTable {
   width: 100%;
-  border-collapse: collapse;
-  margin: 20px 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 40px 0;
   font-size: 18px;
   text-align: left;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 2px solid rgb(255, 255, 255);
 }
 
 .customTable th,
 .customTable td {
   padding: 12px 15px;
-  border: 1px solid rgb(168, 168, 168);
+  border: 1px solid rgb(255, 255, 255);
+  font-weight: normal;
+}
+
+.customTable th {
+  text-align: center;
 }
 
 .customTable thead {
-  background-color: #c6e9bc;
+  background-color: #1a4b0b;
+  color: #ffffff;
 }
 
 .customTable tbody tr:nth-of-type(even) {
@@ -21,5 +31,5 @@
 }
 
 .customTable tbody tr:hover {
-  background-color: #b4d6ab;
+  background-color: #ffffff;
 }
