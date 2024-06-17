@@ -1,4 +1,7 @@
 .registerModule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100vh;
   width: auto;
   background-image: url("../../assets/LoginRegister/bg.png");
@@ -7,16 +10,12 @@
 }
 
 .registerForm {
-  background-color: whitesmoke;
+  background-color: rgba(245, 245, 245, 0.705);
   height: 550px;
   width: 550px;
   border-radius: 30px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   padding: 20px;
-  opacity: 85%;
+  transform: translateY(40px);
 }
 
 .welcomeTitle {
@@ -59,15 +58,15 @@
   margin-right: 10px;
 }
 
-.button {
-  position: absolute;
-  bottom: 0;
-  margin-bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+button {
 }
 
 .fieldError {
-  border: 1px solid red !important
-    /* DO ZMIANY! - usunąć important */
+  border: 1px solid red !important;
+  /* DO ZMIANY! - usunąć important */
+}
+
+input[type="email"],
+input[type="password"] {
+  width: 100%;
 }

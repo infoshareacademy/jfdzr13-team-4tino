@@ -1,0 +1,42 @@
+.container {
+  background-color: #c3eeb9;
+  background-image: url(../../assets/Footer/footer.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: 230px;
+  display: flex;
+  align-items: end;
+}
+
+.logo {
+  height: 100px;
+  width: 100px;
+  margin: 20px;
+}
+
+.contParagraphs {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  width: 100vw;
+
+  color: black;
+  font-weight: normal;
+  /* border: 1px solid black; */
+}
+
+.paragraphs {
+  padding: 2px;
+  color: black;
+}
+
+.socialMedia {
+  height: 100px;
+  margin-top: 50px;
+  margin-left: 700px;
+}
+
+.logoContent {
+  display: flex;
+  margin-left: 80px;
+}
