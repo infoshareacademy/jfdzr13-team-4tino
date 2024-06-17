@@ -17,20 +17,27 @@ const CustomerDataEdit = () => {
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
-    const register = (e) => {
-
-    e.preventDefault();
-    createUserWithEmailAndPassword(auth, email, password)
-    .then((authUser) => {
-        updateProfile(authUser.user, {
-            displayName: firstName + ' ' + lastName,
-            phoneNumber: phone,
-        });
-        alert('Użytkownik został pomyślnie dodany!');
-        addDoc(collection(db, "users"), { firstName , lastName, phone,email, id: authUser.user.uid});
-    })
-
-}
+    const register = async (e) => {
+        e.preventDefault();
+        
+        // Sprawdź, czy hasła są zgodne
+        if (newPassword !== confirmPassword) {
+            alert('Hasła nie są zgodne!');
+            return;
+        }
+        try {
+            const authUser = await createUserWithEmailAndPassword(auth, email, newPassword);
+            await updateProfile(authUser.user, {
+                displayName: `${firstName} ${lastName}`,
+                phoneNumber: phone,
+            });
+            alert('Użytkownik został pomyślnie dodany!');
+            await addDoc(collection(db, "users"), { firstName, lastName, phone, email, id: authUser.user.uid });
+        } catch (error) {
+            console.error("Error adding user: ", error);
+            alert('Wystąpił błąd podczas dodawania użytkownika.');
+        }
+};
 
 return (
     <div className={styles.container}>
@@ -52,7 +59,6 @@ return (
             <p>🌳 🌳 🌳 </p>
 
             <div className={styles.dataForm}>
-                
                 
             <form className={styles.form}>
                 <div className={styles.inputType}>
@@ -100,12 +106,12 @@ return (
                 </div>
 
                 <div className={styles.inputType}>
-                <p>Zmień hasło</p>
+                <p>Hasło</p>
                 <input 
                     type="password" 
                     value={newPassword} 
                     onChange={(e) => setNewPassword(e.target.value)} 
-                    placeholder="Stare hasło" 
+                    placeholder="Aktualne hasło" 
                     required 
                 />
                 </div>
@@ -120,6 +126,18 @@ return (
                     required 
                 />
                 </div>
+
+                <div className={styles.inputType}>
+                <p>Potwierdź nowe hasło</p>
+                <input 
+                    type="password" 
+                    value={confirmPassword} 
+                    onChange={(e) => setConfirmPassword(e.target.value)} 
+                    placeholder="Potwierdź nowe hasło" 
+                    required 
+                />
+                </div>
+
                 <button className={styles.button} type="submit" onClick={register}>Zapisz</button>
             </form>
             </div>

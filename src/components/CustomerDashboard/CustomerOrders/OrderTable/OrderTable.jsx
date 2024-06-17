@@ -10,7 +10,7 @@ const OrderTable = ({ data }) => {
           <th>Rodzaj zamówienia</th>
           <th>Cena</th>
           <th>Stan realizacji</th>
-          <th>Usuń</th>
+          <th>Anuluj</th>
         </tr>
       </thead>
       <tbody>

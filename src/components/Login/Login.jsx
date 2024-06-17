@@ -1,5 +1,5 @@
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useUser } from '../../context/UserContext/UserContext';
@@ -9,6 +9,9 @@ import styles from "./Login.module.css";
 const Login = () => {
   const navigate = useNavigate();
   const { user } = useUser(); // Pobierz usera z kontekstu
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   useEffect(() => {
     // Przekierowujemy na /admin, jeśli użytkownik jest już zalogowany i jest administratorem, jeśli nie, na homepage
@@ -28,9 +31,6 @@ const Login = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    const email = event.target.email.value;
-    const password = event.target.password.value;
 
     // Walidacja danych
     if (!validateEmail(email)) {
@@ -82,6 +82,7 @@ const Login = () => {
               name="email"
               type="email"
               value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Adres email: example@gmail.com"
               required
             />
@@ -92,6 +93,8 @@ const Login = () => {
             <input
               type="password"
               name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               placeholder="Hasło"
               required
             />
