@@ -98,10 +98,12 @@ function SimpleSlider() {
               <div className={styles.info}>
                 <h3 className={styles.type}>{tree.name}</h3>
                 <p className={styles.desc}>{tree.description}</p>
-                <span className={styles.price}>
-                  <b className={styles.price}>Cena : {tree.price} zł</b>
+                <div className={styles.price}>
+                  <p>
+                    <b>Cena : {tree.price} zł</b>
+                  </p>
                   <button>dodaj do koszyka</button>
-                </span>
+                </div>
               </div>
             </div>
           </div>

@@ -14,12 +14,12 @@
 }
 
 .slide {
-  max-height: auto;
+  /* max-height: auto; */
   width: fit-content;
   display: grid;
   grid-template-columns: 300px 1fr;
   grid-template-rows: 1fr;
-  background-color: aliceblue;
+  background-color: rgb(226, 245, 212);
   margin-bottom: 30px;
   align-items: stretch;
 }
@@ -44,8 +44,12 @@
   font-size: 18px;
 }
 .price {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   align-self: center;
   font-size: 22px;
+  gap: 50px;
 }
 
 .type {
@@ -53,9 +57,5 @@
 }
 
 .desc {
-  margin-bottom: 20px;
-}
-
-.price {
-  margin-top: auto;
+  margin-bottom: 10px;
 }
