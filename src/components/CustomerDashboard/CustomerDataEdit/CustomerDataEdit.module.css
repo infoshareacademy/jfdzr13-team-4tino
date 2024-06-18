@@ -36,14 +36,14 @@
   text-decoration: none;
 }
 
-.link p:hover {
+.link .orderText:hover {
   background-color: white;
   color: #0f3703;
   border-radius: 15px 0px 0px 15px;
   box-shadow: inset 0px -22px 0px -21px rgba(45, 128, 20, 1);
 }
 
-.link p:active {
+.link .orderText:active {
   font-weight: 700;
   box-shadow: inset 0px -22px 0px -21px rgba(45, 128, 20, 1);
 }
@@ -51,12 +51,7 @@
 .dataText {
   background-color: white;
   border-radius: 15px 0px 0px 15px;
-  /* box-shadow: none; */
 }
-
-/* .dataText:hover {
-  box-shadow: none;
-} */
 
 .panel .dataText {
   color: #0f3703;

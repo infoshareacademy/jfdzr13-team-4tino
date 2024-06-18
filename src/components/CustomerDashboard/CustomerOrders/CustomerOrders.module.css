@@ -27,7 +27,7 @@
   padding-left: 2vw;
 }
 
-.panel p {
+.panel .dataText {
   color: white;
 }
 
@@ -35,17 +35,26 @@
   text-decoration: none;
 }
 
-.dataText {
-  font-weight: 700;
+.link .dataText:hover {
+  background-color: white;
+  color: #0f3703;
+  border-radius: 15px 0px 0px 15px;
+  box-shadow: inset 0px 22px 0px -21px rgba(45, 128, 20, 1);
 }
 
-.panel p:hover {
+.link .dataText:active {
   font-weight: 700;
-  font-size: 130%;
+  box-shadow: inset 0px 22px 0px -21px rgba(45, 128, 20, 1);
 }
 
-.panel p:active {
-  text-shadow: 1px 1px 2px #0f3703;
+.orderText {
+  background-color: white;
+  border-radius: 15px 0px 0px 15px;
+}
+
+.panel .orderText {
+  color: #0f3703;
+  box-shadow: none;
 }
 
 .main {
