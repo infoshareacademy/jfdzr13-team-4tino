@@ -88,7 +88,8 @@ const Tablets = () => {
       </div>
       <p className={styles.todo}>
         todo : <br />
-        - slider pionowo = opis + button obok slidera <br />- ujednolićić wygląd
+        - slider pionowo = opis + button obok slidera <br />- ujednolićić wygląd{" "}
+        <br />
       </p>
     </div>
   );
