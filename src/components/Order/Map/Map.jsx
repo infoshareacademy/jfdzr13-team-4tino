@@ -64,9 +64,12 @@ const Map = () => {
           </Circle>
         ))}
       </MapContainer>
-      <div className={styles.capturedLocation}>
-        <h4>Wybrane nadleśnictwo:</h4>{" "}
-        {selectedLocation || "Wybierz lokalizację"}
+      <div className={styles.confirm}>
+        <div className={styles.capturedLocation}>
+          <h4>Wybrane nadleśnictwo:</h4>{" "}
+          {selectedLocation || "Wybierz lokalizację"}
+        </div>
+        <button className={styles.confirm}>Potwierdź lokalizację</button>
       </div>
     </div>
   );

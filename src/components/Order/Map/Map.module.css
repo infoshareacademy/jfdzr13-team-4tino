@@ -25,3 +25,13 @@
   margin-top: 10px;
   position: relative;
 }
+
+.confirm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.confirm button {
+  height: 50px;
+}
