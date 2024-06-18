@@ -10,16 +10,17 @@
   max-width: 80%;
   height: 400px;
   margin: 0 auto;
+  border-radius: 10px;
 }
 
 .slide {
   max-height: auto;
-  width: 800px;
+  width: fit-content;
   display: grid;
   grid-template-columns: 300px 1fr;
   grid-template-rows: 1fr;
   background-color: aliceblue;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   align-items: stretch;
 }
 
@@ -39,6 +40,12 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
+  line-height: 1.5;
+  font-size: 18px;
+}
+.price {
+  align-self: center;
+  font-size: 22px;
 }
 
 .type {
@@ -52,4 +59,3 @@
 .price {
   margin-top: auto;
 }
-
