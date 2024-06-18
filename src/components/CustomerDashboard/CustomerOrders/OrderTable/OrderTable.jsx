@@ -25,7 +25,17 @@ const OrderTable = ({ data, onDelete }) => {
             <td>{row.price}</td>
             <td>{row.status}</td>
             <td>
-              <button onClick={() => onDelete(row.id)} className={styles.deleteButton}>
+              <button
+                onClick={() => {
+                  console.log('Button clicked, row id:', row.id);
+                  if (onDelete) {
+                    onDelete(row.id);
+                  } else {
+                    console.error('onDelete function is not defined');
+                  }
+                }}
+                className={styles.deleteButton}
+              >
                 X
               </button>
             </td>
