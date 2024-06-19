@@ -20,7 +20,6 @@
 
 .welcomeTitle {
   color: black;
-  margin-bottom: 20px;
   font-size: 20px;
 }
 
@@ -33,15 +32,14 @@
   font-size: 40px;
   font-weight: bold;
   margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .formLogin {
-  margin-top: 40px;
-  margin-bottom: 40px;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 20px;
+  /* gap: 40px; */
 }
 
 .registerLink {
@@ -56,10 +54,40 @@
 }
 
 .button {
-  margin-bottom: 10px;
-  width: 150px;
+  width: 120px;
+  margin-left: 180px;
 }
 
 .error {
   border: 1px solid red;
+}
+
+.inputContainer {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.passwordInput {
+  width: 100%;
+  padding-right: 50px;
+}
+
+.togglePasswordButton {
+  position: absolute;
+  right: 10px;
+  top: 60%;
+  transform: translateY(-60%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+.togglePasswordButton:hover {
+  background: none;
+}
+
+.togglePasswordButton img {
+  width: 30px;
+  height: 30px;
 }

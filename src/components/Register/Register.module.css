@@ -46,8 +46,8 @@
 }
 
 .form {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .form input {
@@ -58,7 +58,9 @@
   margin-right: 10px;
 }
 
-button {
+.button {
+  margin-left: 155px;
+  transform: translateY(-34px);
 }
 
 .fieldError {
@@ -66,7 +68,42 @@ button {
   /* DO ZMIANY! - usunąć important */
 }
 
+input[name="name"],
+input[name="lastName"],
+input[name="phone"] {
+  width: 49%;
+}
+
 input[type="email"],
 input[type="password"] {
   width: 100%;
+}
+
+.inputContainer {
+  position: relative;
+}
+
+.passwordInput {
+  width: 100%;
+  padding-right: 50px;
+}
+
+.togglePasswordButton {
+  position: absolute;
+  right: 10px;
+  top: 37%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+.togglePasswordButton:hover {
+  background: none;
+}
+
+.togglePasswordButton img {
+  width: 30px;
+  height: 30px;
 }
