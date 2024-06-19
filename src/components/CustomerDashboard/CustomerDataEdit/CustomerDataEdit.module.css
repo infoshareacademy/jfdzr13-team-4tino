@@ -28,7 +28,7 @@
   padding-left: 2vw;
 }
 
-.panel p {
+.panel .orderText {
   color: white;
 }
 
@@ -36,17 +36,26 @@
   text-decoration: none;
 }
 
+.link .orderText:hover {
+  background-color: white;
+  color: #0f3703;
+  border-radius: 15px 0px 0px 15px;
+  box-shadow: inset 0px -22px 0px -21px rgba(45, 128, 20, 1);
+}
+
+.link .orderText:active {
+  font-weight: 700;
+  box-shadow: inset 0px -22px 0px -21px rgba(45, 128, 20, 1);
+}
+
 .dataText {
-  font-weight: 700;
+  background-color: white;
+  border-radius: 15px 0px 0px 15px;
 }
 
-.panel p:hover {
-  font-weight: 700;
-  font-size: 130%;
-}
-
-.panel p:active {
-  text-shadow: 1px 1px 2px #0f3703;
+.panel .dataText {
+  color: #0f3703;
+  box-shadow: none;
 }
 
 .main {
@@ -78,7 +87,7 @@
   grid-template-columns: 200px 200px;
   grid-template-rows: 90px 90px 90px 90px;
   gap: 20px;
-  justify-content: center;
+  justify-content: left;
 }
 
 .inputType p {

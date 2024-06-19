@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import styles from '../CustomerOrders/CustomerOrders.module.css';
-import { Link } from 'react-router-dom';
-import OrderTable from './OrderTable/OrderTable';
-import { db } from '../../../firebase';
 import { collection, getDocs } from 'firebase/firestore';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { db } from '../../../firebase';
+import styles from '../CustomerOrders/CustomerOrders.module.css';
 import CountDownTimer from './CountDownTimer/CountDownTimer';
-import { useNavigate } from 'react-router-dom';
-import { useUser } from '../../../context/UserContext/UserContext';
+import OrderTable from './OrderTable/OrderTable';
 
 const CustomerOrders = () => {
 
@@ -29,7 +27,7 @@ const CustomerOrders = () => {
                     <p className={styles.orderText}>Zamówienia</p>
                 </Link>
                 <Link to="/user/data" className={styles.link}>
-                    <p>Edytuj dane</p>
+                    <p className={styles.dataText}>Edytuj dane</p>
                 </Link>
             </div>
             <div className={styles.main}>
