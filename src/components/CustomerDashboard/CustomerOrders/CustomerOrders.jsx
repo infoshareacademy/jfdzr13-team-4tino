@@ -43,7 +43,7 @@ const CustomerOrders = () => {
                 </Link>
             </div>
             <div className={styles.main}>
-                <h1>Zamówienia</h1>
+                <h2 className={styles.h2}>Zamówienia</h2>
                 <p>🌳 🌳 🌳</p>
                 <div>
                     <OrderTable data={data} onDelete={handleDelete} />

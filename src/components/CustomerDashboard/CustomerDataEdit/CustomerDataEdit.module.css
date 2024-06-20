@@ -12,7 +12,9 @@
   padding: 10px 20px;
 }
 
-.container h1 {
+.h2 {
+  font-size: 36px;
+  font-weight: bold;
   padding: 10px 15px 20px 20px;
 }
 
@@ -69,14 +71,8 @@
   align-items: center;
 }
 
-/* @media (max-width: 767px) {
-  .container p {
-      margin-left: ; 
-  }
-} */
-
 .dataForm {
-  background-color: (226, 245, 212);
+  background-color: rgb(226, 245, 212);
   height: auto;
   width: 600px;
   padding: 20px;
@@ -85,22 +81,52 @@
 .form {
   display: grid;
   grid-template-columns: 200px 200px;
-  grid-template-rows: 90px 90px 90px 90px;
+  grid-template-rows: 90px 90px 90px 90px 90px;
   gap: 20px;
-  justify-content: left;
+  justify-content: start;
+  grid-template-areas:
+    "input1 input2"
+    "input3 input4"
+    "input5 input6"
+    "input7 input8"
+    "button button";
+}
+
+.inputType:nth-child(1) {
+  grid-area: input1;
+}
+
+.inputType:nth-child(2) {
+  grid-area: input2;
+}
+
+.inputType:nth-child(3) {
+  grid-area: input3;
+}
+
+.inputType:nth-child(4) {
+  grid-area: input4;
+}
+
+.inputType:nth-child(5) {
+  grid-area: input5;
+}
+
+.inputType:nth-child(6) {
+  grid-area: input6;
+}
+
+.inputType:nth-child(7) {
+  grid-area: input7;
+}
+
+.input8 {
+  grid-area: input8;
 }
 
 .inputType p {
   font-size: 16px;
   padding-left: 0px;
-}
-
-input {
-  min-height: 35px;
-  width: 200px;
-  border-radius: 8px;
-  border: solid 1px rgb(168, 168, 168);
-  padding: 5px;
 }
 
 input[type="text"] {
@@ -111,11 +137,17 @@ input:focus {
   outline: solid 2px #2d8014;
 }
 
-.button {
-  grid-area: 5 / 1 / 6 / 3;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 30px;
-  width: 100px;
+.buttonCss {
+  grid-area: button;
+  justify-self: center;
+  align-self: center;
 }
+
+/* @media (max-width: 767px) {
+  .container p {
+      margin-left: ; 
+  }
+} */
+/* .buttonCss:hover {
+  background-color: #5da746;
+} */
