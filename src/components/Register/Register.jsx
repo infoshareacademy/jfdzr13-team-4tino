@@ -1,22 +1,145 @@
-import { getAuth } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { collection, addDoc, getFirestore } from "firebase/firestore";
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useUser } from '../../context/UserContext/UserContext';
 import styles from "./Register.module.css";
-
+import { toast } from 'react-toastify';
+import showIcon from '../../assets/LoginRegister/show.svg';
+import hideIcon from '../../assets/LoginRegister/hide.svg';
 
 function Register() {
-
     const [errors, setErrors] = useState({
         firstName: "",
         lastName: "",
         phone: "",
         email: "",
-        password: ""
-    })
+        password: "",
+    });
+
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [passwordVisible, setPasswordVisible] = useState(false);
+    const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
 
     const navigate = useNavigate();
-    const { user } = useUser(); // Pobierz usera z kontekstu
+    const { user } = useUser();
+
+    // useEffect(() => {
+    //     // Przekierowujemy na /admin, jeśli użytkownik jest już zalogowany i jest administratorem, jeśli nie, na homepage
+    //     if (user) {
+    //         if (user.email === 'admin@admin.com') {
+    //             navigate('/admin');
+    //         } else {
+    //             navigate('/');
+    //         }
+    //     }
+    // }, [user, navigate]);
+
+    // const auth = getAuth();
+    // const db = getFirestore();
+
+    // const validate = (fields) => {
+    //     const newErrors = {
+    //         firstName: "",
+    //         lastName: "",
+    //         phone: "",
+    //         email: "",
+    //         password: ""
+    //     };
+
+    //     const nameRegex = /^[A-Za-z]{2,30}$/;
+    //     const phoneRegex = /(?:\+48)?[\s-]?(\d{3})[\s-]?(\d{3})[\s-]?(\d{3})/;
+    //     const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    //     const passwordRegex = /^(?=.*[A-Za-z].*[A-Za-z].*[A-Za-z].*[A-Za-z].*[A-Za-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+
+    //     if (!nameRegex.test(fields.firstName)) {
+    //         newErrors.firstName = "Nieprawidłowe Imię";
+    //     }
+    //     if (!nameRegex.test(fields.lastName)) {
+    //         newErrors.lastName = "Nieprawidłowe Nazwisko";
+    //     }
+    //     if (!phoneRegex.test(fields.phone)) {
+    //         newErrors.phone = "Nieprawidłowy numer telefonu";
+    //     }
+    //     if (!emailRegex.test(fields.email)) {
+    //         newErrors.email = "Nieprawidłowy e-mail";
+    //     }
+    //     if (!passwordRegex.test(fields.password)) {
+    //         newErrors.password = "Błędne hasło";
+    //     }
+
+    //     setErrors(newErrors);
+
+    //     // Jeśli jakikolwiek błąd istnieje, wyświetl ogólny komunikat toast
+    //     if (Object.values(newErrors).some(error => error !== "")) {
+    //         toast.error('Formularz zawiera błędy. Sprawdź wprowadzone dane.', {
+    //             hideProgressBar: true,
+    //             style: { marginTop: '120px' }
+    //         });
+    //     }
+
+    //     return newErrors;
+    // };
+
+    // const register = async (e) => {
+    //     e.preventDefault();
+    //     const form = new FormData(e.target);
+    //     const firstName = form.get("name");
+    //     const lastName = form.get("lastName");
+    //     const phone = form.get("phone");
+    //     const email = form.get("email");
+    //     const password = form.get("password");
+
+    //     // Nowe błędy po walidacji
+    //     const newErrors = validate({
+    //         firstName,
+    //         lastName,
+    //         phone,
+    //         email,
+    //         password
+    //     });
+
+    //     // Sprawdzenie, czy są błędy
+    //     if (Object.values(newErrors).some(error => error !== "")) {
+    //         return;
+    //     }
+
+    //     if (password !== confirmPassword) {
+    //         toast.error('Hasła nie pasują do siebie.', {
+    //             hideProgressBar: true,
+    //             style: { marginTop: '120px' }
+    //         });
+    //         return;
+    //     }
+
+    //     try {
+    //         const authUser = await createUserWithEmailAndPassword(auth, email, password);
+    //         await updateProfile(authUser.user, {
+    //             displayName: firstName + ' ' + lastName,
+    //             phoneNumber: phone,
+    //         });
+    //         toast.success('Użytkownik został pomyślnie zarejestrowany!', {
+    //             hideProgressBar: true,
+    //             style: { marginTop: '120px' }
+    //         });
+    //         await addDoc(collection(db, "users"), { firstName, lastName, phone, email, id: authUser.user.uid });
+    //         navigate('/');
+    //     } catch (error) {
+    //         toast.error('Rejestracja nie powiodła się', {
+    //             hideProgressBar: true,
+    //             style: { marginTop: '120px' }
+    //         });
+    //     }
+    // };
+
+    // const togglePasswordVisibility = (field) => {
+    //     if (field === 'password') {
+    //         setPasswordVisible(!passwordVisible);
+    //     } else if (field === 'confirmPassword') {
+    //         setConfirmPasswordVisible(!confirmPasswordVisible);
+    //     }
+    // };
 
     useEffect(() => {
         // Przekierowujemy na /admin, jeśli użytkownik jest już zalogowany i jest administratorem, jeśli nie, na homepage
@@ -30,44 +153,62 @@ function Register() {
     }, [user, navigate]);
 
     const auth = getAuth();
-
-    const newErrors = {
-        firstName: "",
-        lastName: "",
-        phone: "",
-        email: "",
-        password: ""
-    }
+    const db = getFirestore();
 
     const validate = (fields) => {
+        const newErrors = {
+            firstName: "",
+            lastName: "",
+            phone: "",
+            email: "",
+            password: ""
+        };
 
-        const nameRegex = /^[A-Za-z]{2,30}$/
-        const phone = /(?:\+48)?[\s-]?(\d{3})[\s-]?(\d{3})[\s-]?(\d{3})/
-        const email = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        const password = /^(?=.*[A-Za-z].*[A-Za-z].*[A-Za-z].*[A-Za-z].*[A-Za-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/
+        const nameRegex = /^[A-Za-z]{2,30}$/;
+        const phoneRegex = /(?:\+48)?[\s-]?(\d{3})[\s-]?(\d{3})[\s-]?(\d{3})/;
+        const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        const passwordRegex = /^(?=.*[A-Za-z].*[A-Za-z].*[A-Za-z].*[A-Za-z].*[A-Za-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
 
-
-        setErrors(newErrors)
-
-        if (nameRegex.test(fields.firstName) === false) {
-            newErrors.firstName = "jest problem"
+        if (!nameRegex.test(fields.firstName)) {
+            newErrors.firstName = "Nieprawidłowe Imię";
+            toast.error('Nieprawidłowe Imię', {
+                hideProgressBar: true,
+                style: { marginTop: '120px' }
+            });
         }
-        if (nameRegex.test(fields.lastName) === false) {
-            newErrors.lastName = "jest problem"
+        if (!nameRegex.test(fields.lastName)) {
+            newErrors.lastName = "Nieprawidłowe Nazwisko";
+            toast.error('Nieprawidłowe Nazwisko', {
+                hideProgressBar: true,
+                style: { marginTop: '120px' }
+            });
         }
-        if (phone.test(fields.phone) === false) {
-            newErrors.phone = "jest problem"
+        if (!phoneRegex.test(fields.phone)) {
+            newErrors.phone = "Nieprawidłowy numer telefonu";
+            toast.error('Nieprawidłowy numer telefonu', {
+                hideProgressBar: true,
+                style: { marginTop: '120px' }
+            });
         }
-        if (email.test(fields.email) === false) {
-            newErrors.email = "jest problem"
+        if (!emailRegex.test(fields.email)) {
+            newErrors.email = "Nieprawidłowy e-mail";
+            toast.error('Nieprawidłowy e-mail', {
+                hideProgressBar: true,
+                style: { marginTop: '120px' }
+            });
         }
-        if (password.test(fields.password) === false) {
-            newErrors.password = "jest problem"
+        if (!passwordRegex.test(fields.password)) {
+            newErrors.password = "Błędne hasło";
+            toast.error('Błędne hasło', {
+                hideProgressBar: true,
+                style: { marginTop: '120px' }
+            });
         }
 
-        setErrors(newErrors)
+        setErrors(newErrors);
 
-    }
+        return newErrors;
+    };
 
     const register = async (e) => {
         e.preventDefault();
@@ -77,46 +218,57 @@ function Register() {
         const phone = form.get("phone");
         const email = form.get("email");
         const password = form.get("password");
-        validate({
+
+        // Nowe błędy po walidacji
+        const newErrors = validate({
             firstName,
             lastName,
             phone,
             email,
             password
         });
-        //console.log("validate errors: ", newErrors.firstName, newErrors.lastName, newErrors.phone, newErrors.email, newErrors.password)
 
-
-        //console.log("warunek:", (Boolean(errors.firstName || errors.lastName || errors.phone || errors.email || errors.password) === false))
-        // console.log("warunek: ",
-        //     !(
-        //         newErrors.firstName ||
-        //         newErrors.lastName ||
-        //         newErrors.phone ||
-        //         newErrors.email ||
-        //         newErrors.password
-        //     ))
-        if (!(
-            newErrors.firstName ||
-            newErrors.lastName ||
-            newErrors.phone ||
-            newErrors.email ||
-            newErrors.password
-        )) {
-            createUserWithEmailAndPassword(auth, email, password)
-                .then((authUser) => {
-                    updateProfile(authUser.user, {
-                        displayName: firstName + ' ' + lastName,
-                        phoneNumber: phone,
-                    });
-                    toast.success('Użytkownik został pomyślnie zarejestrowany!', {
-                        hideProgressBar: true
-                    });
-                    addDoc(collection(db, "users"), { firstName, lastName, phone, email, id: authUser.user.uid });
-                })
+        // Sprawdzenie, czy są błędy
+        if (Object.values(newErrors).some(error => error !== "")) {
+            return;
         }
 
-    }
+        if (password !== confirmPassword) {
+            toast.error('Hasła nie pasują do siebie.', {
+                hideProgressBar: true,
+                style: { marginTop: '120px' }
+            });
+            return;
+        }
+
+        try {
+            const authUser = await createUserWithEmailAndPassword(auth, email, password);
+            await updateProfile(authUser.user, {
+                displayName: firstName + ' ' + lastName,
+                phoneNumber: phone,
+            });
+            toast.success('Użytkownik został pomyślnie zarejestrowany!', {
+                hideProgressBar: true,
+                style: { marginTop: '120px' }
+            });
+            await addDoc(collection(db, "users"), { firstName, lastName, phone, email, id: authUser.user.uid });
+            navigate('/');
+        } catch (error) {
+            toast.error('Rejestracja nie powiodła się', {
+                hideProgressBar: true,
+                style: { marginTop: '120px' }
+            });
+        }
+    };
+
+    const togglePasswordVisibility = (field) => {
+        if (field === 'password') {
+            setPasswordVisible(!passwordVisible);
+        } else if (field === 'confirmPassword') {
+            setConfirmPasswordVisible(!confirmPasswordVisible);
+        }
+    };
+
     return (
         <div className={styles.registerModule}>
             <div className={styles.registerForm}>
@@ -126,10 +278,42 @@ function Register() {
                 <form className={styles.form} onSubmit={register}>
                     <input type="text" name="name" placeholder="Imię" required className={Boolean(errors.firstName) ? styles.fieldError : null} />
                     <input type="text" name="lastName" placeholder="Nazwisko" required className={Boolean(errors.lastName) ? styles.fieldError : null} />
-                    <input type="tel" name="phone" placeholder="Telefon" required className={Boolean(errors.phone) ? styles.fieldError : null} />
-                    <input type="email" name="email" placeholder="Adres email: example@gmail.com" required className={Boolean(errors.email) ? styles.fieldError : null} />
-                    <input type="password" name="password" placeholder="Hasło" required className={Boolean(errors.password) ? styles.fieldError : null} />
-                    <button className={styles.button} type="submit">Zarejestruj</button>
+                    <input type="tel" name="phone" placeholder="Numer telefonu" required className={Boolean(errors.phone) ? styles.fieldError : null} />
+                    <input type="email" name="email" placeholder="Adres e-mail: example@gmail.com" required className={Boolean(errors.email) ? styles.fieldError : null} />
+                    
+                    <div className={styles.inputContainer}>
+                        <input 
+                            type={passwordVisible ? "text" : "password"} 
+                            name="password" 
+                            placeholder="Wpisz hasło" 
+                            required 
+                            className={Boolean(errors.password) ? styles.fieldError : null} 
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <button type="button" onClick={() => togglePasswordVisibility('password')} className={styles.togglePasswordButton}>
+                            <img src={passwordVisible ? hideIcon : showIcon} alt={passwordVisible ? "Hide" : "Show"} />
+                        </button>
+                    </div>
+                    
+                    <div className={styles.inputContainer}>
+                        <input 
+                            type={confirmPasswordVisible ? "text" : "password"} 
+                            name="confirmPassword" 
+                            placeholder="Potwierdź hasło" 
+                            required 
+                            className={Boolean(errors.password) ? styles.fieldError : null} 
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                        />
+                        <button type="button" onClick={() => togglePasswordVisibility('confirmPassword')} className={styles.togglePasswordButton}>
+                            <img src={confirmPasswordVisible ? hideIcon : showIcon} alt={confirmPasswordVisible ? "Hide" : "Show"} />
+                        </button>
+                    </div>
+
+                    <div className={styles.button}>
+                        <button type="submit">Rejestracja</button>
+                    </div>
                 </form>
             </div>
         </div>

@@ -5,6 +5,8 @@ import { toast } from 'react-toastify';
 import { useUser } from '../../context/UserContext/UserContext';
 import { auth } from '../../firebase.js';
 import styles from "./Login.module.css";
+import showIcon from '../../assets/LoginRegister/show.svg';
+import hideIcon from '../../assets/LoginRegister/hide.svg';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -12,6 +14,7 @@ const Login = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
   useEffect(() => {
     // Przekierowujemy na /admin, jeśli użytkownik jest już zalogowany i jest administratorem, jeśli nie, na homepage
@@ -36,7 +39,8 @@ const Login = () => {
     if (!validateEmail(email)) {
       toast.error('Nieprawidłowy adres email', {
         hideProgressBar: true,
-        autoClose: 3000
+        autoClose: 3000,
+        style: { marginTop: '120px' }
       });
       return;
     }
@@ -44,7 +48,8 @@ const Login = () => {
     if (password.length < 6) {
       toast.error('Hasło musi mieć co najmniej 6 znaków', {
         hideProgressBar: true,
-        autoClose: 3000
+        autoClose: 3000,
+        style: { marginTop: '120px' }
       });
       return;
     }
@@ -54,7 +59,8 @@ const Login = () => {
       const loggedInUser = userCredential.user;
       toast.success('Zalogowano pomyślnie', {
         hideProgressBar: true,
-        autoClose: 1000
+        autoClose: 1000,
+        style: { marginTop: '120px' }
       });
 
       if (loggedInUser.email === 'admin@admin.com') {
@@ -65,8 +71,15 @@ const Login = () => {
     } catch (error) {
       toast.error('Błędny email lub hasło', {
         hideProgressBar: true,
-        autoClose: 1000
+        autoClose: 1000,
+        style: { marginTop: '120px' }
       });
+    }
+  };
+
+  const togglePasswordVisibility = (field) => {
+    if (field === 'password') {
+      setPasswordVisible(!passwordVisible);
     }
   };
 
@@ -74,6 +87,7 @@ const Login = () => {
     <div className={styles.loginModule}>
       <div className={styles.loginForm}>
         <h1 className={styles.welcomeTitle}>Witaj w <span className={styles.fourTino}>4TINO</span></h1>
+        <p className={styles.registerLink}>Nie masz konta? <Link className={styles.link} to="/register">Zarejestruj się</Link></p>
         <div className={styles.loginTitle}>Zaloguj się</div>
         <form className={styles.formLogin} onSubmit={handleSubmit} noValidate>
           <label>
@@ -90,22 +104,27 @@ const Login = () => {
 
           <label>
             <p>Podaj Hasło:</p>
-            <input
-              type="password"
-              name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Hasło"
-              required
-            />
+            <div className={styles.inputContainer}>
+              <input
+                type={passwordVisible ? "text" : "password"}
+                name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Podaj Hasło"
+                required
+                className={styles.passwordInput}
+              />
+              <button type="button" onClick={() => togglePasswordVisibility('password')} className={styles.togglePasswordButton}>
+                <img src={passwordVisible ? hideIcon : showIcon} alt={passwordVisible ? "Ukryj" : "Pokaż"} />
+              </button>
+            </div>
           </label>
+          <div>
+          <a href="#">Przypomnij Hasło</a>
+        </div>
           <button className={styles.button} type="submit">Zaloguj</button>
         </form>
-        <div>
-          <a href="#">Przypomnij Hasło</a>
-          <p className={styles.registerLink}>Nie masz konta? <Link className={styles.link} to="/register">Zarejestruj się</Link></p>
         </div>
-      </div>
     </div>
   );
 };
