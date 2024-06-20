@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './OrderTable.module.css';
 
-const OrderTable = ({ data }) => {
+const OrderTable = ({ data, onDelete }) => {
   return (
     <table className={styles.customTable}>
       <thead>
@@ -24,7 +24,21 @@ const OrderTable = ({ data }) => {
             <td>{row.dedicationType}</td>
             <td>{row.price}</td>
             <td>{row.status}</td>
-            <td>{row.delete}</td>
+            <td>
+              <button
+                onClick={() => {
+                  console.log('Button clicked, row id:', row.id);
+                  if (onDelete) {
+                    onDelete(row.id);
+                  } else {
+                    console.error('onDelete function is not defined');
+                  }
+                }}
+                className={styles.deleteButton}
+              >
+                X
+              </button>
+            </td>
           </tr>
         ))}
       </tbody>

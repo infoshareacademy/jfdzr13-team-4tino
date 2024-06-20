@@ -2,7 +2,9 @@ import { EmailAuthProvider, getAuth, reauthenticateWithCredential, updatePasswor
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { TERipple } from "tw-elements-react";
 import { db } from '../../../firebase';
+import '../../../tailwind.css';
 import styles from '../CustomerDataEdit/CustomerDataEdit.module.css';
 
 const CustomerDataEdit = () => {
@@ -116,7 +118,7 @@ const CustomerDataEdit = () => {
             </div>
 
             <div className={styles.main}>
-                <h1>Twoje dane</h1>
+                <h2 className={styles.h2}>Twoje dane</h2>
                 <p>🌳 🌳 🌳 </p>
 
                 <div className={styles.dataForm}>
@@ -196,7 +198,17 @@ const CustomerDataEdit = () => {
                             />
                         </div>
 
-                        <button className={styles.button} type="submit">Zapisz</button>
+                        <div class="input8"></div>
+
+                        <TERipple rippleColor="light">
+                            <button
+                            type="submit"
+                            className="buttonCss blok rounded-lg px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 bg-green-500 ease-in-out hover:bg-green-600 focus:bg-green-600 focus:outline-none focus:ring-0 active:bg-green-700"
+                            style={{ backgroundColor: "#2d8014", borderRadius: "10px" }}
+                            >
+                            Zapisz
+                            </button>
+                        </TERipple>
                     </form>
                 </div>
             </div>
