@@ -11,9 +11,10 @@ import Navbar from "./components/Navbar/Navbar";
 import Order from "./components/Order/Order";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
+import Preloader from "./components/Preloader/Preloader";
 import Register from "./components/Register/Register";
-import UserProtectedRoute from "./components/UserProtectedRoute/UserProtectedRoute";
 import ScrollToTop from "./components/ScrollToTop";
+import UserProtectedRoute from "./components/UserProtectedRoute/UserProtectedRoute";
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
     <Router>
       <ScrollToTop />
       <div>
+        <Preloader />
         <Navbar />
         <Routes>
           <Route path="/" element={<Homepage />} />
