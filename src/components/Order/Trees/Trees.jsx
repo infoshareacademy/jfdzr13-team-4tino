@@ -83,7 +83,7 @@ function SimpleSlider() {
   const treeImgs = [grab, swierk1, milarzab, buk, swierk2, sosna];
 
   return (
-    <div className={styles.carousel} id={styles.dupa}>
+    <div className={styles.carousel}>
       <Slider {...settings}>
         {treeData.map((tree, index) => (
           <div>
@@ -98,10 +98,12 @@ function SimpleSlider() {
               <div className={styles.info}>
                 <h3 className={styles.type}>{tree.name}</h3>
                 <p className={styles.desc}>{tree.description}</p>
-                <span className={styles.price}>
-                  Cena : {tree.price} zł
+                <div className={styles.price}>
+                  <p>
+                    <b>Cena : {tree.price} zł</b>
+                  </p>
                   <button>dodaj do koszyka</button>
-                </span>
+                </div>
               </div>
             </div>
           </div>

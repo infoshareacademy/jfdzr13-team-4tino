@@ -6,11 +6,39 @@
   gap: 50px;
 }
 .carousel {
-  width: 90%;
+  height: 400px;
+  width: 640px;
+  margin: 0 auto;
+  border-radius: 10px;
 }
 .slide {
-  width: 500px;
   height: 400px;
-  background: #ddd;
-  text-align: center;
+  background-color: rgb(226, 245, 212);
+  margin-bottom: 30px;
+}
+.slide img {
+  width: 640px;
+  height: 400px;
+}
+
+.select {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.desc {
+  font-size: 24px;
+  width: 700px;
+  /* background-color: rgb(226, 245, 212); */
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  border: 2px solid black;
+  margin-top: 50px;
+}
+.todo {
+  color: red;
+  background-color: white;
+  padding: 10px;
 }
