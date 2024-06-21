@@ -4,7 +4,8 @@
   align-items: flex-start;
   height: 100vh;
   width: 100vw;
-  background-color: rgb(226, 245, 212);
+  background-color: #f2f7ec;
+  margin-top: 100px;
 }
 
 .container p {
@@ -16,6 +17,7 @@
   font-size: 36px;
   font-weight: bold;
   padding: 10px 15px 20px 20px;
+  color: #2a412f;
 }
 
 .panel {
@@ -24,10 +26,10 @@
   width: 20%;
   min-width: 160px;
   height: 100vh;
-  background-color: #2d8014;
-  border-radius: 0px 25px 0px 0px;
-  padding-top: 10vh;
-  padding-left: 2vw;
+  background-color: #7ca45a;
+  border-radius: 0px 20px 0px 0px;
+  padding-top: 6vh;
+  padding-left: 5vw;
 }
 
 .panel .orderText {
@@ -40,29 +42,29 @@
 
 .link .orderText:hover {
   background-color: white;
-  color: #0f3703;
-  border-radius: 15px 0px 0px 15px;
-  box-shadow: inset 0px -22px 0px -21px rgba(45, 128, 20, 1);
+  color: #2a412f;
+  border-radius: 10px 0px 0px 10px;
+  box-shadow: inset 0px -22px 0px -21px #8dc060;
 }
 
 .link .orderText:active {
   font-weight: 700;
-  box-shadow: inset 0px -22px 0px -21px rgba(45, 128, 20, 1);
+  box-shadow: inset 0px -22px 0px -21px #8dc060;
 }
 
 .dataText {
   background-color: white;
-  border-radius: 15px 0px 0px 15px;
+  border-radius: 10px 0px 0px 10px;
 }
 
 .panel .dataText {
-  color: #0f3703;
+  color: #2a412f;
   box-shadow: none;
 }
 
 .main {
-  padding-top: 10vh;
-  padding-left: 10vw;
+  padding-top: 6vh;
+  padding-left: 5vw;
 }
 
 .main p {
@@ -72,24 +74,28 @@
 }
 
 .dataForm {
-  background-color: rgb(226, 245, 212);
-  height: auto;
-  width: 600px;
+  width: auto;
   padding: 20px;
 }
 
 .form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.gridContainer {
   display: grid;
   grid-template-columns: 200px 200px;
-  grid-template-rows: 90px 90px 90px 90px 90px;
+  grid-template-rows: 90px 90px 90px 90px;
   gap: 20px;
   justify-content: start;
   grid-template-areas:
     "input1 input2"
     "input3 input4"
     "input5 input6"
-    "input7 input8"
-    "button button";
+    "input7 .";
 }
 
 .inputType:nth-child(1) {
@@ -120,10 +126,6 @@
   grid-area: input7;
 }
 
-.input8 {
-  grid-area: input8;
-}
-
 .inputType p {
   font-size: 16px;
   padding-left: 0px;
@@ -134,20 +136,11 @@ input[type="text"] {
 }
 
 input:focus {
-  outline: solid 2px #2d8014;
-}
-
-.buttonCss {
-  grid-area: button;
-  justify-self: center;
-  align-self: center;
+  outline: solid 2px #57ab27;
 }
 
 /* @media (max-width: 767px) {
   .container p {
       margin-left: ; 
   }
-} */
-/* .buttonCss:hover {
-  background-color: #5da746;
 } */

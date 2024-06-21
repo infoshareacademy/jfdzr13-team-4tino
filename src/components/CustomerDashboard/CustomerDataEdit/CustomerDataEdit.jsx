@@ -119,10 +119,10 @@ const CustomerDataEdit = () => {
 
             <div className={styles.main}>
                 <h2 className={styles.h2}>Twoje dane</h2>
-                <p>🌳 🌳 🌳 </p>
 
                 <div className={styles.dataForm}>
                     <form className={styles.form} onSubmit={handleSubmit}>
+                    <div className={styles.gridContainer}>
                         <div className={styles.inputType}>
                             <p>Imię</p>
                             <input 
@@ -198,15 +198,14 @@ const CustomerDataEdit = () => {
                             />
                         </div>
 
-                        <div class="input8"></div>
+                        </div>
 
                         <TERipple rippleColor="light">
                             <button
-                            type="submit"
-                            className="buttonCss blok rounded-lg px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 bg-green-500 ease-in-out hover:bg-green-600 focus:bg-green-600 focus:outline-none focus:ring-0 active:bg-green-700"
-                            style={{ backgroundColor: "#2d8014", borderRadius: "10px" }}
+                                type="submit"
+                                className="buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active mt-10"
                             >
-                            Zapisz
+                                Zapisz
                             </button>
                         </TERipple>
                     </form>

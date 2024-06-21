@@ -15,7 +15,7 @@ import Preloader from "./components/Preloader/Preloader";
 import Register from "./components/Register/Register";
 import ScrollToTop from "./components/ScrollToTop";
 import UserProtectedRoute from "./components/UserProtectedRoute/UserProtectedRoute";
-
+import './tailwind.css';
 
 function App() {
   return (

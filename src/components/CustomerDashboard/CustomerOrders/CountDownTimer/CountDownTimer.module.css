@@ -3,7 +3,7 @@
   flex-direction: column;
   width: auto;
   height: 140px;
-  background-color: #1a4b0b;
+  background-color: #7ca45a;
   color: white;
   font-weight: 500;
   align-items: center;
@@ -25,7 +25,7 @@
   width: 25px;
   height: 25px;
   background-color: white;
-  color: #1a4b0b;
+  color: #2a412f;
   font-weight: bold;
   margin-left: 10px;
   text-align: center;
@@ -41,7 +41,7 @@
   left: 50%;
   transform: translateX(-50%);
   background-color: white;
-  color: #1a4b0b;
+  color: #2a412f;
   font-size: 14px;
   padding: 5px;
   border-radius: 5px;

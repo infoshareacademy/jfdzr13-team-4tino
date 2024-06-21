@@ -44,7 +44,6 @@ const CustomerOrders = () => {
             </div>
             <div className={styles.main}>
                 <h2 className={styles.h2}>Zamówienia</h2>
-                <p>🌳 🌳 🌳</p>
                 <div>
                     <OrderTable data={data} onDelete={handleDelete} />
                 </div>

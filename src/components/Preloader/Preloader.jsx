@@ -15,12 +15,10 @@ const Preloader = () => {
     }, []);
 
     return (
-        <div className="mb-6 h-1 w-full bg-neutral-200 dark:bg-neutral-600">
             <div
-                className="h-1 bg-green-500"
+                className="h-1 bg-custom-green"
                 style={{ width: `${progress}%` }}
             ></div>
-        </div>
     );
 }
 

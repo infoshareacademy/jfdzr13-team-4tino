@@ -1,8 +1,10 @@
-import React from "react";
-import styles from "./Introduction.module.css";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import React from "react";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { Link } from "react-router-dom";
+import { TERipple } from "tw-elements-react";
+import '../../../tailwind.css';
+import styles from "./Introduction.module.css";
 
 const Introduction = () => {
   return (
@@ -21,9 +23,20 @@ const Introduction = () => {
           wszystkich! Twój prezent to więcej niż drzewo - to przyszłość dla nas
           wszystkich!
         </p>
+        <div className={styles.button}>
         <Link to="/order">
-          <button>Chcę zasadzić swoje drzewo!</button>
+          <TERipple rippleColor="light">
+            <button
+              type="button"
+              className="buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active mt-10"
+            >
+              Chcę zasadzić swoje drzewo!
+            </button>
+          </TERipple>
         </Link>
+        </div>
+        
+        
       </div>
 
       <div className={styles.map}>

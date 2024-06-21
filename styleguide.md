@@ -9,14 +9,18 @@ The designs were created to the following widths:
 
 ### Border Radius
 
-- Border Radius button: 10px.
+<!-- - Border Radius button: 10px. -->
 - Border Radius img: 30px.
 
 ## Colors
 
-- primary: #2d8014;
-- secondary: ;
-- light_green: ;
+- #42811e (button)
+- green 1: #57AB27 (button:hover);
+- green 2: #7ca45a;
+- green 3: #B8D698;
+- green 4: #DDEBCE;
+- green 5: #F2F7EC;
+- green/gray 6: #2a412f (font/ headings);
 
 ## Font Styles
 
