@@ -17,6 +17,7 @@ const HowItWorks = () => {
           <p><span className={styles.highlight}>Wybierz lokalizację:</span> posiadamy różne lokalizacje w całym kraju.</p>
           <p><span className={styles.highlight}>Kup drzewo:</span> My zasadzimy je za Ciebie w wybranej lokalizacji.</p>
           <p><span className={styles.highlight}>Gotowe,</span> zielona przyszłość zaczyna się tutaj! </p>
+          <p><span className={styles.highlight}>Uwaga!</span> Kolejne drzewko możesz nabyć dopiero za 3 miesiące, więc dobrze przemyśl kogo chcesz obdarować ;)</p>
         </div>
       </div>
     </div>

@@ -22,12 +22,12 @@
 }
 
 .customTable thead {
-  background-color: #1a4b0b;
+  background-color: #84b05e;
   color: #ffffff;
 }
 
 .customTable tbody tr:nth-of-type(even) {
-  background-color: #e7f9e2;
+  background-color: #ddebce;
 }
 
 .customTable tbody tr:hover {
@@ -52,7 +52,7 @@ td .deleteButton {
   align-items: center;
   width: 25px;
   height: 25px;
-  background-color: rgb(183, 3, 3);
+  background-color: #d03030;
   color: white;
   border: none;
   padding: 0px;
@@ -60,9 +60,10 @@ td .deleteButton {
   cursor: pointer;
   font-size: 16px;
   border-radius: 50%;
+  font-weight: bold;
 }
 
 .deleteButton:hover {
-  background-color: rgb(208, 48, 48);
+  background-color: #cf1313;
   transform: scale(1.2);
 }

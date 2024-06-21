@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   font-size: 46px;
-  color: #2d8014;
+  color: #42811e;
   font-weight: bolder;
   margin-top: 50px;
 }
@@ -39,17 +39,6 @@
   flex-direction: row;
 }
 
-.iconContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 70px;
-  width: auto;
-  border-radius: 20px;
-  background-color: #c3ebb6;
-  padding: 10px;
-}
-
 .icon {
   max-width: 100%;
   max-height: 100%;
@@ -69,6 +58,8 @@
   font-weight: bold;
 }
 
-button {
-  margin: 25px;
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -64,7 +64,6 @@ const CustomerDashboard = () => {
 
         <h1 className={styles.h1}>Witaj {firstName} 😊</h1>
         <p>Cieszymy się, że z nami jesteś i pomagasz nam zmieniać świat na lepsze!</p>
-        <p>🌳 🌳 🌳</p>
 
         <h2 className={styles.h2}>Twoje zamówienia:</h2>
 
