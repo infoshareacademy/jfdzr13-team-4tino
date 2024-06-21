@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../.././tailwind.css';
+import '../../../tailwind.css';
 
 const Preloader = () => {
     const [progress, setProgress] = useState(0);

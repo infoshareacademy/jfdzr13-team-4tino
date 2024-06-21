@@ -1,19 +1,25 @@
 import React, { useEffect, useRef, useState } from "react";
 import { HashLink as Link } from 'react-router-hash-link';
+import { TERipple } from "tw-elements-react";
+import '../.././tailwind.css';
 import tinoName from "../../assets/4tino-logo.png";
-import userIcon from "../../assets/user.png"; // Importuj obraz user.png
+import userIcon from "../../assets/user.png";
 import { useUser } from '../../context/UserContext/UserContext';
 import Logout from '../Logout/Logout';
 import styles from "./Navbar.module.css";
+import Preloader from "./Preloader/Preloader";
 
 const Navbar = () => {
   const { user } = useUser();
-  const [isMenuVisible, setIsMenuVisible] = useState(false); // Stan do zarządzania widocznością menu
-  const menuRef = useRef(null); // Referencja do menu
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
+  const menuRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Ukryj menu po zmianie użytkownika (np. po zalogowaniu)
     setIsMenuVisible(false);
+      setTimeout(() => {
+      setIsLoading(false);
+    }, 5000);
   }, [user]);
 
   const handleMouseEnter = () => {
@@ -25,51 +31,69 @@ const Navbar = () => {
   };
 
   return (
-    <div className={styles.navbar}>
-      <Link to="/">
-        <img className={styles.bigIcon} src={tinoName} alt="icon" />
-      </Link>
-      <div className={styles.navMenu}>
-        <Link smooth to="/#howItWorks">
-          <p className={styles.item}>Jak to działa?</p>
+    <div className={styles.navbarContainer}>
+      <div className={styles.navbar}>
+        <Link to="/">
+          <img className={styles.bigIcon} src={tinoName} alt="icon" />
         </Link>
-        <Link smooth to="/#about">
-          <p className={styles.item}>O nas</p>
-        </Link>
-        <div className={styles.loginPanel}>
-          {user ? (
-            <div
-              className={styles.userMenuContainer}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-            >
-              <img
-                src={userIcon}
-                alt="user"
-                className={styles.userIcon}
-              />
-              {isMenuVisible && (
-                <div ref={menuRef} className={styles.dropdownMenu}>
-                  <Link to={user.email === 'admin@admin.com' ? '/admin' : '/user'} className={styles.menuItem}>
-                    Konto
-                  </Link>
-                  <Logout className={styles.menuItem} />
-                </div>
-              )}
-            </div>
-          ) : (
-            <>
-              <Link to="/login">
-                <button className={styles.login}>Zaloguj się</button>
-              </Link>
-              <Link to="/register">
-                <button>Rejestracja</button>
-              </Link>
-            </>
-          )}
+        <div className={styles.navMenu}>
+          <Link smooth to="/#howItWorks">
+            <p className={styles.item}>Jak to działa?</p>
+          </Link>
+          <Link smooth to="/#about">
+            <p className={styles.item}>O nas</p>
+          </Link>
+          <div className={styles.loginPanel}>
+            {user ? (
+              <div
+                className={styles.userMenuContainer}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
+                <img
+                  src={userIcon}
+                  alt="user"
+                  className={styles.userIcon}
+                />
+                {isMenuVisible && (
+                  <div ref={menuRef} className={styles.dropdownMenu}>
+                    <Link to={user.email === 'admin@admin.com' ? '/admin' : '/user'} className={styles.menuItem}>
+                      Konto
+                    </Link>
+                    <Logout className={styles.menuItem} />
+                  </div>
+                )}
+              </div>
+            ) : (
+              <>
+                <Link to="/login">
+                  <TERipple rippleColor="light">
+                    <button
+                      type="button"
+                       className="buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-black border border-custom-green bg-white hover:bg-custom-green-hover hover:text-white focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active mt-0 ml-10"
+                    >
+                      Zaloguj się
+                    </button>
+                  </TERipple>
+                </Link>
+                <Link to="/register">
+                  <TERipple rippleColor="light">
+                    <button
+                      type="button"
+                      className="buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active mt-0 ml-10"
+                    >
+                      Rejestracja
+                    </button>
+                  </TERipple>
+                </Link>
+              </>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+      {isLoading ? (
+        <Preloader className={styles.preloader} />
+      ) : null}    </div>
   );
 };
 
