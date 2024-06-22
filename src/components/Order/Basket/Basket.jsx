@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Basket.module.css";
 
-const Basket = ({ selectedTablet }) => {
+const Basket = ({ selectedTablet, selectedLocation }) => {
   return (
     <div className={styles.basket}>
       <h3 className={styles.head}>Moje zamówienie</h3>
@@ -19,7 +19,13 @@ const Basket = ({ selectedTablet }) => {
         <h4>Twoja dedykacja :</h4>
         <div className={styles.item}></div>
         <h4>Miejsce zasadzenia :</h4>
-        <div className={styles.item}></div>
+        <div className={styles.item}>
+          {selectedLocation ? (
+            <p>{selectedLocation}</p>
+          ) : (
+            <p>Wybierz lokalizację</p>
+          )}
+        </div>
       </div>
       <button>Potwierdź z obowiązkiem zapłaty</button>
       {/* ^ tutaj przekierowanie do płatności */}

@@ -8,9 +8,14 @@ import Basket from "./Basket/Basket";
 
 const Order = () => {
   const [selectedTablet, setSelectedTablet] = useState(null);
+  const [selectedLocation, setSelectedLocation] = useState("");
 
   const handleSelectTablet = (tabletName) => {
     setSelectedTablet(tabletName);
+  };
+
+  const handleSelectLocation = (location) => {
+    setSelectedLocation(location);
   };
 
   return (
@@ -19,7 +24,7 @@ const Order = () => {
         <Trees />
         <Tablets onSelectTablet={handleSelectTablet} />
         <Dedication />
-        <Map />
+        <Map onSelectLocation={handleSelectLocation} />
         <div className={styles.disclaimer}>
           <p className={styles.warning}>Uwaga!</p>
           <p>
@@ -29,7 +34,10 @@ const Order = () => {
         </div>
       </div>
       <div className={styles.right}>
-        <Basket selectedTablet={selectedTablet} />
+        <Basket
+          selectedTablet={selectedTablet}
+          selectedLocation={selectedLocation}
+        />
       </div>
     </div>
   );
