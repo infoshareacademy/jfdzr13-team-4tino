@@ -44,8 +44,6 @@ function SimpleSlider() {
     prevArrow: <SamplePrevArrow />,
   };
 
-  // todo: poobracać obrazki i dać opis obok slidera
-
   return (
     <div className={styles.carousel}>
       <Slider {...settings}>
@@ -76,7 +74,6 @@ const Tablets = () => {
   return (
     <div className={styles.tablets}>
       <h2>Wyjątkowe i trwałe tabliczki z kamienia</h2>
-      <SimpleSlider />
       <div className={styles.select}>
         <p className={styles.desc}>
           Wybierz jedną z wyjątkowych kamiennych tabliczek, która stanowić
@@ -84,13 +81,9 @@ const Tablets = () => {
           tabliczka z dedykacją będzie wiecznym symbolem, które przetrwa przez
           lata.
         </p>
-        <button>Dodaj do koszyka</button>
       </div>
-      <p className={styles.todo}>
-        todo : <br />
-        - slider pionowo = opis + button obok slidera <br />- ujednolićić wygląd{" "}
-        <br />
-      </p>
+      <SimpleSlider />
+      <button>Dodaj do koszyka</button>
     </div>
   );
 };

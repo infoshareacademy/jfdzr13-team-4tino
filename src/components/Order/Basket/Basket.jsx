@@ -15,7 +15,6 @@ const Basket = () => {
         <h4>Miejsce zasadzenia :</h4>
         <p className={styles.extra}>Warszawa</p>
       </div>
-      {/* ^ tymczasowe zobrazowanie pomysłu, sugestie layoutu mile widziane */}
       <button>Potwierdź z obowiązkiem zapłaty</button>
       {/* ^ tutaj przekierowanie do płatności */}
     </div>

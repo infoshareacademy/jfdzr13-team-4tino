@@ -86,7 +86,7 @@ function SimpleSlider() {
     <div className={styles.carousel}>
       <Slider {...settings}>
         {treeData.map((tree, index) => (
-          <div>
+          <div className={styles.slideContainer}>
             <div className={styles.slide} key={tree.id}>
               <div className={styles.img}>
                 <img
