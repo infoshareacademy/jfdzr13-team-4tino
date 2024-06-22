@@ -70,7 +70,7 @@ const Map = ({ onSelectLocation }) => {
       </MapContainer>
       <div className={styles.confirm}>
         <div className={styles.capturedLocation}>
-          <h4>Wybrane nadleśnictwo:</h4>{" "}
+          <h4>Wybrane nadleśnictwo:</h4>
           {selectedLocation || "Wybierz lokalizację"}
         </div>
         <button className={styles.confirm} onClick={handleConfirmLocation}>
