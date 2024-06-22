@@ -17,6 +17,8 @@
   align-items: center;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  font-size: 20px;
+  font-weight: 700;
 }
 .content {
   width: 80%;
@@ -30,11 +32,13 @@
   flex-direction: column;
   justify-content: space-around;
 }
-.extra {
-  border-top: 2px solid black;
-  height: 50px;
-  padding-top: 15px;
+
+.content h4 {
+  font-weight: 500;
+  font-size: 18px;
+  color: rgb(87, 171, 39);
 }
+
 .basket button {
   font-size: 18px;
   height: 50px;
@@ -48,4 +52,11 @@
 .basket button:hover {
   background-color: rgb(87, 171, 39);
   cursor: pointer;
+}
+.item {
+  border-top: 1px solid black;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
 }

@@ -79,3 +79,7 @@
 .carousel button:hover {
   background-color: rgb(87, 171, 39);
 }
+.type {
+  font-size: 24px;
+  font-weight: 500;
+}

@@ -71,7 +71,7 @@ const Dedication = () => {
         <div className={styles.custom}>
           <input
             size={50}
-            maxlength="40"
+            maxLength="40"
             type="text"
             className={styles.customInput}
           />
