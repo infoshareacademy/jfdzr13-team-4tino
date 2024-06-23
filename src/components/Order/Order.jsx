@@ -23,6 +23,10 @@ const Order = () => {
     <div className={styles.order}>
       <div className={styles.left}>
         <Trees onSelectTree={setSelectedTree} />
+        <div className={styles.disclaimer}>
+          <p className={styles.warning}>Uwaga !</p> Cena drzewa zawiera opłatę
+          za zasadzenie, tabliczkę oraz wykonanie dedykacji
+        </div>
         <Tablets onSelectTablet={setSelectedTablet} />
         <Dedication onSelectDedication={setSelectedDedication} />
         <Map onSelectLocation={setSelectedLocation} />
