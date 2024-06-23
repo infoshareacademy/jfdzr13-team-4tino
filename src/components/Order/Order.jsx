@@ -12,6 +12,13 @@ const Order = () => {
   const [selectedLocation, setSelectedLocation] = useState("");
   const [selectedDedication, setSelectedDedication] = useState("");
 
+  const clearSelections = () => {
+    setSelectedTree(null);
+    setSelectedTablet(null);
+    setSelectedDedication("");
+    setSelectedLocation("");
+  };
+
   return (
     <div className={styles.order}>
       <div className={styles.left}>
@@ -26,6 +33,7 @@ const Order = () => {
           selectedTablet={selectedTablet}
           selectedLocation={selectedLocation}
           selectedDedication={selectedDedication}
+          clearSelections={clearSelections}
         />
       </div>
     </div>

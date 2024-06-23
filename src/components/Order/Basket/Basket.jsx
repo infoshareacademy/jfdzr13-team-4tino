@@ -1,4 +1,8 @@
 import React from "react";
+import { Timestamp } from "firebase/firestore";
+import { db } from "../../../firebase";
+import { addDoc, collection } from "firebase/firestore";
+import { useUser } from "../../../context/UserContext/UserContext";
 import styles from "./Basket.module.css";
 
 const Basket = ({
@@ -6,7 +10,47 @@ const Basket = ({
   selectedTablet,
   selectedLocation,
   selectedDedication,
+  clearSelections,
 }) => {
+  const { user } = useUser();
+
+  const addOrder = async () => {
+    if (!user || !user.email) {
+      console.error("nie może pobrać emaila");
+      return;
+    }
+
+    if (
+      !selectedTree ||
+      !selectedTablet ||
+      !selectedDedication ||
+      !selectedLocation
+    ) {
+      console.error("Wymagane są wszystkie elementy zamówienia");
+      return;
+    }
+
+    try {
+      const collectionRef = collection(db, "orders2");
+      const time = Timestamp.now();
+      const docRef = await addDoc(collectionRef, {
+        email: user.email,
+        date: time,
+        status: "przyjęto do realizacji",
+        price: selectedTree.price,
+        tree: selectedTree.name,
+        tablet: selectedTablet.name,
+        dedication: selectedDedication,
+        location: selectedLocation,
+      });
+      clearSelections();
+      return docRef.id;
+    } catch (error) {
+      console.log("Błąd podczas dodawania:", error);
+      throw error;
+    }
+  };
+
   return (
     <div className={styles.basket}>
       <h3 className={styles.head}>Moje zamówienie</h3>
@@ -43,7 +87,7 @@ const Basket = ({
       <div className={styles.price}>
         Do zapłaty : <b>{selectedTree ? selectedTree.price : "0"}</b> zł
       </div>
-      <button>Potwierdź z obowiązkiem zapłaty</button>
+      <button onClick={addOrder}>Potwierdź z obowiązkiem zapłaty</button>
     </div>
   );
 };
