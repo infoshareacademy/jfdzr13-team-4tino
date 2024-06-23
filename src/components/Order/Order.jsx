@@ -8,10 +8,15 @@ import Basket from "./Basket/Basket";
 
 const Order = () => {
   const [selectedTablet, setSelectedTablet] = useState(null);
+  const [selectedTree, setSelectedTree] = useState(null);
   const [selectedLocation, setSelectedLocation] = useState("");
 
-  const handleSelectTablet = (tabletName) => {
-    setSelectedTablet(tabletName);
+  const handleSelectTablet = (tablet) => {
+    setSelectedTablet(tablet);
+  };
+
+  const handleSelectTree = (tree) => {
+    setSelectedTree(tree);
   };
 
   const handleSelectLocation = (location) => {
@@ -21,21 +26,15 @@ const Order = () => {
   return (
     <div className={styles.order}>
       <div className={styles.left}>
-        <Trees />
+        <Trees onSelectTree={handleSelectTree} />
         <Tablets onSelectTablet={handleSelectTablet} />
         <Dedication />
         <Map onSelectLocation={handleSelectLocation} />
-        <div className={styles.disclaimer}>
-          <p className={styles.warning}>Uwaga!</p>
-          <p>
-            Cena drzewa zawiera koszty tabliczki, naniesienia dedykacji i
-            zasadzenia.
-          </p>
-        </div>
       </div>
       <div className={styles.right}>
         <Basket
           selectedTablet={selectedTablet}
+          selectedTree={selectedTree}
           selectedLocation={selectedLocation}
         />
       </div>

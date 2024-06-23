@@ -60,3 +60,7 @@
   align-items: center;
   font-weight: 500;
 }
+.price {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
