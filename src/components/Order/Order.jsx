@@ -7,35 +7,25 @@ import Map from "./Map/Map";
 import Basket from "./Basket/Basket";
 
 const Order = () => {
-  const [selectedTablet, setSelectedTablet] = useState(null);
   const [selectedTree, setSelectedTree] = useState(null);
+  const [selectedTablet, setSelectedTablet] = useState(null);
   const [selectedLocation, setSelectedLocation] = useState("");
-
-  const handleSelectTablet = (tablet) => {
-    setSelectedTablet(tablet);
-  };
-
-  const handleSelectTree = (tree) => {
-    setSelectedTree(tree);
-  };
-
-  const handleSelectLocation = (location) => {
-    setSelectedLocation(location);
-  };
+  const [selectedDedication, setSelectedDedication] = useState("");
 
   return (
     <div className={styles.order}>
       <div className={styles.left}>
-        <Trees onSelectTree={handleSelectTree} />
-        <Tablets onSelectTablet={handleSelectTablet} />
-        <Dedication />
-        <Map onSelectLocation={handleSelectLocation} />
+        <Trees onSelectTree={setSelectedTree} />
+        <Tablets onSelectTablet={setSelectedTablet} />
+        <Dedication onSelectDedication={setSelectedDedication} />
+        <Map onSelectLocation={setSelectedLocation} />
       </div>
       <div className={styles.right}>
         <Basket
-          selectedTablet={selectedTablet}
           selectedTree={selectedTree}
+          selectedTablet={selectedTablet}
           selectedLocation={selectedLocation}
+          selectedDedication={selectedDedication}
         />
       </div>
     </div>

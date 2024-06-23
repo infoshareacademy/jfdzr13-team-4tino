@@ -1,16 +1,21 @@
 import React from "react";
 import styles from "./Basket.module.css";
 
-const Basket = ({ selectedTablet, selectedTree, selectedLocation }) => {
+const Basket = ({
+  selectedTree,
+  selectedTablet,
+  selectedLocation,
+  selectedDedication,
+}) => {
   return (
     <div className={styles.basket}>
       <h3 className={styles.head}>Moje zamówienie</h3>
       <div className={styles.content}>
-        <h4>Gatunek drzewa:</h4>
+        <h4>Gatunek drzewa :</h4>
         <div className={styles.item}>
-          {selectedTree ? selectedTree.name : "Nie wybrano drzewa"}
+          {selectedTree ? <p>{selectedTree.name}</p> : <p>Wybierz drzewo</p>}
         </div>
-        <h4>Rodzaj tabliczki:</h4>
+        <h4>Rodzaj tabliczki :</h4>
         <div className={styles.item}>
           {selectedTablet ? (
             <p>{selectedTablet.name}</p>
@@ -18,11 +23,21 @@ const Basket = ({ selectedTablet, selectedTree, selectedLocation }) => {
             <p>Wybierz tabliczkę</p>
           )}
         </div>
-        <h4>Twoja dedykacja:</h4>
-        <div className={styles.item}>...</div>
-        <h4>Miejsce zasadzenia:</h4>
+        <h4>Twoja dedykacja :</h4>
         <div className={styles.item}>
-          {selectedLocation ? selectedLocation : "Nie wybrano lokalizacji"}
+          {selectedDedication ? (
+            <p>{selectedDedication}</p>
+          ) : (
+            <p>Wybierz lub napisz dedykację</p>
+          )}
+        </div>
+        <h4>Miejsce zasadzenia :</h4>
+        <div className={styles.item}>
+          {selectedLocation ? (
+            <p>{selectedLocation}</p>
+          ) : (
+            <p>Wybierz lokalizację</p>
+          )}
         </div>
       </div>
       <div className={styles.price}>

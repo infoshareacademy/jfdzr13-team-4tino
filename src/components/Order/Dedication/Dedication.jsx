@@ -54,11 +54,22 @@ function DedicationsHere({ onSelectDedication }) {
   );
 }
 
-const Dedication = () => {
+const Dedication = ({ onSelectDedication }) => {
   const [selectedDedication, setSelectedDedication] = useState("");
+  const [customDedication, setCustomDedication] = useState("");
 
   const handleSelectDedication = (dedication) => {
     setSelectedDedication(dedication);
+    setCustomDedication(""); // Clear custom dedication if an existing one is selected
+  };
+
+  const handleCustomDedicationChange = (e) => {
+    setCustomDedication(e.target.value);
+    setSelectedDedication(""); // Clear selected dedication if custom dedication is being typed
+  };
+
+  const handleConfirmDedication = () => {
+    onSelectDedication(customDedication || selectedDedication);
   };
 
   return (
@@ -74,11 +85,13 @@ const Dedication = () => {
             maxLength="40"
             type="text"
             className={styles.customInput}
+            value={customDedication}
+            onChange={handleCustomDedicationChange}
           />
           <p className={styles.warning}>Max 40 znaków</p>
         </div>
       </div>
-      <button>Potwierdź dedykację</button>
+      <button onClick={handleConfirmDedication}>Potwierdź dedykację</button>
     </div>
   );
 };
