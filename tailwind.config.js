@@ -12,6 +12,9 @@ module.exports = {
                 'custom-green-active': '#57ab27',
                 'icon-green': '#ddebce',
             },
+            boxShadow: {
+                'inset-custom': 'inset 0 0 0 2px #5da746',
+            },
             keyframes: {
                 'fly-in': {
                     '0%': { transform: 'translateY(-100%)', opacity: '0' },
