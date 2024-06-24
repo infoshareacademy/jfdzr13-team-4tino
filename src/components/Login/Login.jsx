@@ -120,7 +120,7 @@ const Login = () => {
             </div>
           </label>
           <div>
-          <a href="#">Przypomnij Hasło</a>
+          <Link className={styles.link} to="/PasswordReminder">Zresetuj Hasło</Link>
         </div>
           <button className={styles.button} type="submit">Zaloguj</button>
         </form>
