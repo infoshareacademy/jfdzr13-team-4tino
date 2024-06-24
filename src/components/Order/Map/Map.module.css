@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 20px;
+  gap: 50px;
   align-self: center;
 }
 
@@ -15,11 +15,11 @@
   gap: 10px;
   min-width: 400px;
   height: 50px;
-  background-color: white;
+  background-color: rgb(242, 247, 236);
   border-radius: 10px;
   padding: 10px;
   font-size: 16px;
-  border: 2px solid black;
+  border: 2px solid rgb(87, 171, 39);
 }
 
 .customPopup button {
@@ -34,5 +34,28 @@
   gap: 20px;
 }
 .confirm button {
+  font-size: 18px;
   height: 50px;
+  background-color: rgb(141, 192, 96);
+  line-height: 1.5;
+  border-radius: 15px;
+  padding: 10px;
+  color: white;
+}
+.confirm button:hover {
+  background-color: rgb(87, 171, 39);
+}
+
+.mapContainer button {
+  font-size: 16px;
+  height: 50px;
+  background-color: rgb(141, 192, 96);
+  line-height: 1.5;
+  border-radius: 15px;
+  padding: 10px;
+  color: white;
+}
+.mapContainer button:hover {
+  background-color: rgb(87, 171, 39);
+  cursor: pointer;
 }

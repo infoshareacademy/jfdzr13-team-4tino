@@ -1,9 +1,7 @@
-import { doc, getDoc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
-import { db } from "../../../firebase";
 import styles from "./Trees.module.css";
 
 import buk from "../../../assets/drzewka/buk.png";
@@ -12,6 +10,8 @@ import milarzab from "../../../assets/drzewka/milorzab_dwuklapowy.png";
 import sosna from "../../../assets/drzewka/sosna_czarna.png";
 import swierk2 from "../../../assets/drzewka/swierk_klujacy.png";
 import swierk1 from "../../../assets/drzewka/swierk_serbski.png";
+import { db } from "../../../firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -35,7 +35,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-function SimpleSlider() {
+function SimpleSlider({ onSelectTree }) {
   const [treeData, setTreeData] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -86,8 +86,8 @@ function SimpleSlider() {
     <div className={styles.carousel}>
       <Slider {...settings}>
         {treeData.map((tree, index) => (
-          <div>
-            <div className={styles.slide} key={tree.id}>
+          <div className={styles.slideContainer} key={tree.id}>
+            <div className={styles.slide}>
               <div className={styles.img}>
                 <img
                   className={styles.img}
@@ -102,7 +102,9 @@ function SimpleSlider() {
                   <p>
                     <b>Cena : {tree.price} zł</b>
                   </p>
-                  <button>dodaj do koszyka</button>
+                  <button onClick={() => onSelectTree(tree)}>
+                    dodaj do koszyka
+                  </button>
                 </div>
               </div>
             </div>
@@ -113,11 +115,11 @@ function SimpleSlider() {
   );
 }
 
-const Trees = () => {
+const Trees = ({ onSelectTree }) => {
   return (
     <div className={styles.trees}>
       <h2>Wybierz swoje drzewo</h2>
-      <SimpleSlider />
+      <SimpleSlider onSelectTree={onSelectTree} />
     </div>
   );
 };

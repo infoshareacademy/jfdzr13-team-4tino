@@ -6,6 +6,79 @@
   align-items: center;
   gap: 50px;
 }
+.dedicationArea {
+  display: flex;
+  justify-content: space-around;
+  gap: 100px;
+}
+.here select {
+  border-radius: 10px;
+  border: 2px solid rgb(87, 171, 39);
+  font-size: 16px;
+}
+.here select:hover {
+  cursor: pointer;
+}
+
+.here select:focus {
+  outline: none;
+}
+
+.existing input {
+  cursor: default;
+}
+.existing input:hover {
+  cursor: default;
+}
+
+.dedication button {
+  font-size: 18px;
+  height: 50px;
+  background-color: rgb(141, 192, 96);
+  line-height: 1.5;
+  border-radius: 15px;
+  padding: 10px 20px;
+  color: white;
+}
+.dedication button:hover {
+  background-color: rgb(87, 171, 39);
+}
+
+.dedicationSelect {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  box-sizing: border-box;
+}
+
 .dedicationText {
-  margin-right: 50px;
+  margin-top: 10px;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.dedicationSelect,
+.customInput {
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 16px;
+  background-color: rgb(242, 247, 236);
+}
+
+.customInput {
+  height: 40px;
+  font-size: 16px;
+  border: 1px solid rgb(87, 171, 39);
+  border-radius: 4px;
+}
+
+.customInput:focus,
+.dedicationSelect:focus {
+  outline: none;
+}
+.warning {
+  color: red;
 }

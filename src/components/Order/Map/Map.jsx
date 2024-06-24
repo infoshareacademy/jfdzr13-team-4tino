@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Circle, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import styles from "./Map.module.css";
 
-const Map = () => {
+const Map = ({ onSelectLocation }) => {
   const [locations] = useState([
     {
       coordinates: [53.5, 17.5],
@@ -32,6 +32,10 @@ const Map = () => {
 
   const handleButtonClick = (name) => {
     setSelectedLocation(name);
+  };
+
+  const handleConfirmLocation = () => {
+    onSelectLocation(selectedLocation);
   };
 
   return (
@@ -66,10 +70,12 @@ const Map = () => {
       </MapContainer>
       <div className={styles.confirm}>
         <div className={styles.capturedLocation}>
-          <h4>Wybrane nadleśnictwo:</h4>{" "}
+          <h4>Wybrane nadleśnictwo:</h4>
           {selectedLocation || "Wybierz lokalizację"}
         </div>
-        <button className={styles.confirm}>Potwierdź lokalizację</button>
+        <button className={styles.confirm} onClick={handleConfirmLocation}>
+          Potwierdź lokalizację
+        </button>
       </div>
     </div>
   );
