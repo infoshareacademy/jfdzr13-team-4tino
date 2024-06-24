@@ -10,6 +10,7 @@ import Login from "./components/Login/Login";
 import Navbar from "./components/Navbar/Navbar";
 import Order from "./components/Order/Order";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import PasswordReminder from "./components/PasswordReminder/PasswordReminder";
 
 import Preloader from "./components/Preloader/Preloader";
 import Register from "./components/Register/Register";
@@ -28,6 +29,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/passwordReminder" element={<PasswordReminder />} />
           <Route path="/order" element={<Order />} />
           <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
           <Route path="/user" element={<UserProtectedRoute><CustomerDashboard /></UserProtectedRoute>} />
