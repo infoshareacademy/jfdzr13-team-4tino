@@ -52,11 +52,11 @@
   color: green;
   text-decoration: none;
 }
-
-.button {
-  width: 120px;
+/* 
+.buton {
+  witdth: 120px;
   margin-left: 180px;
-}
+} */
 
 .error {
   border: 1px solid red;
