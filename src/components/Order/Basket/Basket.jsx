@@ -3,6 +3,7 @@ import { Timestamp } from "firebase/firestore";
 import { db } from "../../../firebase";
 import { addDoc, collection } from "firebase/firestore";
 import { useUser } from "../../../context/UserContext/UserContext";
+import { toast } from "react-toastify";
 import styles from "./Basket.module.css";
 
 const Basket = ({
@@ -26,6 +27,12 @@ const Basket = ({
       !selectedDedication ||
       !selectedLocation
     ) {
+      toast.error("Wymagane są wszystkie elementy zamówienia", {
+        hideProgressBar: true,
+        style: { marginTop: "120px" },
+        autoClose: 3000,
+      });
+
       console.error("Wymagane są wszystkie elementy zamówienia");
       return;
     }
@@ -44,6 +51,11 @@ const Basket = ({
         location: selectedLocation,
       });
       clearSelections();
+      toast.success("Zamówienie złożone pomyślnie", {
+        hideProgressBar: true,
+        style: { marginTop: "120px" },
+        autoClose: 3000,
+      });
       return docRef.id;
     } catch (error) {
       console.log("Błąd podczas dodawania:", error);

@@ -38,7 +38,7 @@ const Tablets = ({ onSelectTablet }) => {
 
   const handleAddToBasket = () => {
     const selectedTablet = tabletData[selectedTabletIndex];
-    onSelectTablet(selectedTablet); // Pass object containing name and image of selected tablet
+    onSelectTablet(selectedTablet);
   };
 
   return (
