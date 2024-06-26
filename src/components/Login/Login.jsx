@@ -88,11 +88,11 @@ const Login = () => {
   return (
     <div className={styles.loginModule}>
       <div className={styles.loginForm}>
-        <h1 className={styles.welcomeTitle}>Witaj w <span className={styles.fourTino}>4TINO</span></h1>
+        <h4 className={styles.welcomeTitle}>Witaj w <span className={styles.fourTino}>4TINO</span></h4>
         <p className={styles.registerLink}>Nie masz konta? <Link className={styles.link} to="/register">Zarejestruj się</Link></p>
-        <div className={styles.loginTitle}>Zaloguj się</div>
+        <h2 className={styles.loginTitle}>Zaloguj się</h2>
         <form className={styles.formLogin} onSubmit={handleSubmit} noValidate>
-          <label>
+          <label className={styles.label}>
             <p>Podaj adres email:</p>
             <input
               name="email"
@@ -104,7 +104,7 @@ const Login = () => {
             />
           </label>
 
-          <label>
+          <label className={styles.label}>
             <p>Podaj Hasło:</p>
             <div className={styles.inputContainer}>
               <input
@@ -126,15 +126,16 @@ const Login = () => {
           <Link className={styles.link} to="/PasswordReminder">Zresetuj Hasło</Link>
 
         </div>
-          {/* <button className={styles.button} type="submit">Zaloguj</button> */}
-          <TERipple rippleColor="light">
-            <button
-              type="submit"
-              className="buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active mt-10"
-            >
-              Zaloguj
-            </button>
-          </TERipple>
+        <div className={styles.buttonContainer}>
+            <TERipple rippleColor="light">
+              <button
+                type="submit"
+                className={`buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active mt-10 mb-8`}
+              >
+                Zaloguj
+              </button>
+            </TERipple>
+          </div>
         </form>
         </div>
     </div>

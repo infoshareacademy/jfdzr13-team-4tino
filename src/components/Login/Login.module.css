@@ -11,7 +11,7 @@
 
 .loginForm {
   background-color: rgba(245, 245, 245, 0.705);
-  height: 550px;
+  height: auto;
   width: 550px;
   border-radius: 30px;
   padding: 20px;
@@ -25,11 +25,12 @@
 
 .fourTino {
   color: green;
+  font-weight: bold;
 }
 
 .loginTitle {
   color: black;
-  font-size: 40px;
+  font-size: 36px;
   font-weight: bold;
   margin-top: 40px;
   margin-bottom: 40px;
@@ -52,11 +53,6 @@
   color: green;
   text-decoration: none;
 }
-/* 
-.buton {
-  witdth: 120px;
-  margin-left: 180px;
-} */
 
 .error {
   border: 1px solid red;
@@ -90,4 +86,17 @@
 .togglePasswordButton img {
   width: 30px;
   height: 30px;
+}
+
+.label p {
+  padding-bottom: 10px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.buttonCss {
+  display: block;
 }
