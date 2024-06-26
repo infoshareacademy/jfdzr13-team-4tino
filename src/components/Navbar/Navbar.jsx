@@ -12,23 +12,36 @@ import Preloader from "./Preloader/Preloader";
 const Navbar = () => {
   const { user } = useUser();
   const [isMenuVisible, setIsMenuVisible] = useState(false);
-  const menuRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
+  const timerRef = useRef(null);
 
   useEffect(() => {
     setIsMenuVisible(false);
-      setTimeout(() => {
+    setTimeout(() => {
       setIsLoading(false);
     }, 5000);
   }, [user]);
 
   const handleMouseEnter = () => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
     setIsMenuVisible(true);
   };
 
   const handleMouseLeave = () => {
-    setIsMenuVisible(false);
+    timerRef.current = setTimeout(() => {
+      setIsMenuVisible(false);
+    }, 500); //czas po którym menu znika
   };
+
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
+    };
+  }, []);
 
   return (
     <div className={styles.navbarContainer}>
@@ -56,7 +69,7 @@ const Navbar = () => {
                   className={styles.userIcon}
                 />
                 {isMenuVisible && (
-                  <div ref={menuRef} className={styles.dropdownMenu}>
+                  <div className={styles.dropdownMenu}>
                     <Link to={user.email === 'admin@admin.com' ? '/admin' : '/user'} className={styles.menuItem}>
                       Konto
                     </Link>
@@ -93,7 +106,8 @@ const Navbar = () => {
       </div>
       {isLoading ? (
         <Preloader className={styles.preloader} />
-      ) : null}    </div>
+      ) : null}
+    </div>
   );
 };
 
