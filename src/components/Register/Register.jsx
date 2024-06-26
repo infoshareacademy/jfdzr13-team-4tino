@@ -7,6 +7,7 @@ import styles from "./Register.module.css";
 import { toast } from 'react-toastify';
 import showIcon from '../../assets/LoginRegister/show.svg';
 import hideIcon from '../../assets/LoginRegister/hide.svg';
+import { TERipple } from "tw-elements-react";
 
 function Register() {
     const [errors, setErrors] = useState({
@@ -311,8 +312,15 @@ function Register() {
                         </button>
                     </div>
 
-                    <div className={styles.button}>
-                        <button type="submit">Rejestracja</button>
+                    <div className={styles.buttonContainer}>
+                        <TERipple rippleColor="light">
+                        <button
+                            type="submit"
+                            className={`buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active mt-10 mb-8`}
+                        >
+                            Rejestracja
+                        </button>
+                        </TERipple>
                     </div>
                 </form>
             </div>
