@@ -2,11 +2,13 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { TERipple } from "tw-elements-react";
+import hideIcon from '../../assets/LoginRegister/hide.svg';
+import showIcon from '../../assets/LoginRegister/show.svg';
 import { useUser } from '../../context/UserContext/UserContext';
 import { auth } from '../../firebase.js';
 import styles from "./Login.module.css";
-import showIcon from '../../assets/LoginRegister/show.svg';
-import hideIcon from '../../assets/LoginRegister/hide.svg';
+
 
 const Login = () => {
   const navigate = useNavigate();
@@ -86,11 +88,11 @@ const Login = () => {
   return (
     <div className={styles.loginModule}>
       <div className={styles.loginForm}>
-        <h1 className={styles.welcomeTitle}>Witaj w <span className={styles.fourTino}>4TINO</span></h1>
+        <h4 className={styles.welcomeTitle}>Witaj w <span className={styles.fourTino}>4TINO</span></h4>
         <p className={styles.registerLink}>Nie masz konta? <Link className={styles.link} to="/register">Zarejestruj się</Link></p>
-        <div className={styles.loginTitle}>Zaloguj się</div>
+        <h2 className={styles.loginTitle}>Zaloguj się</h2>
         <form className={styles.formLogin} onSubmit={handleSubmit} noValidate>
-          <label>
+          <label className={styles.label}>
             <p>Podaj adres email:</p>
             <input
               name="email"
@@ -102,7 +104,7 @@ const Login = () => {
             />
           </label>
 
-          <label>
+          <label className={styles.label}>
             <p>Podaj Hasło:</p>
             <div className={styles.inputContainer}>
               <input
@@ -117,13 +119,23 @@ const Login = () => {
               <button type="button" onClick={() => togglePasswordVisibility('password')} className={styles.togglePasswordButton}>
                 <img src={passwordVisible ? hideIcon : showIcon} alt={passwordVisible ? "Ukryj" : "Pokaż"} />
               </button>
+              
             </div>
           </label>
           <div>
           <Link className={styles.link} to="/PasswordReminder">Zresetuj Hasło</Link>
 
         </div>
-          <button className={styles.button} type="submit">Zaloguj</button>
+        <div className={styles.buttonContainer}>
+            <TERipple rippleColor="light">
+              <button
+                type="submit"
+                className={`buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active mt-10 mb-8`}
+              >
+                Zaloguj
+              </button>
+            </TERipple>
+          </div>
         </form>
         </div>
     </div>
