@@ -39,43 +39,45 @@ const Map = ({ onSelectLocation }) => {
   };
 
   return (
-    <div className={styles.mapContainer}>
-      <h2>Gdzie chcesz posadzić swoje drzewo</h2>
-      <MapContainer
-        center={[52.5, 19.1]}
-        zoom={7}
-        scrollWheelZoom={false}
-        style={{ height: "600px", width: "800px" }}
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        {locations.map((location, index) => (
-          <Circle
-            key={index}
-            center={location.coordinates}
-            radius={location.radius}
-            color={location.color}
-            fillColor={location.fillColor}
-            fillOpacity={location.fillOpacity}
-          >
-            <Popup className={styles.customPopup}>
-              <button onClick={() => handleButtonClick(location.name)}>
-                Wybierz {location.name}
-              </button>
-            </Popup>
-          </Circle>
-        ))}
-      </MapContainer>
-      <div className={styles.confirm}>
-        <div className={styles.capturedLocation}>
-          <h4>Wybrane nadleśnictwo:</h4>
-          {selectedLocation || "Wybierz lokalizację"}
+    <div className={styles.map}>
+      <div className={styles.mapContainer}>
+        <h2>Gdzie chcesz posadzić swoje drzewo</h2>
+        <MapContainer
+          center={[52.5, 19.1]}
+          zoom={7}
+          scrollWheelZoom={false}
+          style={{ height: "600px", width: "800px" }}
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          {locations.map((location, index) => (
+            <Circle
+              key={index}
+              center={location.coordinates}
+              radius={location.radius}
+              color={location.color}
+              fillColor={location.fillColor}
+              fillOpacity={location.fillOpacity}
+            >
+              <Popup className={styles.customPopup}>
+                <button onClick={() => handleButtonClick(location.name)}>
+                  Wybierz {location.name}
+                </button>
+              </Popup>
+            </Circle>
+          ))}
+        </MapContainer>
+        <div className={styles.confirm}>
+          <div className={styles.capturedLocation}>
+            <h4>Wybrane nadleśnictwo:</h4>
+            {selectedLocation || "Wybierz lokalizację"}
+          </div>
+          <button className={styles.confirm} onClick={handleConfirmLocation}>
+            Potwierdź lokalizację
+          </button>
         </div>
-        <button className={styles.confirm} onClick={handleConfirmLocation}>
-          Potwierdź lokalizację
-        </button>
       </div>
     </div>
   );

@@ -3,12 +3,15 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  gap: 100px;
+  gap: 50px;
+  border-top: 10px solid rgb(242, 247, 236);
+  padding-top: 25px;
 }
 .carousel {
   height: 600px;
   width: 95%;
   margin: 0 auto;
+  margin-bottom: 50px;
   border-radius: 10px;
 }
 .slide {
@@ -35,7 +38,6 @@
   font-size: 18px;
   height: 50px;
   background-color: rgb(87, 171, 39);
-
   line-height: 1.5;
   border-radius: 15px;
   padding: 10px 20px;
