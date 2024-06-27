@@ -1,7 +1,7 @@
 import React from "react";
 import { Timestamp } from "firebase/firestore";
 import { db } from "../../../firebase";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, getDocs } from "firebase/firestore";
 import { useUser } from "../../../context/UserContext/UserContext";
 import { toast } from "react-toastify";
 import styles from "./Basket.module.css";
@@ -14,6 +14,24 @@ const Basket = ({
   clearSelections,
 }) => {
   const { user } = useUser();
+
+  const generateOrderId = async () => {
+    try {
+      const ordersSnapshot = await getDocs(collection(db, "orders2"));
+      const count = ordersSnapshot.size + 1;
+
+      const now = new Date();
+      const month = now.getMonth() + 1; // miesiące indexowane są od 0
+      const year = now.getFullYear().toString().slice(-2);
+
+      const orderId = `${count}${month < 10 ? "0" + month : month}${year}`; // id zamówienia
+
+      return orderId;
+    } catch (error) {
+      console.error("Błąd podczas sklejania id", error);
+      throw error;
+    }
+  };
 
   const addOrder = async () => {
     if (!user || !user.email) {
@@ -38,9 +56,11 @@ const Basket = ({
     }
 
     try {
+      const orderId = await generateOrderId();
       const collectionRef = collection(db, "orders2");
       const time = Timestamp.now();
       const docRef = await addDoc(collectionRef, {
+        orderId: orderId,
         email: user.email,
         date: time,
         status: "przyjęto do realizacji",
