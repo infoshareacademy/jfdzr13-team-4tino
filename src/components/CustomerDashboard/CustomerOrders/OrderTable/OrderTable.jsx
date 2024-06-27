@@ -11,7 +11,7 @@ const formatDate = (date) => {
     day: "numeric",
     // hour: "2-digit",
     // minute: "2-digit",
-    // opcjonalnie można dodać godzinę ^
+    // optionally, you can add time ^
   };
   return date.toLocaleDateString(undefined, options);
 };
@@ -23,15 +23,15 @@ const OrderTable = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const ordersRef = collection(db, "orders2");
+        const ordersRef = collection(db, "orders");
         const q = query(ordersRef, where("email", "==", user.email));
         const querySnapshot = await getDocs(q);
 
         const ordersList = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
+          orderId: doc.data().orderId, // assuming orderId is correctly stored in Firestore
           time: doc.data().date
             ? doc.data().date.toDate()
-            : "Błąd podczas pobierania daty",
+            : "Error fetching date",
           status: doc.data().status,
           price: doc.data().price,
           tree: doc.data().tree,
@@ -42,7 +42,7 @@ const OrderTable = () => {
 
         setOrders(ordersList);
       } catch (error) {
-        console.error("Błąd podczas pobierania zamówień", error);
+        console.error("Error fetching orders", error);
       }
     };
 
@@ -68,8 +68,8 @@ const OrderTable = () => {
         </thead>
         <tbody>
           {orders.map((order) => (
-            <tr key={order.id}>
-              <td>{order.id}</td>
+            <tr key={order.orderId}>
+              <td>{order.orderId}</td>
               <td>
                 {order.time instanceof Date
                   ? formatDate(order.time)
