@@ -60,12 +60,12 @@ const Dedication = ({ onSelectDedication }) => {
 
   const handleSelectDedication = (dedication) => {
     setSelectedDedication(dedication);
-    setCustomDedication(""); // Clear custom dedication if an existing one is selected
+    setCustomDedication("");
   };
 
   const handleCustomDedicationChange = (e) => {
     setCustomDedication(e.target.value);
-    setSelectedDedication(""); // Clear selected dedication if custom dedication is being typed
+    setSelectedDedication("");
   };
 
   const handleConfirmDedication = () => {

@@ -13,12 +13,12 @@ import tab6 from "../../../assets/tablets/tablet6.png";
 
 const Tablets = ({ onSelectTablet }) => {
   const tabletData = [
-    { name: "Tabliczka pierwsza", image: tab1 },
-    { name: "Tabliczka druga", image: tab2 },
-    { name: "Tabliczka trzecia", image: tab3 },
-    { name: "Tabliczka czwarta", image: tab4 },
-    { name: "Tabliczka piąta", image: tab5 },
-    { name: "Tabliczka szósta", image: tab6 },
+    { name: "Marmur", image: tab1 },
+    { name: "Granit", image: tab2 },
+    { name: "Bazalt", image: tab3 },
+    { name: "Piaskowiec", image: tab4 },
+    { name: "Takie pordzewiałe", image: tab5 },
+    { name: "Zardzewiałe czy co", image: tab6 },
   ];
 
   const [selectedTabletIndex, setSelectedTabletIndex] = useState(0);
@@ -61,7 +61,10 @@ const Tablets = ({ onSelectTablet }) => {
           ))}
         </Slider>
       </div>
-      <button onClick={handleAddToBasket}>Dodaj do koszyka</button>
+      <div className={styles.tabletName}>
+        <div className={styles.add}>{tabletData[selectedTabletIndex].name}</div>
+        <button onClick={handleAddToBasket}>Dodaj do koszyka</button>
+      </div>
     </div>
   );
 };
