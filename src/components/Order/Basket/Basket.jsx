@@ -17,7 +17,7 @@ const Basket = ({
 
   const generateOrderId = async () => {
     try {
-      const ordersSnapshot = await getDocs(collection(db, "orders2"));
+      const ordersSnapshot = await getDocs(collection(db, "orders"));
       const count = ordersSnapshot.size + 1;
 
       const now = new Date();
@@ -57,7 +57,7 @@ const Basket = ({
 
     try {
       const orderId = await generateOrderId();
-      const collectionRef = collection(db, "orders2");
+      const collectionRef = collection(db, "orders");
       const time = Timestamp.now();
       const docRef = await addDoc(collectionRef, {
         orderId: orderId,
