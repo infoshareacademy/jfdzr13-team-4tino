@@ -67,3 +67,36 @@ td .deleteButton {
   background-color: #cf1313;
   transform: scale(1.2);
 }
+
+/* style nowej tabelki od kumpla gpt :) tak żeby coś na szybko było */
+
+.orderTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.orderTable th,
+.orderTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.orderTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #f2f2f2;
+  color: black;
+}
+
+.orderTable tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.orderTable tr:hover {
+  background-color: #ddd;
+}
+
+.orderTable td {
+  text-align: center;
+}
