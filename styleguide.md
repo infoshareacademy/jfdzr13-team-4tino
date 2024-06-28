@@ -44,3 +44,8 @@ The designs were created to the following widths:
 
 - font-size: 20px;
 - font-weight: bold;
+
+## h5
+
+- font-size: 18px;
+- font-weight: bold;

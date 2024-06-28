@@ -22,40 +22,9 @@
   border: 2px solid rgb(87, 171, 39);
 }
 
-.customPopup button {
-  margin-top: 10px;
-  position: relative;
-}
-
 .confirm {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
-}
-.confirm button {
-  font-size: 18px;
-  height: 50px;
-  background-color: rgb(141, 192, 96);
-  line-height: 1.5;
-  border-radius: 15px;
-  padding: 10px;
-  color: white;
-}
-.confirm button:hover {
-  background-color: rgb(87, 171, 39);
-}
-
-.mapContainer button {
-  font-size: 16px;
-  height: 50px;
-  background-color: rgb(141, 192, 96);
-  line-height: 1.5;
-  border-radius: 15px;
-  padding: 10px;
-  color: white;
-}
-.mapContainer button:hover {
-  background-color: rgb(87, 171, 39);
-  cursor: pointer;
 }

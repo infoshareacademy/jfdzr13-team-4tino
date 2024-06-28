@@ -3,6 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import styles from "./Tablets.module.css";
+import { TERipple } from "tw-elements-react";
 
 import tab1 from "../../../assets/tablets/tablet1.png";
 import tab2 from "../../../assets/tablets/tablet2.png";
@@ -61,7 +62,15 @@ const Tablets = ({ onSelectTablet }) => {
           ))}
         </Slider>
       </div>
-      <button onClick={handleAddToBasket}>Dodaj do koszyka</button>
+      <TERipple rippleColor="light">
+        <button
+          type="button"
+          onClick={handleAddToBasket}
+          className={`buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active m-5`}
+        >
+          Dodaj do koszyka
+        </button>
+      </TERipple>
     </div>
   );
 };

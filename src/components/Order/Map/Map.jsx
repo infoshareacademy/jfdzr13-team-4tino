@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { MapContainer, TileLayer, Circle, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import styles from "./Map.module.css";
+import { TERipple } from "tw-elements-react";
 
 const Map = ({ onSelectLocation }) => {
   const [locations] = useState([
@@ -61,9 +62,15 @@ const Map = ({ onSelectLocation }) => {
             fillOpacity={location.fillOpacity}
           >
             <Popup className={styles.customPopup}>
-              <button onClick={() => handleButtonClick(location.name)}>
-                Wybierz {location.name}
-              </button>
+              <TERipple rippleColor="light">
+                <button
+                  type="button"
+                  onClick={() => handleButtonClick(location.name)}
+                  className={`buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active m-5`}
+                >
+                  Wybierz {location.name}
+                </button>
+              </TERipple>
             </Popup>
           </Circle>
         ))}
@@ -73,9 +80,18 @@ const Map = ({ onSelectLocation }) => {
           <h4>Wybrane nadleśnictwo:</h4>
           {selectedLocation || "Wybierz lokalizację"}
         </div>
-        <button className={styles.confirm} onClick={handleConfirmLocation}>
+        <TERipple rippleColor="light">
+        <button
+          type="button"
+          onClick={handleConfirmLocation}
+          className={`buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active m-5`}
+        >
           Potwierdź lokalizację
         </button>
+      </TERipple>
+        {/* <button className={styles.confirm} onClick={handleConfirmLocation}>
+          Potwierdź lokalizację
+        </button> */}
       </div>
     </div>
   );

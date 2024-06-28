@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../../firebase";
 import styles from "./Dedication.module.css";
+import { TERipple } from "tw-elements-react";
 
 function DedicationsHere({ onSelectDedication }) {
   const [dedicationData, setDedicationData] = useState([]);
@@ -91,7 +92,15 @@ const Dedication = ({ onSelectDedication }) => {
           <p className={styles.warning}>Max 40 znaków</p>
         </div>
       </div>
-      <button onClick={handleConfirmDedication}>Potwierdź dedykację</button>
+      <TERipple rippleColor="light">
+        <button
+          type="button"
+          onClick={handleConfirmDedication}
+          className={`buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active m-5`}
+        >
+          Potwierdź dedykację
+        </button>
+      </TERipple>
     </div>
   );
 };

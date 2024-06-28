@@ -4,6 +4,7 @@ import { db } from "../../../firebase";
 import { addDoc, collection } from "firebase/firestore";
 import { useUser } from "../../../context/UserContext/UserContext";
 import styles from "./Basket.module.css";
+import { TERipple } from "tw-elements-react";
 
 const Basket = ({
   selectedTree,
@@ -55,11 +56,11 @@ const Basket = ({
     <div className={styles.basket}>
       <h3 className={styles.head}>Moje zamówienie</h3>
       <div className={styles.content}>
-        <h4>Gatunek drzewa :</h4>
+        <h5>Gatunek drzewa :</h5>
         <div className={styles.item}>
           {selectedTree ? <p>{selectedTree.name}</p> : <p>Wybierz drzewo</p>}
         </div>
-        <h4>Rodzaj tabliczki :</h4>
+        <h5>Rodzaj tabliczki :</h5>
         <div className={styles.item}>
           {selectedTablet ? (
             <p>{selectedTablet.name}</p>
@@ -67,7 +68,7 @@ const Basket = ({
             <p>Wybierz tabliczkę</p>
           )}
         </div>
-        <h4>Twoja dedykacja :</h4>
+        <h5>Twoja dedykacja :</h5>
         <div className={styles.item}>
           {selectedDedication ? (
             <p>{selectedDedication}</p>
@@ -75,7 +76,7 @@ const Basket = ({
             <p>Wybierz lub napisz dedykację</p>
           )}
         </div>
-        <h4>Miejsce zasadzenia :</h4>
+        <h5>Miejsce zasadzenia :</h5>
         <div className={styles.item}>
           {selectedLocation ? (
             <p>{selectedLocation}</p>
@@ -87,7 +88,15 @@ const Basket = ({
       <div className={styles.price}>
         Do zapłaty : <b>{selectedTree ? selectedTree.price : "0"}</b> zł
       </div>
-      <button onClick={addOrder}>Potwierdź z obowiązkiem zapłaty</button>
+      <TERipple rippleColor="light">
+        <button
+          type="button"
+          onClick={addOrder}
+          className={`buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active m-5`}
+        >
+          Potwierdź z obowiązkiem zapłaty
+        </button>
+      </TERipple>
     </div>
   );
 };
