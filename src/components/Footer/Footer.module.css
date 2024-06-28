@@ -12,31 +12,59 @@
   height: 100px;
   width: 100px;
   margin: 20px;
+  margin-right: 60px;
 }
 
 .contParagraphs {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   font-size: 18px;
-  width: 100vw;
-
   color: black;
-  font-weight: normal;
-  /* border: 1px solid black; */
 }
 
 .paragraphs {
   padding: 2px;
   color: black;
 }
+.companyName {
+  padding: 2px;
+  color: black;
+  font-weight: bold;
+}
 
 .socialMedia {
-  height: 100px;
-  margin-top: 50px;
-  margin-left: 700px;
+  height: 60px;
+  margin-left: 10px;
+}
+
+.socialName {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-weight: bold;
+}
+
+.social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 140px;
 }
 
 .logoContent {
-  display: flex;
   margin-left: 80px;
+}
+
+.adres {
+  height: auto;
+  width: 300px;
+}
+
+.contact {
+}
+
+.regonNipKrs {
+  font-size: 14px;
+  font-weight: lighter;
 }
