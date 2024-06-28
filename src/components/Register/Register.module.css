@@ -48,11 +48,10 @@
 
 .form {
   margin-top: 10px;
-  margin-bottom: 10px;
 }
 
 .form input {
-  margin-bottom: 20px;
+  margin-bottom: 9px;
 }
 
 .form input:first-of-type {
@@ -87,7 +86,7 @@ input[type="password"] {
 .togglePasswordButton {
   position: absolute;
   right: 10px;
-  top: 37%;
+  top: 40%;
   transform: translateY(-50%);
   background: none;
   border: none;
