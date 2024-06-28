@@ -1,11 +1,28 @@
+.map {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-top: 10px solid rgb(242, 247, 236);
+  padding-top: 25px;
+}
+
+.title {
+  margin-bottom: 100px;
+  margin-top: 25px;
+}
 .mapContainer {
-  width: 800px;
+  max-width: 800px;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   gap: 50px;
   align-self: center;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .capturedLocation {
@@ -33,29 +50,32 @@
   align-items: center;
   gap: 20px;
 }
+
 .confirm button {
   font-size: 18px;
   height: 50px;
-  background-color: rgb(141, 192, 96);
+  background-color: rgb(87, 171, 39);
   line-height: 1.5;
   border-radius: 15px;
   padding: 10px;
   color: white;
 }
+
 .confirm button:hover {
-  background-color: rgb(87, 171, 39);
+  background-color: rgb(141, 192, 96);
 }
 
 .mapContainer button {
   font-size: 16px;
   height: 50px;
-  background-color: rgb(141, 192, 96);
+  background-color: rgb(87, 171, 39);
   line-height: 1.5;
   border-radius: 15px;
   padding: 10px;
   color: white;
 }
+
 .mapContainer button:hover {
-  background-color: rgb(87, 171, 39);
+  background-color: rgb(141, 192, 96);
   cursor: pointer;
 }

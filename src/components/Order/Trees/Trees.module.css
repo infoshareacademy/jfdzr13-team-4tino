@@ -70,14 +70,14 @@
 .carousel button {
   font-size: 18px;
   height: 50px;
-  background-color: rgb(141, 192, 96);
+  background-color: rgb(87, 171, 39);
   line-height: 1.5;
   border-radius: 15px;
   padding: 10px 20px;
   color: white;
 }
 .carousel button:hover {
-  background-color: rgb(87, 171, 39);
+  background-color: rgb(141, 192, 96);
 }
 .type {
   font-size: 24px;
