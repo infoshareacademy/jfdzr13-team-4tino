@@ -6,6 +6,7 @@
   flex-direction: column;
   border-top: 10px solid rgb(242, 247, 236);
   padding-top: 25px;
+  border-radius: 10px;
 }
 
 .title {
