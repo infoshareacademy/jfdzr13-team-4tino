@@ -1,16 +1,15 @@
 .container {
   display: flex;
   flex-direction: column;
-  width: auto;
+  max-width: 90%;
   height: 240px;
-  background-color: #7ca45a;
   color: white;
   font-weight: 500;
   align-items: center;
   justify-content: center;
   border-radius: 15px;
   font-size: 24px;
-  background-image: url(../../../../assets/background_timer.png);
+  background-image: url(../../.././assets/background_timer.png);
   background-size: cover;
   background-repeat: no-repeat;
 }

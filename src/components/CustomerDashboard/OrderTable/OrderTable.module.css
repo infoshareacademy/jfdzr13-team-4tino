@@ -1,36 +1,36 @@
-.customTable {
-  width: 100%;
+.orderTable {
+  max-width: 90%;
   border-collapse: separate;
   border-spacing: 0;
   margin: 40px 0;
-  font-size: 18px;
+  font-size: 16px;
   text-align: left;
   border-radius: 15px;
   overflow: hidden;
   border: 2px solid rgb(255, 255, 255);
 }
 
-.customTable th,
-.customTable td {
+.orderTable th,
+.orderTable td {
   padding: 12px 15px;
   border: 1px solid rgb(255, 255, 255);
   font-weight: normal;
 }
 
-.customTable th {
+.orderTable th {
   text-align: center;
 }
 
-.customTable thead {
+.orderTable thead {
   background-color: #84b05e;
   color: #ffffff;
 }
 
-.customTable tbody tr:nth-of-type(even) {
+.orderTable tbody tr:nth-of-type(even) {
   background-color: #ddebce;
 }
 
-.customTable tbody tr:hover {
+.orderTable tbody tr:hover {
   background-color: #ffffff;
 }
 
