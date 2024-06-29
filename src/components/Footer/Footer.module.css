@@ -1,70 +1,89 @@
 .container {
-  background-color: #c3eeb9;
-  background-image: url(../../assets/Footer/footer.png);
-  background-size: 100%;
+  background-image: url(../../assets/Footer/footer3.png);
   background-repeat: no-repeat;
-  height: 230px;
+  width: 100%;
   display: flex;
-  align-items: end;
-}
-
-.logo {
-  height: 100px;
-  width: 100px;
-  margin: 20px;
-  margin-right: 60px;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 0;
 }
 
 .contParagraphs {
   display: flex;
-  justify-content: flex-start;
+  flex-wrap: wrap;
+  justify-content: space-between;
   font-size: 18px;
   color: black;
+  margin-top: 130px;
+  width: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 20px;
+  background-color: #b8d698;
 }
 
-.paragraphs {
-  padding: 2px;
-  color: black;
+/* .container {
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 0;
+  margin-top: 50px;
 }
-.companyName {
+
+.contParagraphs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-size: 18px;
+  color: black;
+  width: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 20px;
+  background-color: #b8d698;
+  border-top: solid #5da746 1px;
+  align-items: center;
+  height: 180px;
+} */
+
+.logo {
+  height: 100px;
+  width: 100px;
+  margin-top: 20px;
+}
+
+.paragraphs,
+.companyName,
+.regonNipKrs {
   padding: 2px;
   color: black;
-  font-weight: bold;
 }
 
 .socialMedia {
   height: 60px;
-  margin-left: 10px;
 }
 
 .socialName {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black;
   font-weight: bold;
+  margin-right: 20px;
 }
 
 .social {
   display: flex;
-  justify-content: center;
   align-items: center;
-  margin-left: 140px;
 }
 
-.logoContent {
-  margin-left: 80px;
-}
-
-.adres {
-  height: auto;
-  width: 300px;
-}
-
-.contact {
+.companyName {
+  font-weight: bold;
 }
 
 .regonNipKrs {
-  font-size: 14px;
-  font-weight: lighter;
+  margin-top: 20px;
+}
+
+.contact {
+  margin-top: 10px;
 }
