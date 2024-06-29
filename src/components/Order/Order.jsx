@@ -16,6 +16,7 @@ const Order = () => {
     setSelectedTree(null);
     setSelectedTablet(null);
     setSelectedDedication("");
+
     setSelectedLocation("");
   };
 
