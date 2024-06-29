@@ -10,13 +10,20 @@ export const useUser = () => {
 
 export const UserProvider = ({ children }) => {
     const [user, setUser] = useState();
+    const [loadingState, setLoadingState] = useState(true)
 
     useEffect(() => {
+        setLoadingState(true)
         const login = onAuthStateChanged(auth, (user) => {
             setUser(user);
+            setLoadingState(false)
         });
         return login
     }, []);
+
+    if (loadingState) {
+        return <p>LOADING</p>
+    }
 
     const resetUser = () => {
         setUser(null);
