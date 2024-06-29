@@ -4,6 +4,7 @@
   display: flex;
   justify-content: space-between;
   padding: 0 20px;
+  margin-bottom: 20px;
 }
 
 .left {
@@ -13,7 +14,7 @@
   justify-content: space-around;
   background-color: rgb(221, 235, 206);
   gap: 100px;
-  border-radius: 10px 10px 0 0;
+  border-radius: 10px;
   margin-top: 120px;
   padding-bottom: 50px;
 }
