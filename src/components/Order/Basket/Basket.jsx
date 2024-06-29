@@ -6,6 +6,7 @@ import { useUser } from "../../../context/UserContext/UserContext";
 import { toast } from "react-toastify";
 import styles from "./Basket.module.css";
 import { TERipple } from "tw-elements-react";
+import { Link } from "react-router-dom";
 
 const Basket = ({
   selectedTree,

@@ -11,6 +11,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Order from "./components/Order/Order";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import PasswordReminder from "./components/PasswordReminder/PasswordReminder";
+import Summary from "./components/Order/Summary/Summary";
 
 import Register from "./components/Register/Register";
 import ScrollToTop from "./components/ScrollToTop";

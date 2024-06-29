@@ -1,0 +1,33 @@
+.summary {
+  margin-top: 100px;
+  width: 100%;
+  height: calc(100vh - 100px);
+  box-sizing: border-box;
+  background-color: aquamarine;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 50px;
+}
+.details {
+  width: 40vw;
+  height: 60vh;
+  background-color: aliceblue;
+}
+.controlls {
+  display: flex;
+  gap: 50px;
+}
+button {
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+.cancel {
+  background-color: red;
+  color: white;
+}
+.confirm {
+  background-color: green;
+  color: white;
+}
