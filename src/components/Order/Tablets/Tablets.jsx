@@ -39,20 +39,19 @@ const Tablets = ({ onSelectTablet }) => {
 
   const handleAddToBasket = () => {
     const selectedTablet = tabletData[selectedTabletIndex];
-    onSelectTablet(selectedTablet); // Pass object containing name and image of selected tablet
+    onSelectTablet(selectedTablet);
   };
 
   return (
     <div className={styles.tablets}>
       <h2>Wyjątkowe i trwałe tabliczki z kamienia</h2>
-      <div className={styles.select}>
-        <p className={styles.desc}>
-          Wybierz jedną z wyjątkowych kamiennych tabliczek, która stanowić
-          będzie trwały symbol miłości, pamięci lub wdzięczności. Każda
-          tabliczka z dedykacją będzie wiecznym symbolem, które przetrwa przez
-          lata.
-        </p>
-      </div>
+
+      <p className={styles.desc}>
+        Wybierz jedną z wyjątkowych kamiennych tabliczek, która stanowić będzie
+        trwały symbol miłości, pamięci lub wdzięczności. Każda tabliczka z
+        dedykacją będzie wiecznym symbolem, które przetrwa przez lata.
+      </p>
+
       <div className={styles.carousel}>
         <Slider {...settings}>
           {tabletData.map((tablet, index) => (
