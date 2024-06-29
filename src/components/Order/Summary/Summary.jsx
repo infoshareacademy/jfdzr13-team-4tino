@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { useUser } from "../../../context/UserContext/UserContext";
 import { addOrderToFirestore } from "../utils/orderUtils";
@@ -9,6 +9,7 @@ const Summary = ({ clearSelections }) => {
   const { selectedTree, selectedTablet, selectedLocation, selectedDedication } =
     state || {};
   const { user } = useUser();
+  const [orderPlaced, setOrderPlaced] = useState(false);
 
   const handleOrder = async () => {
     try {
@@ -20,6 +21,7 @@ const Summary = ({ clearSelections }) => {
         selectedDedication
       );
       clearSelections();
+      setOrderPlaced(true);
     } catch (error) {
       console.error("Błąd podczas składania zamówienia", error);
     }
@@ -28,20 +30,36 @@ const Summary = ({ clearSelections }) => {
   return (
     <div className={styles.summary}>
       <div className={styles.details}>
-        <h3>Podsumowanie zamówienia</h3>
-        <p>Drzewo: {selectedTree?.name || "Brak wybranego drzewa"}</p>
-        <p>Tabliczka: {selectedTablet?.name || "Brak wybranej tabliczki"}</p>
-        <p>Dedykacja: {selectedDedication || "Brak dedykacji"}</p>
-        <p>Lokalizacja: {selectedLocation || "Brak lokalizacji"}</p>
-        <p>
-          Do zapłaty: <b>{selectedTree?.price || "0"} zł</b>
-        </p>
+        <h1 className={styles.header}>Podsumowanie zamówienia</h1>
+        <div className={styles.content}>
+          <div className={styles.item}>
+            Drzewo :&nbsp;<b>{selectedTree?.name || "Brak wybranego drzewa"}</b>
+          </div>
+          <div className={styles.item}>
+            Tabliczka :&nbsp;
+            <b>{selectedTablet?.name || "Brak wybranej tabliczki"}</b>
+          </div>
+          <div className={styles.item}>
+            Dedykacja :&nbsp;<b>{selectedDedication || "Brak dedykacji"}</b>
+          </div>
+          <div className={styles.item}>
+            Lokalizacja :&nbsp;<b>{selectedLocation || "Brak lokalizacji"}</b>
+          </div>
+        </div>
+        <div className={styles.money}>
+          Do zapłaty :&nbsp;<b>{selectedTree?.price || "0"} zł</b>
+        </div>
       </div>
       <div className={styles.controls}>
         <Link to="/order">
           <button className={styles.cancel}>Powrót</button>
         </Link>
-        <button className={styles.confirm} onClick={handleOrder}>
+        <button
+          onClick={handleOrder}
+          // className={`${styles.confirm} ${orderPlaced && styles.disabled}`}
+          className={`${styles.confirm} ${orderPlaced ? styles.disabled : ""}`}
+          // powinno zablokować przycisk :/
+        >
           Zamów
         </button>
       </div>
