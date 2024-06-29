@@ -1,3 +1,9 @@
+html,
+body {
+  overflow: hidden;
+  overflow-y: auto;
+}
+
 .container {
   display: flex;
   flex-direction: row;
@@ -37,12 +43,13 @@
   flex-direction: column;
   width: 20%;
   min-width: 160px;
+  max-width: 270px;
   height: 100vh;
   background-color: #7ca45a;
   border-radius: 0px 20px 0px 0px;
   color: white;
   padding-top: 6vh;
-  padding-left: 5vw;
+  padding-left: 6vw;
 }
 
 .panel p {
@@ -53,19 +60,27 @@
   text-decoration: none;
 }
 
-.panel p:hover {
+.panel .dataText:hover {
   background-color: white;
   color: #2a412f;
   border-radius: 10px 0px 0px 10px;
+  box-shadow: inset 0px 22px 0px -21px #8dc060;
 }
 
-.panel p:active {
+.panel .dataText:active {
   font-weight: 700;
 }
 
 .main {
   padding-top: 6vh;
   padding-left: 5vw;
+}
+
+.panel .orderText {
+  color: #2a412f;
+  box-shadow: none;
+  background-color: #f2f7ec;
+  border-radius: 10px 0px 0px 10px;
 }
 
 .main p {

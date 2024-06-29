@@ -4,13 +4,12 @@ import "./App.css";
 import AdminDashboard from "./components/AdminDashboard/AdminDashboard";
 import CustomerDashboard from "./components/CustomerDashboard/CustomerDashboard";
 import CustomerDataEdit from "./components/CustomerDashboard/CustomerDataEdit/CustomerDataEdit";
-import CustomerOrders from "./components/CustomerDashboard/CustomerOrders/CustomerOrders";
 import Homepage from "./components/Homepage/Homepage";
 import Login from "./components/Login/Login";
 import Navbar from "./components/Navbar/Navbar";
 import Order from "./components/Order/Order";
-import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import PasswordReminder from "./components/PasswordReminder/PasswordReminder";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
 import Register from "./components/Register/Register";
 import ScrollToTop from "./components/ScrollToTop";
@@ -32,7 +31,6 @@ function App() {
           <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
           <Route path="/user" element={<UserProtectedRoute><CustomerDashboard /></UserProtectedRoute>} />
           <Route path="/user/data" element={<UserProtectedRoute><CustomerDataEdit /></UserProtectedRoute>} />
-          <Route path="/user/orders" element={<UserProtectedRoute><CustomerOrders /></UserProtectedRoute>} />
         </Routes>
       </div>
     </Router>
