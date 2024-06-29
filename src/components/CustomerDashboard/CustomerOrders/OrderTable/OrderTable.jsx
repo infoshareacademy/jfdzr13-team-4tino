@@ -11,7 +11,6 @@ const formatDate = (date) => {
     day: "numeric",
     // hour: "2-digit",
     // minute: "2-digit",
-    // optionally, you can add time ^
   };
   return date.toLocaleDateString(undefined, options);
 };
@@ -28,7 +27,7 @@ const OrderTable = () => {
         const querySnapshot = await getDocs(q);
 
         const ordersList = querySnapshot.docs.map((doc) => ({
-          orderId: doc.data().orderId, // assuming orderId is correctly stored in Firestore
+          orderId: doc.data().orderId,
           time: doc.data().date
             ? doc.data().date.toDate()
             : "Error fetching date",
