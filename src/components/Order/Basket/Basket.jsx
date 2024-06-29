@@ -120,15 +120,17 @@ const Basket = ({
       <div className={styles.price}>
         Do zapłaty : <b>{selectedTree ? selectedTree.price : "0"}</b> zł
       </div>
-      <TERipple rippleColor="light">
-        <button
-          type="button"
-          onClick={addOrder}
-          className={`buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active m-5`}
-        >
-          Potwierdź z obowiązkiem zapłaty
-        </button>
-      </TERipple>
+      <Link to="/order/summary">
+        <TERipple rippleColor="light">
+          <button
+            type="button"
+            onClick={addOrder}
+            className={`buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active m-5`}
+          >
+            Przejdź do potwierdzenia
+          </button>
+        </TERipple>
+      </Link>
     </div>
   );
 };
