@@ -12,6 +12,8 @@ import swierk2 from "../../../assets/drzewka/swierk_klujacy.png";
 import swierk1 from "../../../assets/drzewka/swierk_serbski.png";
 import { db } from "../../../firebase";
 import { doc, getDoc } from "firebase/firestore";
+import { TERipple } from "tw-elements-react";
+
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -98,13 +100,20 @@ function SimpleSlider({ onSelectTree }) {
               <div className={styles.info}>
                 <h3 className={styles.type}>{tree.name}</h3>
                 <p className={styles.desc}>{tree.description}</p>
+                <b>Cena : {tree.price} zł</b>
                 <div className={styles.price}>
                   <p>
-                    <b>Cena : {tree.price} zł</b>
+                    
                   </p>
-                  <button onClick={() => onSelectTree(tree)}>
-                    dodaj do koszyka
-                  </button>
+                  <TERipple rippleColor="light">
+                    <button
+                        type="button"
+                        onClick={() => onSelectTree(tree)}
+                        className={`buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active m-5`}
+                    >
+                        Dodaj do koszyka
+                    </button>
+                    </TERipple>
                 </div>
               </div>
             </div>

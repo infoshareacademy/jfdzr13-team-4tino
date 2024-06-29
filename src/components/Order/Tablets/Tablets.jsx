@@ -3,6 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import styles from "./Tablets.module.css";
+import { TERipple } from "tw-elements-react";
 
 import tab1 from "../../../assets/tablets/tablet1.png";
 import tab2 from "../../../assets/tablets/tablet2.png";
@@ -13,12 +14,12 @@ import tab6 from "../../../assets/tablets/tablet6.png";
 
 const Tablets = ({ onSelectTablet }) => {
   const tabletData = [
-    { name: "Marmur", image: tab1 },
-    { name: "Granit", image: tab2 },
-    { name: "Bazalt", image: tab3 },
-    { name: "Piaskowiec", image: tab4 },
-    { name: "Takie pordzewiałe", image: tab5 },
-    { name: "Zardzewiałe czy co", image: tab6 },
+    { name: "Tabliczka pierwsza", image: tab1 },
+    { name: "Tabliczka druga", image: tab2 },
+    { name: "Tabliczka trzecia", image: tab3 },
+    { name: "Tabliczka czwarta", image: tab4 },
+    { name: "Tabliczka piąta", image: tab5 },
+    { name: "Tabliczka szósta", image: tab6 },
   ];
 
   const [selectedTabletIndex, setSelectedTabletIndex] = useState(0);
@@ -38,7 +39,7 @@ const Tablets = ({ onSelectTablet }) => {
 
   const handleAddToBasket = () => {
     const selectedTablet = tabletData[selectedTabletIndex];
-    onSelectTablet(selectedTablet);
+    onSelectTablet(selectedTablet); // Pass object containing name and image of selected tablet
   };
 
   return (
@@ -61,10 +62,15 @@ const Tablets = ({ onSelectTablet }) => {
           ))}
         </Slider>
       </div>
-      <div className={styles.tabletName}>
-        <div className={styles.add}>{tabletData[selectedTabletIndex].name}</div>
-        <button onClick={handleAddToBasket}>Dodaj do koszyka</button>
-      </div>
+      <TERipple rippleColor="light">
+        <button
+          type="button"
+          onClick={handleAddToBasket}
+          className={`buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active m-5`}
+        >
+          Dodaj do koszyka
+        </button>
+      </TERipple>
     </div>
   );
 };

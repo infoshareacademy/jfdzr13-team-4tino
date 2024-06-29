@@ -7,11 +7,6 @@ The designs were created to the following widths:
 - Desktop
 - Mobile
 
-### Border Radius
-
-<!-- - Border Radius button: 10px. -->
-- Border Radius img: 30px.
-
 ## Colors
 
 - #42811e (button)
@@ -43,4 +38,14 @@ The designs were created to the following widths:
 ## h3
 
 - font-size: 26px;
+- font-weight: bold;
+
+## h4
+
+- font-size: 20px;
+- font-weight: bold;
+
+## h5
+
+- font-size: 18px;
 - font-weight: bold;

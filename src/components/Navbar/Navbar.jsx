@@ -3,7 +3,8 @@ import { HashLink as Link } from 'react-router-hash-link';
 import { TERipple } from "tw-elements-react";
 import '../.././tailwind.css';
 import tinoName from "../../assets/4tino-logo.png";
-import userIcon from "../../assets/user.png";
+import userIcon from "../../assets/user.svg";
+import userIconHover from '../../assets/user2.svg';
 import { useUser } from '../../context/UserContext/UserContext';
 import Logout from '../Logout/Logout';
 import styles from "./Navbar.module.css";
@@ -12,22 +13,30 @@ import Preloader from "./Preloader/Preloader";
 const Navbar = () => {
   const { user } = useUser();
   const [isMenuVisible, setIsMenuVisible] = useState(false);
-  const menuRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
+  const timerRef = useRef(null);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     setIsMenuVisible(false);
-      setTimeout(() => {
+    setTimeout(() => {
       setIsLoading(false);
     }, 5000);
   }, [user]);
 
   const handleMouseEnter = () => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
+    setIsHovered(true); // Zmień stan isHovered na true
     setIsMenuVisible(true);
   };
 
   const handleMouseLeave = () => {
-    setIsMenuVisible(false);
+    timerRef.current = setTimeout(() => {
+      setIsHovered(false); // Zmień stan isHovered na false
+      setIsMenuVisible(false);
+    }, 500); //czas po którym menu znika
   };
 
   return (
@@ -51,12 +60,12 @@ const Navbar = () => {
                 onMouseLeave={handleMouseLeave}
               >
                 <img
-                  src={userIcon}
+                  src={isHovered ? userIconHover : userIcon}
                   alt="user"
                   className={styles.userIcon}
                 />
                 {isMenuVisible && (
-                  <div ref={menuRef} className={styles.dropdownMenu}>
+                  <div className={styles.dropdownMenu}>
                     <Link to={user.email === 'admin@admin.com' ? '/admin' : '/user'} className={styles.menuItem}>
                       Konto
                     </Link>
@@ -93,7 +102,8 @@ const Navbar = () => {
       </div>
       {isLoading ? (
         <Preloader className={styles.preloader} />
-      ) : null}    </div>
+      ) : null}
+    </div>
   );
 };
 
