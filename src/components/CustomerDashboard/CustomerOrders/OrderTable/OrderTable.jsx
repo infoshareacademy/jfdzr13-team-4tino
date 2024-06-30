@@ -1,19 +1,19 @@
-import React from 'react';
-import styles from './OrderTable.module.css';
-import { doc, deleteDoc } from 'firebase/firestore';
-import { db } from '../../../../firebase'; 
+import React from "react";
+import styles from "./OrderTable.module.css";
+import { doc, deleteDoc } from "firebase/firestore";
+import { db } from "../../../../firebase";
 
 const OrderTable = ({ data, onDelete }) => {
   const handleDelete = async (id) => {
     try {
-      await deleteDoc(doc(db, 'orders', id));
+      await deleteDoc(doc(db, "orders", id));
       if (onDelete) {
         onDelete(id);
       } else {
-        console.error('onDelete function is not defined');
+        console.error("onDelete function is not defined");
       }
     } catch (error) {
-      console.error('Error deleting document:', error);
+      console.error("Error deleting document:", error);
     }
   };
 
@@ -33,7 +33,8 @@ const OrderTable = ({ data, onDelete }) => {
       <tbody>
         {data.map((row) => (
           <tr key={row.id}>
-            <td>{new Date(row.date).toLocaleDateString()}</td> {/* Konwersja daty na lokalny format */}
+            <td>{new Date(row.date).toLocaleDateString()}</td>
+            {/* Konwersja daty na lokalny format */}
             <td>{row.tree}</td>
             <td>{row.tablet}</td>
             <td>{row.dedication}</td>
@@ -55,7 +56,6 @@ const OrderTable = ({ data, onDelete }) => {
 };
 
 export default OrderTable;
-
 
 // const OrderTable = ({ data, onDelete }) => {
 //   return (
