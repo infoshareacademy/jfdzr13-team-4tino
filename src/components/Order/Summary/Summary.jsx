@@ -31,20 +31,24 @@ const Summary = ({ clearSelections }) => {
     <div className={styles.summary}>
       <div className={styles.details}>
         <h1 className={styles.header}>Podsumowanie zamówienia</h1>
-        <div className={styles.content}>
-          <div className={styles.item}>
-            Drzewo :&nbsp;<b>{selectedTree?.name || "Brak wybranego drzewa"}</b>
+        <div className={styles.main}>
+          <div className={styles.content}>
+            <div className={styles.item}>
+              Drzewo :&nbsp;
+              <b>{selectedTree?.name || "Brak wybranego drzewa"}</b>
+            </div>
+            <div className={styles.item}>
+              Tabliczka :&nbsp;
+              <b>{selectedTablet?.name || "Brak wybranej tabliczki"}</b>
+            </div>
+            <div className={styles.item}>
+              Dedykacja :&nbsp;<b>{selectedDedication || "Brak dedykacji"}</b>
+            </div>
+            <div className={styles.item}>
+              Lokalizacja :&nbsp;<b>{selectedLocation || "Brak lokalizacji"}</b>
+            </div>
           </div>
-          <div className={styles.item}>
-            Tabliczka :&nbsp;
-            <b>{selectedTablet?.name || "Brak wybranej tabliczki"}</b>
-          </div>
-          <div className={styles.item}>
-            Dedykacja :&nbsp;<b>{selectedDedication || "Brak dedykacji"}</b>
-          </div>
-          <div className={styles.item}>
-            Lokalizacja :&nbsp;<b>{selectedLocation || "Brak lokalizacji"}</b>
-          </div>
+          <div className={styles.payment}>blik here</div>
         </div>
         <div className={styles.money}>
           Do zapłaty :&nbsp;<b>{selectedTree?.price || "0"} zł</b>

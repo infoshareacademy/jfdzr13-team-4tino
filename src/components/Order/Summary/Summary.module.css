@@ -10,6 +10,16 @@
   gap: 50px;
   background-color: rgb(184, 214, 152);
 }
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3em;
+  background-color: rgb(221, 235, 206);
+  font-size: 24px;
+  font-weight: 700;
+  border-radius: 10px;
+}
 .details {
   width: 40vw;
   height: 60vh;
@@ -20,16 +30,8 @@
   flex-direction: column;
   justify-content: space-around;
 }
-
-.header {
+.main {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 3em;
-  background-color: rgb(221, 235, 206);
-  font-size: 24px;
-  font-weight: 700;
-  border-radius: 10px;
 }
 
 .content {
@@ -46,7 +48,7 @@
   width: calc(100% - 100px);
   display: flex;
   align-items: baseline;
-  border-top: 2px solid black;
+  border-top: 1px solid black;
   padding-top: 10px;
 }
 
@@ -59,8 +61,8 @@
   display: flex;
   gap: 150px;
 }
-button {
-  padding: 15px 40px;
+.controls button {
+  padding: 15px 50px;
   border-radius: 10px;
 }
 .cancel {
