@@ -1,6 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Basket.module.css";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Basket = ({
   selectedTree,
@@ -11,6 +13,16 @@ const Basket = ({
   const navigate = useNavigate();
 
   const handleProceed = () => {
+    if (!isComplete()) {
+      toast.error("Wymagane są wszystkie elementy zamówienia", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeButton: false,
+      });
+      return;
+    }
+
     navigate("/order/summary", {
       state: {
         selectedTree,
@@ -19,6 +31,13 @@ const Basket = ({
         selectedDedication,
       },
     });
+  };
+
+  const isComplete = () => {
+    return (
+      selectedTree && selectedTablet && selectedLocation && selectedDedication
+      // nie działa ^
+    );
   };
 
   return (
@@ -61,6 +80,7 @@ const Basket = ({
         type="button"
         className="buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white bg-custom-green hover:bg-custom-green-hover focus:outline-none m-5"
         onClick={handleProceed}
+        disabled={!isComplete()}
       >
         Przejdź do potwierdzenia
       </button>
