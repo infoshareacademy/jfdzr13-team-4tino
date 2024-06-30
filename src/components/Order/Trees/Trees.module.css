@@ -1,5 +1,4 @@
 .trees {
-  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -10,8 +9,7 @@
 }
 
 .carousel {
-  width: 95%;
-  height: 600px;
+  width: 90%;
   margin: 0 auto;
 }
 
@@ -28,19 +26,11 @@
 
 .slideContainer {
   width: 100%;
-  height: 600px;
-}
-
-.img {
-  width: 450px;
-  height: 100%;
-  overflow: hidden;
 }
 
 .img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
   border-radius: 15px 0 0 15px;
 }
 
