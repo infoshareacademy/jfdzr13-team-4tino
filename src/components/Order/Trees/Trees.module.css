@@ -18,7 +18,7 @@
   display: grid;
   grid-template-columns: 450px 1fr;
   grid-template-rows: 1fr;
-  background-color: rgb(242, 247, 236);
+  background-color: white;
   margin-bottom: 30px;
   align-items: stretch;
   border-radius: 15px;

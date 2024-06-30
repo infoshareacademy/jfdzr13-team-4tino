@@ -41,7 +41,7 @@
 .displayed {
   text-align: center;
   width: 200px;
-  background-color: rgb(242, 247, 236);
+  background-color: white;
   padding: 12px 20px;
   border: 2px solid rgb(87, 171, 39);
   border-radius: 10px;
