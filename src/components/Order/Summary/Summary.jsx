@@ -59,14 +59,7 @@ const Summary = ({ clearSelections }) => {
             <h1 className={styles.header}>Opłać zamówienie</h1>
             <div className={styles.blik}>
               <img src={Blik} alt="Blik" />
-              <input
-                className={styles.code}
-                type="text"
-                imputmode="numeric"
-                max={999999}
-                maxLength={6}
-                placeholder="Kod blik"
-              />
+              <input className={styles.code} />
             </div>
             <div className={styles.controls}>
               <Link to="/order">
