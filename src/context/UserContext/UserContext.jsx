@@ -22,7 +22,7 @@ export const UserProvider = ({ children }) => {
     }, []);
 
     if (loadingState) {
-        return <p>LOADING</p>
+        return
     }
 
     const resetUser = () => {
