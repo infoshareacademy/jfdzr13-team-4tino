@@ -36,6 +36,8 @@ export const addOrderToFirestore = async (
     await addDoc(collectionRef, {
       orderId,
       email: user.email,
+      // name: user.firstName,
+      // lastName: user.lastName,
       date: time,
       status: "przyjęto do realizacji",
       price: selectedTree.price,
