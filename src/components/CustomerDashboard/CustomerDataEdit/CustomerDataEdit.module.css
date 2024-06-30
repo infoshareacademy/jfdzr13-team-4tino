@@ -16,6 +16,7 @@ body {
   background-position: right bottom;
   background-size: 50em;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .container p {
@@ -35,12 +36,14 @@ body {
   flex-direction: column;
   width: 20%;
   min-width: 160px;
-  max-width: 270px;
+  max-width: 18vw;
   height: 100vh;
   background-color: #7ca45a;
   border-radius: 0px 20px 0px 0px;
+  color: white;
   padding-top: 6vh;
   padding-left: 6vw;
+  position: fixed;
 }
 
 .panel .orderText {
@@ -64,7 +67,7 @@ body {
 }
 
 .dataText {
-  background-color: white;
+  background-color: #f2f7ec;
   border-radius: 10px 0px 0px 10px;
 }
 
@@ -75,7 +78,7 @@ body {
 
 .main {
   padding-top: 6vh;
-  padding-left: 5vw;
+  padding-left: 22vw;
 }
 
 .main p {
