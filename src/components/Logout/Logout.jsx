@@ -16,13 +16,15 @@ const Logout = () => {
             resetUser();
             toast.success('Wylogowano pomyślnie', {
                 hideProgressBar: true,
-                autoClose: 1000
+                autoClose: 1000,
+        style: { marginTop: '120px' }
             });
             navigate('/');
         } catch (error) {
             toast.error('Błąd podczas wylogowywania', {
                 hideProgressBar: true,
-                autoClose: 1000
+                autoClose: 1000,
+        style: { marginTop: '120px' }
             });
         }
     };

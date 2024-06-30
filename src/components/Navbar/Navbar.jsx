@@ -52,6 +52,9 @@ const Navbar = () => {
           <Link smooth to="/#about">
             <p className={styles.item}>O nas</p>
           </Link>
+          <Link smooth to="/order">
+            <p className={styles.item}>Zamów</p>
+          </Link>
           <div className={styles.loginPanel}>
             {user ? (
               <div
