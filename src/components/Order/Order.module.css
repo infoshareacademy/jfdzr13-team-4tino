@@ -21,7 +21,7 @@
 
 .right {
   width: 35%;
-  max-height: 75vh;
+  /* max-height: 75vh; */
   border-radius: 10px;
   background-color: rgb(221, 235, 206);
   margin-top: 120px;
