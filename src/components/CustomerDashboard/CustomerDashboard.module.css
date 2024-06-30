@@ -8,7 +8,7 @@ body {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   background-color: #f2f7ec;
   margin-top: 100px;
@@ -16,6 +16,7 @@ body {
   background-position: right bottom;
   background-size: 50em;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .container p {
@@ -43,13 +44,14 @@ body {
   flex-direction: column;
   width: 20%;
   min-width: 160px;
-  max-width: 270px;
+  max-width: 18vw;
   height: 100vh;
   background-color: #7ca45a;
   border-radius: 0px 20px 0px 0px;
   color: white;
   padding-top: 6vh;
   padding-left: 6vw;
+  position: fixed;
 }
 
 .panel p {
@@ -73,7 +75,7 @@ body {
 
 .main {
   padding-top: 6vh;
-  padding-left: 5vw;
+  padding-left: 22vw;
 }
 
 .panel .orderText {
