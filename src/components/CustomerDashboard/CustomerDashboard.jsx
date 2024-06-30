@@ -85,15 +85,12 @@ const CustomerDashboard = () => {
       <div className={styles.main}>
         <h1 className={styles.h1}>Witaj {firstName} 😊</h1>
         <p>Cieszymy się, że z nami jesteś i pomagasz nam zmieniać świat na lepsze!</p>
+        <div>
+          <CountDownTimer />
+        </div>
         <h2 className={styles.h2}>Zamówienia</h2>
         <div>
-          <CountDownTimer />
-        </div>
-        <div>
           <OrderTable data={data} onDelete={handleDelete} />
-        </div>
-        <div>
-          <CountDownTimer />
         </div>
       </div>
     </div>

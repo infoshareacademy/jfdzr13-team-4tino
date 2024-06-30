@@ -1,4 +1,11 @@
-import { collection, deleteDoc, doc, getDocs, query, where } from "firebase/firestore";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useUser } from "../../.././context/UserContext/UserContext";
 import { db } from "../../.././firebase";
@@ -29,7 +36,9 @@ const OrderTable = () => {
         const ordersList = querySnapshot.docs.map((doc) => ({
           id: doc.id, // Zapisz id dokumentu, ale użyj właściwego pola orderId dla numeru zamówienia
           orderId: doc.data().orderId,
-          time: doc.data().date ? doc.data().date.toDate() : "Error fetching date",
+          time: doc.data().date
+            ? doc.data().date.toDate()
+            : "Error fetching date",
           status: doc.data().status,
           price: doc.data().price,
           tree: doc.data().tree,
@@ -50,7 +59,7 @@ const OrderTable = () => {
   const handleDelete = async (id) => {
     try {
       await deleteDoc(doc(db, "orders", id));
-      setOrders(prevOrders => prevOrders.filter(order => order.id !== id));
+      setOrders((prevOrders) => prevOrders.filter((order) => order.id !== id));
       console.log("Order successfully deleted!");
     } catch (error) {
       console.error("Error deleting order:", error);
@@ -76,7 +85,8 @@ const OrderTable = () => {
         <tbody>
           {orders.map((order) => (
             <tr key={order.id}>
-              <td>{order.orderId}</td> {/* Używamy orderId z danych dokumentu */}
+              <td>{order.orderId}</td>
+              {/* Używamy orderId z danych dokumentu */}
               <td>
                 {order.time instanceof Date
                   ? formatDate(order.time)
@@ -105,3 +115,61 @@ const OrderTable = () => {
 };
 
 export default OrderTable;
+
+// import { collection, deleteDoc, doc, getDocs, query, where } from "firebase/firestore";
+// import React, { useEffect, useState } from "react";
+// import { useUser } from "../../.././context/UserContext/UserContext";
+// import { db } from "../../.././firebase";
+// import styles from "./OrderTable.module.css";
+
+// const OrderTable = ({ data, onDelete }) => {
+//   const handleDelete = async (id) => {
+//     try {
+//       await deleteDoc(doc(db, "orders", id));
+//       if (onDelete) {
+//         onDelete(id);
+//       } else {
+//         console.error("onDelete function is not defined");
+//       }
+//     } catch (error) {
+//       console.error("Error deleting document:", error);
+//     }
+//   };
+//   return (
+//     <table className={styles.customTable}>
+//       <thead>
+//         <tr>
+//           <th>Data zamówienia</th>
+//           <th>Rodzaj drzewa</th>
+//           <th>Rodzaj tabliczki</th>
+//           <th>Rodzaj dedykacji</th>
+//           <th>Cena</th>
+//           <th>Stan realizacji</th>
+//           <th>Anuluj</th>
+//         </tr>
+//       </thead>
+//       <tbody>
+//         {data.map((row) => (
+//           <tr key={row.id}>
+//             <td>{new Date(row.date).toLocaleDateString()}</td>
+//             {/* Konwersja daty na lokalny format */}
+//             <td>{row.tree}</td>
+//             <td>{row.tablet}</td>
+//             <td>{row.dedication}</td>
+//             <td>{row.price}</td>
+//             <td>{row.status}</td>
+//             <td>
+//               <button
+//                 onClick={() => handleDelete(row.id)}
+//                 className={styles.deleteButton}
+//               >
+//                 X
+//               </button>
+//             </td>
+//           </tr>
+//         ))}
+//       </tbody>
+//     </table>
+//   );
+// };
+// export default OrderTable;
