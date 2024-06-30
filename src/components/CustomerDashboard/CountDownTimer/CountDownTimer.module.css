@@ -12,6 +12,7 @@
   background-image: url(../../.././assets/background_timer.png);
   background-size: cover;
   background-repeat: no-repeat;
+  margin-bottom: 50px;
 }
 
 .container p {

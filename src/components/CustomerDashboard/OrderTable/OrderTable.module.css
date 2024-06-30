@@ -34,13 +34,13 @@
   background-color: #ffffff;
 }
 
-td button {
+.orderTable td button {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-td .deleteButton {
+.orderTable td .deleteButton {
   display: flex;
   justify-content: center;
   align-items: center;
