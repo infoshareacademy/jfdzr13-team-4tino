@@ -145,12 +145,28 @@ body {
   padding-left: 0px;
 }
 
-input[type="text"] {
+.readOnlyInput input[type="text"] {
   width: 100%;
 }
 
 input:focus {
   outline: solid 2px #57ab27;
+}
+
+.firstName,
+.lastName,
+.phone,
+.readOnlyInput,
+.currentPassword,
+.errorText,
+.errorText {
+  background-color: none;
+  cursor: not-allowed;
+}
+
+.fieldError {
+  border: 1px solid red !important;
+  /* border: 1px solid red; */
 }
 
 /* @media (max-width: 767px) {

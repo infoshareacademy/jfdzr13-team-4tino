@@ -87,6 +87,9 @@ const CustomerDashboard = () => {
         <p>Cieszymy się, że z nami jesteś i pomagasz nam zmieniać świat na lepsze!</p>
         <h2 className={styles.h2}>Zamówienia</h2>
         <div>
+          <CountDownTimer />
+        </div>
+        <div>
           <OrderTable data={data} onDelete={handleDelete} />
         </div>
         <div>
