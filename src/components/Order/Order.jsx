@@ -16,7 +16,6 @@ const Order = () => {
     setSelectedTree(null);
     setSelectedTablet(null);
     setSelectedDedication("");
-
     setSelectedLocation("");
   };
 
@@ -25,8 +24,8 @@ const Order = () => {
       <div className={styles.left}>
         <Trees onSelectTree={setSelectedTree} />
         <div className={styles.disclaimer}>
-          <p className={styles.warning}>Uwaga !</p> Cena drzewa zawiera opłatę
-          za zasadzenie, tabliczkę oraz wykonanie dedykacji
+          <p className={styles.warning}>Uwaga!</p> Cena drzewa zawiera opłatę za
+          zasadzenie, tabliczkę oraz wykonanie dedykacji.
         </div>
         <Tablets onSelectTablet={setSelectedTablet} />
         <Dedication onSelectDedication={setSelectedDedication} />

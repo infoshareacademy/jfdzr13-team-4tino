@@ -9,12 +9,12 @@ import Login from "./components/Login/Login";
 import Navbar from "./components/Navbar/Navbar";
 import Order from "./components/Order/Order";
 import PasswordReminder from "./components/PasswordReminder/PasswordReminder";
+import Summary from "./components/Order/Summary/Summary";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
-
 import Register from "./components/Register/Register";
 import ScrollToTop from "./components/ScrollToTop";
 import UserProtectedRoute from "./components/UserProtectedRoute/UserProtectedRoute";
-import './tailwind.css';
+import "./tailwind.css";
 
 function App() {
   return (
@@ -28,9 +28,47 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/passwordReminder" element={<PasswordReminder />} />
           <Route path="/order" element={<Order />} />
-          <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
-          <Route path="/user" element={<UserProtectedRoute><CustomerDashboard /></UserProtectedRoute>} />
-          <Route path="/user/data" element={<UserProtectedRoute><CustomerDataEdit /></UserProtectedRoute>} />
+
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/user"
+            element={
+              <UserProtectedRoute>
+                <CustomerDashboard />
+              </UserProtectedRoute>
+            }
+          />
+          <Route
+            path="/user/data"
+            element={
+              <UserProtectedRoute>
+                <CustomerDataEdit />
+              </UserProtectedRoute>
+            }
+          />
+          <Route
+            path="/user/orders"
+            element={
+              <UserProtectedRoute>
+                <CustomerOrders />
+              </UserProtectedRoute>
+            }
+          />
+          <Route
+            path="/order/summary"
+            element={
+              <UserProtectedRoute>
+                <Summary />
+              </UserProtectedRoute>
+            }
+          />
         </Routes>
       </div>
     </Router>

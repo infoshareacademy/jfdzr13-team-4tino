@@ -14,12 +14,12 @@ import tab6 from "../../../assets/tablets/tablet6.png";
 
 const Tablets = ({ onSelectTablet }) => {
   const tabletData = [
-    { name: "Tabliczka pierwsza", image: tab1 },
-    { name: "Tabliczka druga", image: tab2 },
-    { name: "Tabliczka trzecia", image: tab3 },
-    { name: "Tabliczka czwarta", image: tab4 },
-    { name: "Tabliczka piąta", image: tab5 },
-    { name: "Tabliczka szósta", image: tab6 },
+    { name: "Marmur", image: tab1 },
+    { name: "Bazalt", image: tab2 },
+    { name: "Granit", image: tab3 },
+    { name: "Piaskowiec", image: tab4 },
+    { name: "Hematyt", image: tab5 },
+    { name: "Grenalit", image: tab6 },
   ];
 
   const [selectedTabletIndex, setSelectedTabletIndex] = useState(0);
@@ -61,15 +61,20 @@ const Tablets = ({ onSelectTablet }) => {
           ))}
         </Slider>
       </div>
-      <TERipple rippleColor="light">
-        <button
-          type="button"
-          onClick={handleAddToBasket}
-          className={`buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active m-5`}
-        >
-          Dodaj do koszyka
-        </button>
-      </TERipple>
+      <div className={styles.add}>
+        <p className={styles.displayed}>
+          {tabletData[selectedTabletIndex].name}
+        </p>
+        <TERipple rippleColor="light">
+          <button
+            type="button"
+            onClick={handleAddToBasket}
+            className={`buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active m-5`}
+          >
+            Dodaj do koszyka
+          </button>
+        </TERipple>
+      </div>
     </div>
   );
 };
