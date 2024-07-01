@@ -24,7 +24,7 @@
   transform: scale(1.2);
 }
 
-.info {
+/* .info {
   width: 25px;
   height: 25px;
   background-color: white;
@@ -59,4 +59,4 @@
 .info:hover::after {
   opacity: 1;
   visibility: visible;
-}
+} */
