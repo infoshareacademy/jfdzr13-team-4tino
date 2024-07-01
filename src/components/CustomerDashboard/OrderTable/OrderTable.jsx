@@ -1,11 +1,4 @@
-import {
-  collection,
-  deleteDoc,
-  doc,
-  getDocs,
-  query,
-  where,
-} from "firebase/firestore";
+import { collection, deleteDoc, doc, getDocs, query, where } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useUser } from "../../.././context/UserContext/UserContext";
 import { db } from "../../.././firebase";
@@ -20,7 +13,7 @@ const formatDate = (date) => {
   return date.toLocaleDateString(undefined, options);
 };
 
-const OrderTable = () => {
+const OrderTable = ({ onUpdateLatestOrderDate }) => {
   const { user } = useUser();
   const [orders, setOrders] = useState([]);
 
@@ -45,25 +38,28 @@ const OrderTable = () => {
           location: doc.data().location,
         }));
 
-        // Sortowanie zamówień według daty malejąco (najnowsze zamówienia na górze)
         ordersList.sort((a, b) => b.time - a.time);
+
+        if (ordersList.length > 0) {
+          onUpdateLatestOrderDate(ordersList[0].time); // Aktualizacja daty ostatniego zamówienia
+        }
 
         setOrders(ordersList);
       } catch (error) {
-        console.error("Error fetching orders", error);
+        console.error("Błąd pobierania zamówień", error);
       }
     };
 
     fetchOrders();
-  }, [user]);
+  }, [user, onUpdateLatestOrderDate]);
 
   const handleDelete = async (id) => {
     try {
       await deleteDoc(doc(db, "orders", id));
       setOrders((prevOrders) => prevOrders.filter((order) => order.id !== id));
-      console.log("Order successfully deleted!");
+      console.log("Zamówienie zostało pomyślnie usunięte!");
     } catch (error) {
-      console.error("Error deleting order:", error);
+      console.error("Błąd podczas usuwania zamówienia:", error);
     }
   };
 
@@ -90,7 +86,7 @@ const OrderTable = () => {
               <td>
                 {order.time instanceof Date
                   ? formatDate(order.time)
-                  : "Error fetching date"}
+                  : "Błąd podczas pobierania daty"}
               </td>
               <td>{order.status}</td>
               <td>{order.price} zł</td>

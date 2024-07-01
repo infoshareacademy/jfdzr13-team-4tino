@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import styles from '../CountDownTimer/CountDownTimer.module.css';
+import styles from './CountDownTimer.module.css';
 
-const CountDownTimer = () => {
+const CountDownTimer = ({ latestOrderDate }) => {
   const [timeLeft, setTimeLeft] = useState({});
-  const [endTime] = useState(() => {
-    const now = new Date();
-    const endDate = new Date(now.setMonth(now.getMonth() + 3));
-    return endDate.getTime();
-  });
+  const [endTime, setEndTime] = useState(null);
+
+  useEffect(() => {
+    if (latestOrderDate) {
+      const startDate = new Date(latestOrderDate);
+      const endDate = new Date(startDate.setMonth(startDate.getMonth() + 3));
+      setEndTime(endDate.getTime());
+    }
+  }, [latestOrderDate]);
 
   const calculateTimeLeft = () => {
+    if (!endTime) return {};
+
     const now = new Date().getTime();
     const difference = endTime - now;
 
