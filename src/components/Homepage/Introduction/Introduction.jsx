@@ -11,15 +11,14 @@ const Introduction = () => {
     <div className={styles.introduction}>
       <div className={styles.hero}>
         <h1 className={styles.entryTitle}>
-          Twój prezent dla bliskich i dla przyszłości!
+          Twój prezent dla bliskich i&nbsp;dla przyszłości!
         </h1>
         <p className={styles.entry}>
-          Podaruj wyjątkowy prezent, który ma znaczenie - zasadź drzewo w jednym
-          z dostępnych miejsc, wybierz spośród pięciu różnych gatunków drzew i
-          spersonalizuj tabliczkę z dedykacją. Każde drzewo to nowe życie, które
-          pomaga w walce ze zmianami klimatu. Pomóż nam poprawiać jakość
-          powietrza i stworzyć nowy wspaniały zielony zakątek. Wybierz
-          lokalizację i zobacz, jak Twoje drzewo rośnie i przynosi korzyści dla
+          Podaruj wyjątkowy prezent, który ma znaczenie - zasadź drzewo w&nbsp;jednym
+          z&nbsp;dostępnych miejsc, wybierz spośród pięciu różnych gatunków drzew i&nbsp;          spersonalizuj tabliczkę z dedykacją. Każde drzewo to nowe życie, które
+          pomaga w&nbsp;walce ze zmianami klimatu. Pomóż nam poprawiać jakość
+          powietrza i&nbsp;stworzyć nowy wspaniały zielony zakątek. Wybierz
+          lokalizację i&nbsp;zobacz, jak Twoje drzewo rośnie i&nbsp;przynosi korzyści dla
           wszystkich! Twój prezent to więcej niż drzewo - to przyszłość dla nas
           wszystkich!
         </p>

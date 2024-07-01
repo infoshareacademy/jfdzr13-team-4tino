@@ -49,3 +49,6 @@ The designs were created to the following widths:
 
 - font-size: 18px;
 - font-weight: bold;
+
+## paragraph - homepage
+- font-size: clamp(1.125rem, 0.8387rem + 0.4469vw, 1.375rem); (font 18-22px/ viewport 1025-1920px)

@@ -29,8 +29,8 @@ const WhyTrustUs = () => {
               <div className={styles.paragraphs}>
                 <p className={styles.highlight}>PROSTOTA</p>
                 <p>
-                  Sadzenie drzewa jako prezent jeszcze nigdy nie było tak proste
-                  i przyjemne.
+                  Sadzenie drzewa jako prezent jeszcze nigdy nie&nbsp;było tak proste
+                  i&nbsp;przyjemne.
                 </p>
               </div>
             </div>
@@ -86,7 +86,7 @@ const WhyTrustUs = () => {
               <div className={styles.paragraphs}>
                 <p className={styles.highlight}>DŁUGOTERMINOWY WPŁYW</p>
                 <p>
-                  Każde drzewo, które sadzimy, to inwestycja w przyszłe
+                  Każde drzewo, które sadzimy, to inwestycja w&nbsp;przyszłe
                   pokolenia.
                 </p>
               </div>
@@ -104,8 +104,8 @@ const WhyTrustUs = () => {
               <div className={styles.paragraphs}>
                 <p className={styles.highlight}>PARTNERSKIE PODEJŚCIE</p>
                 <p>
-                  Współpracujemy z lokalnymi organizacjami i instytucjami, aby
-                  nasze drzewa rosły w odpowiednich warunkach.
+                  Współpracujemy z lokalnymi organizacjami i&nbsp;instytucjami, aby
+                  nasze drzewa rosły w&nbsp;odpowiednich warunkach.
                 </p>
               </div>
             </div>
@@ -123,7 +123,7 @@ const WhyTrustUs = () => {
                 <p className={styles.highlight}>CERTYFIKAT</p>
                 <p>
                   Do każdego posadzonego drzewa dołączamy certyfikat
-                  potwierdzający Twoje wsparcie dla środowiska.
+                  potwierdzający Twoje wsparcie dla&nbsp;środowiska.
                 </p>
               </div>
             </div>
