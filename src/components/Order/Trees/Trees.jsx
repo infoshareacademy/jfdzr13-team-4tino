@@ -14,13 +14,12 @@ import { db } from "../../../firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { TERipple } from "tw-elements-react";
 
-
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
       className={className}
-      style={{ ...style, display: "block" }}
+      style={{ ...style, display: "block", right: "-35px" }}
       onClick={onClick}
     />
   );
@@ -31,7 +30,7 @@ function SamplePrevArrow(props) {
   return (
     <div
       className={className}
-      style={{ ...style, display: "block" }}
+      style={{ ...style, display: "block", left: "-35px" }}
       onClick={onClick}
     />
   );
@@ -102,18 +101,16 @@ function SimpleSlider({ onSelectTree }) {
                 <p className={styles.desc}>{tree.description}</p>
                 <b>Cena : {tree.price} zł</b>
                 <div className={styles.price}>
-                  <p>
-                    
-                  </p>
+                  <p></p>
                   <TERipple rippleColor="light">
                     <button
-                        type="button"
-                        onClick={() => onSelectTree(tree)}
-                        className={`buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active m-5`}
+                      type="button"
+                      onClick={() => onSelectTree(tree)}
+                      className={`buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active m-5`}
                     >
-                        Dodaj do koszyka
+                      Dodaj do koszyka
                     </button>
-                    </TERipple>
+                  </TERipple>
                 </div>
               </div>
             </div>
@@ -129,6 +126,10 @@ const Trees = ({ onSelectTree }) => {
     <div className={styles.trees}>
       <h2>Wybierz swoje drzewo</h2>
       <SimpleSlider onSelectTree={onSelectTree} />
+      <div className={styles.disclaimer}>
+        <p className={styles.warning}>Uwaga!</p> Cena drzewa zawiera opłatę za
+        zasadzenie, tabliczkę oraz wykonanie dedykacji.
+      </div>
     </div>
   );
 };
