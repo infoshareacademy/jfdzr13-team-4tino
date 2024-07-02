@@ -51,6 +51,7 @@ const OrderTable = ({ onUpdateLatestOrderDate }) => {
           tablet: doc.data().tablet,
           dedication: doc.data().dedication,
           location: doc.data().location,
+          payment: doc.data().payment,
         }));
 
         ordersList.sort((a, b) => b.time - a.time);
@@ -69,13 +70,14 @@ const OrderTable = ({ onUpdateLatestOrderDate }) => {
   }, [user, onUpdateLatestOrderDate]);
 
   useEffect(() => {
-    initTWE({ Ripple, Tooltip});
+    initTWE({ Ripple, Tooltip });
   }, []);
 
   const handleCancelOrder = async (id) => {
     try {
       const orderRef = doc(db, "orders", id);
       await updateDoc(orderRef, {
+        payment: "zwrócona",
         status: "anulowane przez Klienta",
       });
 
@@ -87,7 +89,7 @@ const OrderTable = ({ onUpdateLatestOrderDate }) => {
         )
       );
 
-      toast.success("Zgłoszono anulację zamówienia. Czekaj na potwierdzenie anulacji.", {
+      toast.success("Zgłoszono anulację zamówienia. Płatność zostanie zwrócona do 14 dni.", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: true,
@@ -116,6 +118,7 @@ const OrderTable = ({ onUpdateLatestOrderDate }) => {
             <th>Tabliczka</th>
             <th>Dedykacja</th>
             <th>Lokalizacja</th>
+            <th>Płatność</th>
             <th>Anuluj</th>
           </tr>
         </thead>
@@ -134,6 +137,7 @@ const OrderTable = ({ onUpdateLatestOrderDate }) => {
               <td>{order.tablet}</td>
               <td>{order.dedication}</td>
               <td>{order.location}</td>
+              <td>{order.payment}</td>
               <td>
                 {order.status === "przyjęto do realizacji" && (
                   <button
