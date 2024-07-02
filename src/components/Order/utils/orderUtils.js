@@ -40,6 +40,7 @@ export const addOrderToFirestore = async (
       // lastName: user.lastName,
       date: time,
       status: "przyjęto do realizacji",
+      payment: "zrealizowano",
       price: selectedTree.price,
       tree: selectedTree.name,
       tablet: selectedTablet.name,
@@ -61,11 +62,12 @@ export const addOrderToFirestore = async (
 const generateOrderId = async () => {
   try {
     const ordersSnapshot = await getDocs(collection(db, "orders"));
-    const count = ordersSnapshot.size + 1;
-    const now = new Date();
-    const month = now.getMonth() + 1;
-    const year = now.getFullYear().toString().slice(-2);
-    return `${count}${month < 10 ? "0" + month : month}${year}`;
+    const count = ordersSnapshot.size + 11111;
+    // const now = new Date();
+    // const month = now.getMonth() + 1;
+    // const year = now.getFullYear().toString().slice(-2);
+    // return `${count}${month < 10 ? "0" + month : month}${year}`;
+    return count
   } catch (error) {
     console.error("Błąd podczas sklejania id", error);
     throw error;

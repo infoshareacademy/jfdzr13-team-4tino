@@ -3,7 +3,7 @@
     border-collapse: separate;
     border-spacing: 0;
     margin: 40px 0;
-    font-size: 16px;
+    font-size: 12px;
     text-align: left;
     border-radius: 15px;
     overflow: hidden;
@@ -19,6 +19,9 @@
 
 .orderTable th {
     text-align: center;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
 }
 
 .orderTable thead {
@@ -58,7 +61,7 @@
     padding: 0px;
     margin: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 12px;
     border-radius: 50%;
     font-weight: bold;
 }
@@ -66,4 +69,22 @@
 .deleteButton:hover {
     background-color: #cf1313;
     transform: scale(1.2);
+}
+
+.orderTable th::after {
+    content: "";
+    position: absolute;
+    right: 8px;
+}
+
+:disabled {
+    color: #cf1313;
+}
+
+.statusDropdown.disabled {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    pointer-events: none;
+    background-color: #ffffff00;
 }
