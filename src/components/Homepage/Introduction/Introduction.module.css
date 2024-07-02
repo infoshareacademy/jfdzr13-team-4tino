@@ -11,12 +11,11 @@
 }
 
 .hero {
-  width: 40%;
+  width: 35%;
   height: 700px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 50px;
   margin-left: 5%;
   margin-right: 18px;
 }
@@ -33,13 +32,15 @@
   line-height: 1.5;
   font-weight: normal;
   color: black;
+  margin-top: 30px;
 }
 
 .map {
-  width: 45%;
-  height: 700px;
+  width: 55%;
+  min-height: 600px;
   background-color: gray;
   margin-right: 5%;
+  margin-left: 20px;
   border-radius: 30px;
   overflow: hidden;
 }

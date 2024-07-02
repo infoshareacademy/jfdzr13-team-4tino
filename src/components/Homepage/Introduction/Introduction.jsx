@@ -15,7 +15,7 @@ const Introduction = () => {
         </h1>
         <p className={styles.entry}>
           Podaruj wyjątkowy prezent, który ma znaczenie - zasadź drzewo w&nbsp;jednym
-          z&nbsp;dostępnych miejsc, wybierz spośród pięciu różnych gatunków drzew i&nbsp;          spersonalizuj tabliczkę z dedykacją. Każde drzewo to nowe życie, które
+          z&nbsp;dostępnych miejsc, wybierz spośród pięciu różnych gatunków drzew i&nbsp;spersonalizuj tabliczkę z&nbsp;dedykacją. Każde drzewo to nowe życie, które
           pomaga w&nbsp;walce ze zmianami klimatu. Pomóż nam poprawiać jakość
           powietrza i&nbsp;stworzyć nowy wspaniały zielony zakątek. Wybierz
           lokalizację i&nbsp;zobacz, jak Twoje drzewo rośnie i&nbsp;przynosi korzyści dla
