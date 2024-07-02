@@ -34,35 +34,25 @@
   background-color: #ffffff;
 }
 
-.orderTable td button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.orderTable td .deleteButton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
+.cancelButton,
 .deleteButton {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   background-color: #d03030;
   color: white;
   border: none;
   padding: 0px;
-  margin: 5px;
+  margin: 0 auto;
   cursor: pointer;
   font-size: 16px;
   border-radius: 50%;
   font-weight: bold;
 }
 
+.cancelButton:hover,
 .deleteButton:hover {
   background-color: #cf1313;
   transform: scale(1.2);

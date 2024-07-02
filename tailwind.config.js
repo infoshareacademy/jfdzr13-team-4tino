@@ -11,6 +11,7 @@ module.exports = {
                 'custom-green-hover': '#57ab27',
                 'custom-green-active': '#57ab27',
                 'icon-green': '#ddebce',
+                'symbol-green': '#B8D698',
             },
             boxShadow: {
                 'inset-custom': 'inset 0 0 0 2px #5da746',
