@@ -19,6 +19,7 @@ const Navbar = () => {
 
   useEffect(() => {
     setIsMenuVisible(false);
+    setIsHovered(false);
     setTimeout(() => {
       setIsLoading(false);
     }, 5000);
@@ -28,15 +29,22 @@ const Navbar = () => {
     if (timerRef.current) {
       clearTimeout(timerRef.current);
     }
-    setIsHovered(true); // Zmień stan isHovered na true
+    setIsHovered(true);
     setIsMenuVisible(true);
   };
 
   const handleMouseLeave = () => {
     timerRef.current = setTimeout(() => {
-      setIsHovered(false); // Zmień stan isHovered na false
+      setIsHovered(false);
       setIsMenuVisible(false);
-    }, 500); //czas po którym menu znika
+    }, 500);
+  };
+
+  const getUserIcon = () => {
+    if (user) {
+      return isHovered ? userIconHover : userIcon;
+    }
+    return userIcon;
   };
 
   return (
@@ -63,7 +71,7 @@ const Navbar = () => {
                 onMouseLeave={handleMouseLeave}
               >
                 <img
-                  src={isHovered ? userIconHover : userIcon}
+                  src={getUserIcon()}
                   alt="user"
                   className={styles.userIcon}
                 />
@@ -82,7 +90,7 @@ const Navbar = () => {
                   <TERipple rippleColor="light">
                     <button
                       type="button"
-                      className="buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-black shadow-inset-custom bg-white hover:bg-custom-green-hover hover:text-white focus:bg-custom-green-hover focus:ring-0 active:bg-custom-green-active mt-0 ml-5"
+                      className="buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-black shadow-inset-custom bg-white hover:bg-custom-green-hover hover:text-white active:bg-custom-green-active mt-0 ml-5"
                     >
                       Zaloguj się
                     </button>
