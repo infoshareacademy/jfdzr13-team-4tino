@@ -46,7 +46,7 @@
   align-items: center;
 }
 
-.deleteButton {
+.cancelButton {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,7 +63,7 @@
   font-weight: bold;
 }
 
-.deleteButton:hover {
+.cancelButton:hover {
   background-color: #cf1313;
   transform: scale(1.2);
 }
