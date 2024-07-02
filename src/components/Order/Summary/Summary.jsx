@@ -16,6 +16,11 @@ const Summary = ({ clearSelections }) => {
   const [blikCode, setBlikCode] = useState("");
   const [orderPlaced, setOrderPlaced] = useState(false);
 
+  const handleInputChange = (e) => {
+    const inputValue = e.target.value.slice(0, 6);
+    setBlikCode(inputValue);
+  };
+
   const handleOrder = async () => {
     try {
       await addOrderToFirestore(
@@ -98,9 +103,10 @@ const Summary = ({ clearSelections }) => {
               <input
                 className={styles.code}
                 type="number"
-                maxLength="6"
+                min="1"
+                max="999999"
                 value={blikCode}
-                onChange={(e) => setBlikCode(e.target.value)}
+                onChange={handleInputChange}
               />
             </div>
             <p className={styles.info}>
@@ -109,7 +115,7 @@ const Summary = ({ clearSelections }) => {
             </p>
             <div className={styles.controls}>
               <Link to="/order">
-                <button className={styles.cancel}>Back</button>
+                <button className={styles.cancel}>Powrót</button>
               </Link>
               <button
                 onClick={shouldPass}

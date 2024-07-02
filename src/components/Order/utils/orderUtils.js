@@ -48,11 +48,11 @@ export const addOrderToFirestore = async (
       location: selectedLocation,
     });
 
-    toast.success("Zamówienie złożone pomyślnie", {
-      hideProgressBar: true,
-      style: { marginTop: "120px" },
-      autoClose: 3000,
-    });
+    // toast.success("Zamówienie złożone pomyślnie", {
+    //   hideProgressBar: true,
+    //   style: { marginTop: "120px" },
+    //   autoClose: 3000,
+    // });
   } catch (error) {
     console.error("Błąd podczas dodawania:", error);
     throw error;
@@ -67,7 +67,7 @@ const generateOrderId = async () => {
     // const month = now.getMonth() + 1;
     // const year = now.getFullYear().toString().slice(-2);
     // return `${count}${month < 10 ? "0" + month : month}${year}`;
-    return count
+    return count;
   } catch (error) {
     console.error("Błąd podczas sklejania id", error);
     throw error;
