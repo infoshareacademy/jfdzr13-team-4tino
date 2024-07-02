@@ -5,13 +5,13 @@ import { useUser } from '../../context/UserContext/UserContext';
 const UserProtectedRoute = ({ children }) => {
     const { user } = useUser();
 
-    if (user.email != 'admin@admin.com') {
-        // Użytkownik nie jest administratorem
-        return children;
-    }
     if (!user) {
         // Użytkownik nie jest zalogowany
         return <Navigate to="/login" />;
+    }
+    if (user.email != 'admin@admin.com') {
+        // Użytkownik nie jest administratorem
+        return children;
     }
     else {
         // Użytkownik jest administratorem
