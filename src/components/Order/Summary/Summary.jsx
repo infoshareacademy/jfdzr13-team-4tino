@@ -61,6 +61,10 @@ const Summary = ({ clearSelections }) => {
               <img src={Blik} alt="Blik" />
               <input className={styles.code} />
             </div>
+            <p className={styles.info}>
+              Potwierdzenie złożenia zamówienia zostanie wysłane na twojego
+              maila po zaksięgowaniu wpłaty.
+            </p>
             <div className={styles.controls}>
               <Link to="/order">
                 <button className={styles.cancel}>Powrót</button>
