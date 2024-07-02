@@ -11,11 +11,13 @@
 }
 
 .hero {
-  width: 35%;
+  width: 40%;
+  /* width: 35%; */
   height: 700px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  gap: 50px;
   margin-left: 5%;
   margin-right: 18px;
 }
@@ -36,6 +38,15 @@
 }
 
 .map {
+  width: 45%;
+  height: 700px;
+  background-color: gray;
+  margin-right: 5%;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+/* .map {
   width: 55%;
   min-height: 600px;
   background-color: gray;
@@ -43,7 +54,7 @@
   margin-left: 20px;
   border-radius: 30px;
   overflow: hidden;
-}
+} */
 
 .button {
   display: flex;
