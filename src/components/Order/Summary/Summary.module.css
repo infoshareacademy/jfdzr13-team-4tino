@@ -1,7 +1,7 @@
 .summary {
   margin-top: 100px;
   width: 100%;
-  height: calc(100vh - 100px);
+  min-height: calc(100vh - 100px);
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -108,6 +108,7 @@
 }
 .code {
   -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 .controls {
@@ -120,8 +121,10 @@
   border-radius: 10px;
 }
 .cancel {
-  background-color: red;
+  background-color: rgb(141, 192, 96);
   color: white;
+  padding: 15px 50px;
+  border-radius: 10px;
 }
 .confirm {
   background-color: rgb(87, 171, 39);
@@ -139,3 +142,4 @@
   cursor: not-allowed;
   opacity: 0.7;
 }
+/* disabled - nie działa ^ */

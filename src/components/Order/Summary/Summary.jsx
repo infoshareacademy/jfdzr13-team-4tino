@@ -114,22 +114,24 @@ const Summary = ({ clearSelections }) => {
               zaksięgowaniu wpłaty.
             </p>
             <div className={styles.controls}>
-              <Link to="/order">
-                <button className={styles.cancel}>Powrót</button>
-              </Link>
               <button
                 onClick={shouldPass}
-                className={`${styles.confirm} ${
-                  orderPlaced && styles.disabled
-                }`}
+                className={`buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active m-5`}
                 disabled={orderPlaced}
               >
-                Order
+                Zamów
               </button>
             </div>
           </div>
         </div>
       </div>
+      <Link to="/order">
+        <button
+          className={`buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green-alt hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active m-5`}
+        >
+          Powrót
+        </button>
+      </Link>
     </div>
   );
 };
