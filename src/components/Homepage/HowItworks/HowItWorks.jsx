@@ -11,13 +11,13 @@ const HowItWorks = () => {
             <img src={obrazek} alt="dziewczynka z sadzonką" className={styles.photo}/>
         </div>
         <div className={styles.paragraphs}>
-          <p><span className={styles.highlight}>Wybierz drzewo:</span> skorzystaj z naszej ofert i zdecyduj, które drzewo najlepiej Tobie pasuje.</p>
-          <p><span className={styles.highlight}>Wybierz tabliczkę:</span> posiadamy szeroki asortyment różnych tabliczek, na pewno znajdziesz coś dla siebie.</p>
-          <p><span className={styles.highlight}>Napisz dedykację:</span> wybierz jedną z naszych propozycji lub napisz coś od serca.</p>
-          <p><span className={styles.highlight}>Wybierz lokalizację:</span> posiadamy różne lokalizacje w całym kraju.</p>
+          <p><span className={styles.highlight}>Wybierz drzewo:</span> skorzystaj z&nbsp;naszej ofert i&nbsp;zdecyduj, które drzewo najlepiej Tobie pasuje.</p>
+          <p><span className={styles.highlight}>Wybierz tabliczkę:</span> posiadamy szeroki asortyment różnych tabliczek, na&nbsp;pewno znajdziesz coś dla siebie.</p>
+          <p><span className={styles.highlight}>Napisz dedykację:</span> wybierz jedną z&nbsp;naszych propozycji lub&nbsp;napisz coś od&nbsp;serca.</p>
+          <p><span className={styles.highlight}>Wybierz lokalizację:</span> posiadamy różne lokalizacje w&nbsp;całym kraju.</p>
           <p><span className={styles.highlight}>Kup drzewo:</span> My zasadzimy je za Ciebie w wybranej lokalizacji.</p>
           <p><span className={styles.highlight}>Gotowe,</span> zielona przyszłość zaczyna się tutaj! </p>
-          <p><span className={styles.highlight}>Uwaga!</span> Kolejne drzewko możesz nabyć dopiero za 3 miesiące, więc dobrze przemyśl kogo chcesz obdarować ;)</p>
+          <p><span className={styles.highlight}>Uwaga!</span> Kolejne drzewko możesz nabyć dopiero za 3&nbsp;miesiące, więc dobrze przemyśl kogo chcesz obdarować&nbsp;😉</p>
         </div>
       </div>
     </div>
