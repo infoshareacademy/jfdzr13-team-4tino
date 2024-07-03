@@ -27,9 +27,9 @@ const Basket = ({
             const currentDate = new Date();
             const daysDiff =
               (currentDate - lastOrderDate) / (1000 * 60 * 60 * 24);
-            if (daysDiff < 30) {
+            if (daysDiff < 90) {
               setIsAllowedToProceed(false);
-              setDaysRemaining(30 - Math.floor(daysDiff));
+              setDaysRemaining(90 - Math.floor(daysDiff));
             } else {
               setIsAllowedToProceed(true);
             }
