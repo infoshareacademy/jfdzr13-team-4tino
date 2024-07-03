@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { db, useAuth } from '../../firebase';
 import styles from './AdminDashboard.module.css';
 import AdminOrderTable from './AdminOrderTable/AdminOrderTable';
+import { toast } from 'react-toastify';
 
 
 const AdminDashboard = () => {
@@ -68,6 +69,9 @@ const AdminDashboard = () => {
             <div className={styles.panel}>
                 <Link to="/admin" className={styles.link}>
                     <p className={styles.orderText}>Zamówienia</p>
+                </Link>
+                <Link to="/admin/stats" className={styles.link}>
+                    <p className={styles.dataText}>Statystyki</p>
                 </Link>
             </div>
             <div className={styles.main}>

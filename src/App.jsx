@@ -14,7 +14,9 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import Register from "./components/Register/Register";
 import ScrollToTop from "./components/ScrollToTop";
 import UserProtectedRoute from "./components/UserProtectedRoute/UserProtectedRoute";
+import AdminStats from "./components/AdminDashboard/AdminStats/AdminStats";
 import './tailwind.css';
+
 function App() {
   return (
     <Router>
@@ -28,6 +30,7 @@ function App() {
           <Route path="/passwordReminder" element={<PasswordReminder />} />
           <Route path="/order" element={<Order />} />
           <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
+          <Route path="/admin/stats" element={<ProtectedRoute><AdminStats /></ProtectedRoute>} />
           <Route path="/user" element={<UserProtectedRoute><CustomerDashboard /></UserProtectedRoute>} />
           <Route path="/user/data" element={<UserProtectedRoute><CustomerDataEdit /></UserProtectedRoute>} />
           <Route path="/order/summary" element={<UserProtectedRoute><Summary /></UserProtectedRoute>} />
