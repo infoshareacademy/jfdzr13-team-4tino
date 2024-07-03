@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { useUser } from "../../../context/UserContext/UserContext";
 import "react-toastify/dist/ReactToastify.css";
 import { TERipple } from "tw-elements-react";
-import { getLastOrderDate } from "../../Order/utils/lastOrder.js";
+import { getLastOrderDate } from "../../Order/utils/lastOrder";
 
 const Basket = ({
   selectedTree,
@@ -16,16 +16,34 @@ const Basket = ({
   const navigate = useNavigate();
   const { user } = useUser();
   const [isAllowedToProceed, setIsAllowedToProceed] = useState(true);
+  const [daysRemaining, setDaysRemaining] = useState(0);
 
   useEffect(() => {
     const checkLastOrderDate = async () => {
       if (user && user.email) {
-        const lastOrderDate = await getLastOrderDate(user.email);
-        if (lastOrderDate) {
-          const currentDate = new Date();
-          const daysDiff =
-            (currentDate - lastOrderDate) / (1000 * 60 * 60 * 24);
-          setIsAllowedToProceed(daysDiff >= 30);
+        try {
+          const lastOrderDate = await getLastOrderDate(user.email);
+          if (lastOrderDate) {
+            const currentDate = new Date();
+            const daysDiff =
+              (currentDate - lastOrderDate) / (1000 * 60 * 60 * 24);
+            if (daysDiff < 30) {
+              setIsAllowedToProceed(false);
+              setDaysRemaining(30 - Math.floor(daysDiff));
+            } else {
+              setIsAllowedToProceed(true);
+            }
+          }
+        } catch (error) {
+          console.error("Error fetching last order date:", error);
+          toast.error(
+            "Wystąpił problem podczas sprawdzania daty ostatniego zamówienia.",
+            {
+              autoClose: 3000,
+              hideProgressBar: true,
+              style: { marginTop: "120px" },
+            }
+          );
         }
       }
     };
@@ -45,9 +63,9 @@ const Basket = ({
 
     if (!isAllowedToProceed) {
       toast.error(
-        "Musisz poczekać 30 dni od ostatniego zamówienia, aby złożyć kolejne",
+        `Musisz poczekać ${daysRemaining} dni aby złożyć kolejne zamówienie`,
         {
-          autoClose: 10000,
+          autoClose: 5000,
           hideProgressBar: true,
           style: { marginTop: "120px" },
         }
