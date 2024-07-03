@@ -115,3 +115,105 @@ input[type="password"] {
 .buttonCss {
   display: block;
 }
+
+/* style mobilne telefony kom */
+@media (max-width: 767px) {
+  .registerModule {
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    padding: 20px;
+  }
+
+  .registerForm {
+    width: 100%;
+    padding: 15px;
+    border-radius: 20px;
+  }
+
+  .welcomeTitle {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .registerTitle {
+    font-size: 30px;
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  .loginLink {
+    float: none;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .form input {
+    margin-bottom: 12px;
+    width: 100%;
+  }
+
+  .buttonContainer {
+    justify-content: center;
+  }
+
+  .buttonCss {
+    width: 100%;
+  }
+
+  .togglePasswordButton img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* style mobilne tablety */
+@media (min-width: 768px) and (max-width: 1080px) {
+  .registerModule {
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    padding: 20px;
+  }
+
+  .registerForm {
+    width: 70%;
+    padding: 20px;
+    border-radius: 25px;
+  }
+
+  .welcomeTitle {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .registerTitle {
+    font-size: 35px;
+    margin-top: 35px;
+    text-align: center;
+  }
+
+  .loginLink {
+    float: none;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .form input {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .buttonContainer {
+    justify-content: center;
+  }
+
+  .buttonCss {
+    width: 100%;
+  }
+
+  .togglePasswordButton img {
+    width: 28px;
+    height: 28px;
+  }
+}
