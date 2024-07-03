@@ -1,16 +1,25 @@
 import React, { useState } from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import { useUser } from "../../../context/UserContext/UserContext";
 import { addOrderToFirestore } from "../utils/orderUtils";
 import styles from "./Summary.module.css";
 import Blik from "../../../assets/blik.png";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Summary = ({ clearSelections }) => {
+  const navigate = useNavigate();
   const { state } = useLocation();
   const { selectedTree, selectedTablet, selectedLocation, selectedDedication } =
     state || {};
   const { user } = useUser();
+  const [blikCode, setBlikCode] = useState("");
   const [orderPlaced, setOrderPlaced] = useState(false);
+
+  const handleInputChange = (e) => {
+    const inputValue = e.target.value.slice(0, 6);
+    setBlikCode(inputValue);
+  };
 
   const handleOrder = async () => {
     try {
@@ -24,10 +33,41 @@ const Summary = ({ clearSelections }) => {
       clearSelections();
       setOrderPlaced(true);
     } catch (error) {
-      console.error("Błąd podczas składania zamówienia", error);
+      console.error("Błąd składania zamówienia", error);
     }
   };
 
+  const handleBlikValidation = () => {
+    if (!/^\d{6}$/.test(blikCode)) {
+      toast.error("Kod Blik musi składać się z sześciu cyfr.", {
+        style: { marginTop: "120px" },
+        autoClose: 3000,
+      });
+
+      return false;
+    }
+    return true;
+  };
+
+  const shouldPass = () => {
+    if (handleBlikValidation()) {
+      handleOrder();
+      toast.success(
+        <>
+          Zamówienie złożone pomyślnie!
+          <br />
+          Zostaniesz przekierowany na stronę główną za 10 sekund.
+        </>,
+        {
+          style: { marginTop: "120px" },
+          autoClose: 10000,
+          onClose: () => {
+            navigate("/user");
+          },
+        }
+      );
+    }
+  };
   return (
     <div className={styles.summary}>
       <div className={styles.details}>
@@ -44,7 +84,8 @@ const Summary = ({ clearSelections }) => {
                 <b>{selectedTablet?.name || "Brak wybranej tabliczki"}</b>
               </div>
               <div className={styles.item}>
-                Dedykacja :&nbsp;<b>{selectedDedication || "Brak dedykacji"}</b>
+                Dedykacja :&nbsp;
+                <b>{selectedDedication || "Brak dedykacji"}</b>
               </div>
               <div className={styles.item}>
                 Lokalizacja :&nbsp;
@@ -59,18 +100,24 @@ const Summary = ({ clearSelections }) => {
             <h1 className={styles.header}>Opłać zamówienie</h1>
             <div className={styles.blik}>
               <img src={Blik} alt="Blik" />
-              <input className={styles.code} />
+              <input
+                className={styles.code}
+                type="number"
+                min="1"
+                max="999999"
+                value={blikCode}
+                onChange={handleInputChange}
+              />
             </div>
+            <p className={styles.info}>
+              Potwierdzenie zamówienia zostanie wysłane na maila po
+              zaksięgowaniu wpłaty.
+            </p>
             <div className={styles.controls}>
-              <Link to="/order">
-                <button className={styles.cancel}>Powrót</button>
-              </Link>
               <button
-                onClick={handleOrder}
-                className={`${styles.confirm} ${
-                  orderPlaced && styles.disabled
-                }`}
-                // powinno zablokować przycisk :/
+                onClick={shouldPass}
+                className={`buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active m-5`}
+                disabled={orderPlaced}
               >
                 Zamów
               </button>
@@ -78,6 +125,13 @@ const Summary = ({ clearSelections }) => {
           </div>
         </div>
       </div>
+      <Link to="/order">
+        <button
+          className={`buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green-alt hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active m-5`}
+        >
+          Powrót
+        </button>
+      </Link>
     </div>
   );
 };

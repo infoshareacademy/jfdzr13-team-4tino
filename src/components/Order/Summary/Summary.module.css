@@ -1,7 +1,7 @@
 .summary {
   margin-top: 100px;
   width: 100%;
-  height: calc(100vh - 100px);
+  min-height: calc(100vh - 100px);
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -70,7 +70,7 @@
   align-items: center;
   margin: 20px 20px 20px 0;
   padding-left: 20px;
-  gap: 50px;
+  gap: 30px;
 }
 
 .money {
@@ -84,12 +84,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 50px;
+  gap: 20px;
 }
 
 .blik img {
   width: 200px;
   height: 100px;
+}
+.info {
+  width: 80%;
+  text-align: center;
 }
 .code {
   border: 1px solid black;
@@ -97,6 +101,16 @@
   height: 50px;
   text-align: center;
 }
+
+.code::-webkit-outer-spin-button,
+.code::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.code {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
 .controls {
   display: flex;
   justify-content: center;
@@ -107,8 +121,10 @@
   border-radius: 10px;
 }
 .cancel {
-  background-color: red;
+  background-color: rgb(141, 192, 96);
   color: white;
+  padding: 15px 50px;
+  border-radius: 10px;
 }
 .confirm {
   background-color: rgb(87, 171, 39);
@@ -126,3 +142,4 @@
   cursor: not-allowed;
   opacity: 0.7;
 }
+/* disabled - nie działa ^ */

@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Basket.module.css";
 import { toast } from "react-toastify";
+import { useUser } from "../../../context/UserContext/UserContext";
 import "react-toastify/dist/ReactToastify.css";
 
 const Basket = ({
@@ -11,14 +12,22 @@ const Basket = ({
   selectedDedication,
 }) => {
   const navigate = useNavigate();
+  const { user } = useUser();
 
   const handleProceed = () => {
-    if (!isComplete()) {
-      toast.error("Wymagane są wszystkie elementy zamówienia", {
-        position: "top-center",
+    if (!user || !user.email) {
+      toast.error("Musisz być zalogowany, aby kontynuować", {
         autoClose: 3000,
         hideProgressBar: true,
-        closeButton: false,
+        style: { marginTop: "120px" },
+      });
+      return;
+    }
+    if (!isComplete()) {
+      toast.error("Wymagane są wszystkie elementy zamówienia", {
+        autoClose: 3000,
+        hideProgressBar: true,
+        style: { marginTop: "120px" },
       });
       return;
     }
@@ -36,7 +45,6 @@ const Basket = ({
   const isComplete = () => {
     return (
       selectedTree && selectedTablet && selectedLocation && selectedDedication
-      // nie działa ^
     );
   };
 
@@ -80,7 +88,6 @@ const Basket = ({
         type="button"
         className="buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white bg-custom-green hover:bg-custom-green-hover focus:outline-none m-5"
         onClick={handleProceed}
-        disabled={!isComplete()}
       >
         Przejdź do potwierdzenia
       </button>
