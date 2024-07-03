@@ -8,7 +8,7 @@ import userIconHover from '../../assets/user2.svg';
 import { useUser } from '../../context/UserContext/UserContext';
 import Logout from '../Logout/Logout';
 import styles from "./Navbar.module.css";
-import Preloader from "./Preloader/Preloader";
+import PulsingBar from "./PulsingBar/PulsingBar";
 
 const Navbar = () => {
   const { user } = useUser();
@@ -24,6 +24,11 @@ const Navbar = () => {
       setIsLoading(false);
     }, 5000);
   }, [user]);
+
+  useEffect(() => {
+    // PulsingBar uruchomi się od razu po zamontowaniu komponentu
+    setIsLoading(true);
+  }, []);
 
   const handleMouseEnter = () => {
     if (timerRef.current) {
@@ -111,9 +116,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      {isLoading ? (
-        <Preloader className={styles.preloader} />
-      ) : null}
+      <PulsingBar />
     </div>
   );
 };
