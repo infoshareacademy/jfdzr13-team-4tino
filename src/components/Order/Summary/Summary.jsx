@@ -54,13 +54,13 @@ const Summary = ({ clearSelections }) => {
       handleOrder();
       toast.success(
         <>
-          Zamówienie złożone pomyślnie!
+          Dziękujemy! Zamówienie złożone pomyślnie.
           <br />
-          Zostaniesz przekierowany na stronę zamówień za 10 sekund.
+          Za 5 sekund zostaniesz przekierowany.
         </>,
         {
           style: { marginTop: "120px" },
-          autoClose: 10000,
+          autoClose: 5000,
           onClose: () => {
             navigate("/user");
           },
