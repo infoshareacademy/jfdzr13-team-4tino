@@ -56,7 +56,7 @@ const Summary = ({ clearSelections }) => {
         <>
           Zamówienie złożone pomyślnie!
           <br />
-          Zostaniesz przekierowany na stronę główną za 10 sekund.
+          Zostaniesz przekierowany na stronę zamówień za 10 sekund.
         </>,
         {
           style: { marginTop: "120px" },

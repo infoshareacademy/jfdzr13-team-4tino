@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Basket.module.css";
 import { toast } from "react-toastify";
 import { useUser } from "../../../context/UserContext/UserContext";
 import "react-toastify/dist/ReactToastify.css";
 import { TERipple } from "tw-elements-react";
+import { getLastOrderDate } from "../../Order/utils/lastOrder";
 
 const Basket = ({
   selectedTree,
@@ -14,6 +15,41 @@ const Basket = ({
 }) => {
   const navigate = useNavigate();
   const { user } = useUser();
+  const [isAllowedToProceed, setIsAllowedToProceed] = useState(true);
+  const [daysRemaining, setDaysRemaining] = useState(0);
+
+  useEffect(() => {
+    const checkLastOrderDate = async () => {
+      if (user && user.email) {
+        try {
+          const lastOrderDate = await getLastOrderDate(user.email);
+          if (lastOrderDate) {
+            const currentDate = new Date();
+            const daysDiff =
+              (currentDate - lastOrderDate) / (1000 * 60 * 60 * 24);
+            if (daysDiff < 90) {
+              setIsAllowedToProceed(false);
+              setDaysRemaining(90 - Math.floor(daysDiff));
+            } else {
+              setIsAllowedToProceed(true);
+            }
+          }
+        } catch (error) {
+          console.error("Error fetching last order date:", error);
+          toast.error(
+            "Wystąpił problem podczas sprawdzania daty ostatniego zamówienia.",
+            {
+              autoClose: 3000,
+              hideProgressBar: true,
+              style: { marginTop: "120px" },
+            }
+          );
+        }
+      }
+    };
+
+    checkLastOrderDate();
+  }, [user]);
 
   const handleProceed = () => {
     if (!user || !user.email) {
@@ -24,6 +60,19 @@ const Basket = ({
       });
       return;
     }
+
+    if (!isAllowedToProceed) {
+      toast.error(
+        `Musisz poczekać ${daysRemaining} dni aby złożyć kolejne zamówienie`,
+        {
+          autoClose: 5000,
+          hideProgressBar: true,
+          style: { marginTop: "120px" },
+        }
+      );
+      return;
+    }
+
     if (!isComplete()) {
       toast.error("Wymagane są wszystkie elementy zamówienia", {
         autoClose: 3000,
@@ -89,7 +138,6 @@ const Basket = ({
         <button
           type="button"
           onClick={handleProceed}
-
           className={`buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active m-5`}
         >
           Przejdź do potwierdzenia
