@@ -1,13 +1,14 @@
-import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { collection, addDoc, getFirestore } from "firebase/firestore";
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useUser } from '../../context/UserContext/UserContext';
-import styles from "./Register.module.css";
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import showIcon from '../../assets/LoginRegister/show.svg';
 import hideIcon from '../../assets/LoginRegister/hide.svg';
 import { TERipple } from "tw-elements-react";
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { collection, addDoc, getFirestore } from "firebase/firestore";
+import styles from "./Register.module.css";
 
 function Register() {
     const [errors, setErrors] = useState({
@@ -26,9 +27,7 @@ function Register() {
     const navigate = useNavigate();
     const { user } = useUser();
 
- 
     useEffect(() => {
-        // Przekierowujemy na /admin, jeśli użytkownik jest już zalogowany i jest administratorem, jeśli nie, na homepage
         if (user) {
             if (user.email === 'admin@admin.com') {
                 navigate('/admin');
@@ -58,36 +57,31 @@ function Register() {
         if (!nameRegex.test(fields.firstName)) {
             newErrors.firstName = "Nieprawidłowe Imię";
             toast.error('Nieprawidłowe Imię', {
-                hideProgressBar: true,
-                style: { marginTop: '120px' }
+                toastId: 'firstNameError'
             });
         }
         if (!nameRegex.test(fields.lastName)) {
             newErrors.lastName = "Nieprawidłowe Nazwisko";
             toast.error('Nieprawidłowe Nazwisko', {
-                hideProgressBar: true,
-                style: { marginTop: '120px' }
+                toastId: 'lastNameError'
             });
         }
         if (!phoneRegex.test(fields.phone)) {
             newErrors.phone = "Nieprawidłowy numer telefonu";
             toast.error('Nieprawidłowy numer telefonu', {
-                hideProgressBar: true,
-                style: { marginTop: '120px' }
+                toastId: 'phoneError'
             });
         }
         if (!emailRegex.test(fields.email)) {
             newErrors.email = "Nieprawidłowy e-mail";
             toast.error('Nieprawidłowy e-mail', {
-                hideProgressBar: true,
-                style: { marginTop: '120px' }
+                toastId: 'emailError'
             });
         }
         if (!passwordRegex.test(fields.password)) {
             newErrors.password = "Błędne hasło";
             toast.error('Błędne hasło', {
-                hideProgressBar: true,
-                style: { marginTop: '120px' }
+                toastId: 'passwordError'
             });
         }
 
@@ -105,7 +99,6 @@ function Register() {
         const email = form.get("email");
         const password = form.get("password");
 
-        // Nowe błędy po walidacji
         const newErrors = validate({
             firstName,
             lastName,
@@ -114,15 +107,13 @@ function Register() {
             password
         });
 
-        // Sprawdzenie, czy są błędy
         if (Object.values(newErrors).some(error => error !== "")) {
             return;
         }
 
         if (password !== confirmPassword) {
             toast.error('Hasła nie pasują do siebie.', {
-                hideProgressBar: true,
-                style: { marginTop: '120px' }
+                toastId: 'passwordMismatchError'
             });
             return;
         }
@@ -134,15 +125,13 @@ function Register() {
                 phoneNumber: phone,
             });
             toast.success('Użytkownik został pomyślnie zarejestrowany!', {
-                hideProgressBar: true,
-                style: { marginTop: '120px' }
+                toastId: 'registrationSuccess'
             });
             await addDoc(collection(db, "users"), { firstName, lastName, phone, email, id: authUser.user.uid });
             navigate('/');
         } catch (error) {
             toast.error('Rejestracja nie powiodła się', {
-                hideProgressBar: true,
-                style: { marginTop: '120px' }
+                toastId: 'registrationError'
             });
         }
     };
@@ -211,6 +200,7 @@ function Register() {
                     </div>
                 </form>
             </div>
+            <ToastContainer position="top-right" autoClose={3000} hideProgressBar newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover style={{ marginTop: '120px' }} />
         </div>
     );
 }
