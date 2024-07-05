@@ -3,11 +3,10 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { TERipple } from "tw-elements-react";
 import { db } from "../../../firebase";
-import { collection, query, where, getDoc, getDocs, setDoc, doc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import {
   getAuth,
   EmailAuthProvider,
-  updateProfile,
   reauthenticateWithCredential,
   updatePassword,
 } from "firebase/auth";
@@ -25,57 +24,22 @@ const CustomerDataEdit = () => {
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [errors, setErrors] = useState({}); // Define errors state
+  const [errors, setErrors] = useState({});
 
-  // useEffect(() => {
-  //   const fetchAllUsers = async () => {
-  //     try {
-  //       const usersCollection = collection(db, "users");
-  //       const userSnapshot = await getDocs(usersCollection);
-  //       const usersList = userSnapshot.docs.map(doc => ({
-  //         id: doc.id,
-  //         ...doc.data()
-  //       }));
-  //       // console.log("All users:", usersList);
-  //       console.log()
-  //     } catch (error) {
-  //       console.error("Error fetching users data:", error);
-  //       toast.error(
-  //         `Wystąpił problem podczas pobierania danych użytkowników: ${error.message}`,
-  //         { hideProgressBar: true, style: { marginTop: "120px" } }
-  //       );
-  //     }
-
-  //   };
-  //   fetchAllUsers();
-  // }, []);
-
-  // Fetch current user's data from Firestore
   useEffect(() => {
     const fetchUserData = async () => {
       if (user) {
         try {
-          // const userDoc = await getDoc(doc(db, "users", user.uid));
-
-          const q = query(collection(db, "users"), where("id", "==", user.uid));
-          const querySnapshot = await getDocs(q);
-          querySnapshot.forEach((doc) => {
-            console.log(doc.id, " => ", doc.data());
-
-            const userData = doc.data();
+          const userDoc = await getDoc(doc(db, "users", user.uid));
+          if (userDoc.exists()) {
+            const userData = userDoc.data();
             setFirstName(userData.firstName);
             setLastName(userData.lastName);
             setPhone(userData.phone);
             setEmail(userData.email);
-          });
-
-          // if (querySnapshot) {
-          // const userData = doc.data();
-          // setFirstName(userData.firstName);
-          // setLastName(userData.lastName);
-          // setPhone(userData.phone);
-          // setEmail(userData.email);
-          // }
+          } else {
+            console.error("No user data found");
+          }
         } catch (error) {
           console.error("Error fetching user data:", error);
           toast.error(
@@ -124,73 +88,20 @@ const CustomerDataEdit = () => {
         style: { marginTop: "120px" },
       });
     }
-    if (fields.newPassword && !passwordRegex.test(fields.newPassword)) {
-      newErrors.newPassword = " ";
-      toast.error("Błędne hasło", {
-        hideProgressBar: true,
-        style: { marginTop: "120px" },
-      });
-    }
-    if (fields.newPassword !== fields.confirmPassword) {
-      newErrors.confirmPassword = " ";
-      toast.error("Hasła nie są zgodne!", {
-        hideProgressBar: true,
-        style: { marginTop: "120px" },
-      });
-    }
 
     setErrors(newErrors);
     return newErrors;
   };
 
-  const handleSubmit = async (e) => {
+  const updateUserData = async (e) => {
     e.preventDefault();
 
-    const fields = { firstName, lastName, phone, newPassword, confirmPassword };
-    const newErrors = validate(fields);
-
-    // Check if there are any validation errors
+    const newErrors = validate({ firstName, lastName, phone });
     if (Object.values(newErrors).some((error) => error !== "")) {
       return;
     }
 
     try {
-      // Update user data only if there are no validation errors
-      await updateUserData();
-
-      // Update password only if new password and current password are provided
-      if (newPassword && currentPassword) {
-        await updateUserPassword();
-      }
-
-      // Notify user of successful update
-      // toast.success('Dane zostały pomyślnie zaktualizowane!', { hideProgressBar: true, style: { marginTop: '120px' } });
-
-      // Update local state only if there are no validation errors
-      setFirstName(fields.firstName);
-      setLastName(fields.lastName);
-      setPhone(fields.phone);
-      setCurrentPassword("");
-      setNewPassword("");
-      setConfirmPassword("");
-    } catch (error) {
-      console.error("Error updating user data: ", error);
-      toast.error(
-        `Wystąpił błąd podczas aktualizacji danych użytkownika: ${error.message}`,
-        { hideProgressBar: true, style: { marginTop: "120px" } }
-      );
-    }
-  };
-
-  const updateUserData = async () => {
-    try {
-      // Update user data
-      await updateProfile(user, {
-        displayName: `${firstName} ${lastName}`,
-        phoneNumber: phone,
-      });
-
-      // Save changes to Firestore
       await setDoc(
         doc(db, "users", user.uid),
         {
@@ -202,61 +113,37 @@ const CustomerDataEdit = () => {
         { merge: true }
       );
 
-      toast.success("Dane zostały pomyślnie zaktualizowane!", {
+      toast.success("Dane użytkownika zostały zaktualizowane", {
         hideProgressBar: true,
         style: { marginTop: "120px" },
       });
-    } catch (error) {
-      console.error("Error updating user data: ", error);
-      toast.error(
-        `Wystąpił błąd podczas aktualizacji danych użytkownika: ${error.message}`,
-        { hideProgressBar: true, style: { marginTop: "120px" } }
-      );
-      throw error; // Throw error to handle it in handleSubmit
-    }
-  };
 
-  const updateUserPassword = async () => {
-    try {
-      // Reauthenticate user if current password is provided
-      if (currentPassword) {
+      if (newPassword) {
+        if (newPassword !== confirmPassword) {
+          toast.error("Hasła nie pasują do siebie", {
+            hideProgressBar: true,
+            style: { marginTop: "120px" },
+          });
+          return;
+        }
+
         const credential = EmailAuthProvider.credential(
           user.email,
           currentPassword
         );
         await reauthenticateWithCredential(user, credential);
-      }
-
-      // Update password if new password is provided
-      if (newPassword) {
         await updatePassword(user, newPassword);
-        toast.success("Hasło zostało pomyślnie zaktualizowane!", {
+
+        toast.success("Hasło zostało zaktualizowane", {
           hideProgressBar: true,
           style: { marginTop: "120px" },
         });
-        setCurrentPassword("");
-        setNewPassword("");
-        setConfirmPassword("");
       }
     } catch (error) {
-      if (error.code === "auth/too-many-requests") {
-        toast.error(
-          "Twoje konto zostało tymczasowo zablokowane z powodu zbyt wielu nieudanych prób logowania. Zresetuj swoje hasło lub spróbuj ponownie później.",
-          { hideProgressBar: true, style: { marginTop: "120px" } }
-        );
-      } else if (error.code === "auth/wrong-password") {
-        toast.error("Aktualne hasło jest nieprawidłowe.", {
-          hideProgressBar: true,
-          style: { marginTop: "120px" },
-        });
-      } else {
-        console.error("Error updating user password: ", error);
-        toast.error(
-          `Wystąpił błąd podczas aktualizacji hasła użytkownika: ${error.message}`,
-          { hideProgressBar: true, style: { marginTop: "120px" } }
-        );
-      }
-      throw error; // Throw error to handle it in handleSubmit
+      toast.error(`Aktualizacja danych nie powiodła się: ${error.message}`, {
+        hideProgressBar: true,
+        style: { marginTop: "120px" },
+      });
     }
   };
 
@@ -276,7 +163,7 @@ const CustomerDataEdit = () => {
         <h2 className={styles.h2}>Twoje dane</h2>
 
         <div className={styles.dataForm}>
-          <form className={styles.form} onSubmit={handleSubmit}>
+          <form className={styles.form} onSubmit={updateUserData}>
             <div className={styles.gridContainer}>
               <div className={styles.inputType}>
                 <p>Imię</p>
@@ -315,8 +202,7 @@ const CustomerDataEdit = () => {
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="Telefon"
                   required
-                  className={`${styles.klasa} ${errors.phone ? styles.fieldError : null
-                    }`}
+                  className={`${errors.phone ? styles.fieldError : null}`}
                 />
                 {errors.phone && (
                   <p className={styles.errorText}>{errors.phone}</p>
