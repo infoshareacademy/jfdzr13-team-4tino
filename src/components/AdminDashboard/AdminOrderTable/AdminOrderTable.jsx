@@ -64,8 +64,13 @@ const AdminOrderTable = () => {
     const handleStatusChange = async (id, newStatus) => {
         try {
             const orderDoc = doc(db, "orders", id);
-            await updateDoc(orderDoc, { status: newStatus });
-            setOrders(prevOrders => prevOrders.map(order => order.id === id ? { ...order, status: newStatus } : order));
+            const newPaymentStatus = newStatus === "anulowane przez Klienta" ? "zwrócona" : undefined;
+            const updateData = { status: newStatus };
+            if (newPaymentStatus) {
+                updateData.payment = newPaymentStatus;
+            }
+            await updateDoc(orderDoc, updateData);
+            setOrders(prevOrders => prevOrders.map(order => order.id === id ? { ...order, status: newStatus, payment: newPaymentStatus || order.payment } : order));
             console.log("Order status successfully updated!");
             toast.success('Status pomyślnie zmieniony', {
                 hideProgressBar: true,
@@ -87,6 +92,11 @@ const AdminOrderTable = () => {
             await deleteDoc(doc(db, "orders", id));
             setOrders(prevOrders => prevOrders.filter(order => order.id !== id));
             console.log("Order successfully deleted!");
+            toast.warning('Zamówienie usunięte!', {
+                hideProgressBar: true,
+                autoClose: 3000,
+                style: { marginTop: '120px' }
+            });
         } catch (error) {
             console.error("Error deleting order:", error);
         }

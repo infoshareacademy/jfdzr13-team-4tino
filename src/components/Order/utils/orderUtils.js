@@ -36,8 +36,7 @@ export const addOrderToFirestore = async (
     await addDoc(collectionRef, {
       orderId,
       email: user.email,
-      // name: user.firstName,
-      // lastName: user.lastName,
+
       date: time,
       status: "przyjęto do realizacji",
       payment: "zrealizowano",
@@ -47,12 +46,6 @@ export const addOrderToFirestore = async (
       dedication: selectedDedication,
       location: selectedLocation,
     });
-
-    // toast.success("Zamówienie złożone pomyślnie", {
-    //   hideProgressBar: true,
-    //   style: { marginTop: "120px" },
-    //   autoClose: 3000,
-    // });
   } catch (error) {
     console.error("Błąd podczas dodawania:", error);
     throw error;
@@ -62,12 +55,10 @@ export const addOrderToFirestore = async (
 const generateOrderId = async () => {
   try {
     const ordersSnapshot = await getDocs(collection(db, "orders"));
-    const count = ordersSnapshot.size + 11111;
-    // const now = new Date();
-    // const month = now.getMonth() + 1;
-    // const year = now.getFullYear().toString().slice(-2);
-    // return `${count}${month < 10 ? "0" + month : month}${year}`;
+    const count = ordersSnapshot.size + 1 + 11111;
+
     return count;
+
   } catch (error) {
     console.error("Błąd podczas sklejania id", error);
     throw error;
