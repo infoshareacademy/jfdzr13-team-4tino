@@ -31,7 +31,7 @@
 .paragraphs {
   margin: 0px 0px 0px 50px;
   font-size: clamp(1.125rem, 0.8387rem + 0.4469vw, 1.375rem);
-  display:flex;
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
   color: black;
