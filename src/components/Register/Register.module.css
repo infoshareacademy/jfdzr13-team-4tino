@@ -53,14 +53,16 @@
 .form input {
   margin-bottom: 9px;
 }
+.inputContainer input {
+  width: 100%;
+}
 
 .form input:first-of-type {
   margin-right: 10px;
 }
 
-.fieldError {
-  border: 1px solid red !important;
-  /* DO ZMIANY! - usunąć important */
+.form .fieldError {
+  border: 1px solid red;
 }
 
 input[name="name"],
