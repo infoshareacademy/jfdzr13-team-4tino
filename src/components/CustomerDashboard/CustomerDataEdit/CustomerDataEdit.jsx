@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { TERipple } from "tw-elements-react";
 import { db } from "../../../firebase";
-import { getDoc, setDoc, doc } from "firebase/firestore";
+import { collection, query, where, getDoc, getDocs, setDoc, doc } from "firebase/firestore";
 import {
   getAuth,
   EmailAuthProvider,
@@ -27,19 +27,55 @@ const CustomerDataEdit = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({}); // Define errors state
 
+  // useEffect(() => {
+  //   const fetchAllUsers = async () => {
+  //     try {
+  //       const usersCollection = collection(db, "users");
+  //       const userSnapshot = await getDocs(usersCollection);
+  //       const usersList = userSnapshot.docs.map(doc => ({
+  //         id: doc.id,
+  //         ...doc.data()
+  //       }));
+  //       // console.log("All users:", usersList);
+  //       console.log()
+  //     } catch (error) {
+  //       console.error("Error fetching users data:", error);
+  //       toast.error(
+  //         `Wystąpił problem podczas pobierania danych użytkowników: ${error.message}`,
+  //         { hideProgressBar: true, style: { marginTop: "120px" } }
+  //       );
+  //     }
+
+  //   };
+  //   fetchAllUsers();
+  // }, []);
+
   // Fetch current user's data from Firestore
   useEffect(() => {
     const fetchUserData = async () => {
       if (user) {
         try {
-          const userDoc = await getDoc(doc(db, "users", user.uid));
-          if (userDoc.exists()) {
-            const userData = userDoc.data();
+          // const userDoc = await getDoc(doc(db, "users", user.uid));
+
+          const q = query(collection(db, "users"), where("id", "==", user.uid));
+          const querySnapshot = await getDocs(q);
+          querySnapshot.forEach((doc) => {
+            console.log(doc.id, " => ", doc.data());
+
+            const userData = doc.data();
             setFirstName(userData.firstName);
             setLastName(userData.lastName);
             setPhone(userData.phone);
             setEmail(userData.email);
-          }
+          });
+
+          // if (querySnapshot) {
+          // const userData = doc.data();
+          // setFirstName(userData.firstName);
+          // setLastName(userData.lastName);
+          // setPhone(userData.phone);
+          // setEmail(userData.email);
+          // }
         } catch (error) {
           console.error("Error fetching user data:", error);
           toast.error(
@@ -279,9 +315,8 @@ const CustomerDataEdit = () => {
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="Telefon"
                   required
-                  className={`${styles.klasa} ${
-                    errors.phone ? styles.fieldError : null
-                  }`}
+                  className={`${styles.klasa} ${errors.phone ? styles.fieldError : null
+                    }`}
                 />
                 {errors.phone && (
                   <p className={styles.errorText}>{errors.phone}</p>
