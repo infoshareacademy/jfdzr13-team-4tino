@@ -55,9 +55,10 @@ export const addOrderToFirestore = async (
 const generateOrderId = async () => {
   try {
     const ordersSnapshot = await getDocs(collection(db, "orders"));
-    const count = ordersSnapshot.size + 11111;
+    const count = ordersSnapshot.size + 1 + 11111;
 
     return count;
+
   } catch (error) {
     console.error("Błąd podczas sklejania id", error);
     throw error;
