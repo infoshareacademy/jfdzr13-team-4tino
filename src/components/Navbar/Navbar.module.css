@@ -93,3 +93,102 @@
   margin-top: auto;
   padding: 20px;
 }
+.menuLinks {
+  display: flex;
+}
+
+/* style dla Tabletów */
+@media (min-width: 768px) and (max-width: 1080px) {
+  .navbar {
+    padding: 0 2%;
+  }
+
+  .bigIcon {
+    width: 140px;
+    height: 40px;
+  }
+
+  .navMenu {
+    display: flex;
+    gap: 2px;
+  }
+
+  .loginPanel {
+    display: flex;
+    gap: 5px;
+  }
+
+  .userIcon {
+    height: 32px;
+  }
+
+  .dropdownMenu {
+    min-width: 160px;
+    top: 35px;
+  }
+
+  .menuItem {
+    font-size: 17px;
+    padding: 10px 14px;
+  }
+}
+
+/* style dla Telefonow */
+@media (max-width: 767px) {
+  .navMenu {
+    display: none;
+  }
+
+  .mobileMenuIcon {
+    display: block;
+    cursor: pointer;
+    margin-left: auto;
+    padding: 15px;
+  }
+
+  .bar {
+    width: 35px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px 0;
+    transition: 0.4s;
+  }
+
+  .rotate {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  .rotateNeg {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+
+  .hide {
+    opacity: 0;
+  }
+
+  .navMenu.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    background-color: rgba(245, 245, 245, 0.663);
+    border-bottom: solid #5da746 1px;
+    top: 100px;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+  }
+
+  .navMenu.open .item {
+    padding: 10px 15px;
+    color: black;
+    font-size: 20px;
+    font-weight: 700;
+    transition: color 0.3s ease, background-color 0.3s ease;
+  }
+
+  .navMenu.open .item:hover {
+    color: #42811e;
+    background-color: rgba(245, 245, 245, 0);
+  }
+}

@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { HashLink as Link } from 'react-router-hash-link';
 import { TERipple } from "tw-elements-react";
-import '../.././tailwind.css';
 import tinoName from "../../assets/4tino-logo.png";
 import userIcon from "../../assets/user.svg";
 import userIconHover from '../../assets/user2.svg';
@@ -16,6 +15,7 @@ const Navbar = () => {
   const [isLoading, setIsLoading] = useState(true);
   const timerRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     setIsMenuVisible(false);
@@ -26,7 +26,6 @@ const Navbar = () => {
   }, [user]);
 
   useEffect(() => {
-    // PulsingBar uruchomi się od razu po zamontowaniu komponentu
     setIsLoading(true);
   }, []);
 
@@ -45,6 +44,14 @@ const Navbar = () => {
     }, 500);
   };
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   const getUserIcon = () => {
     if (user) {
       return isHovered ? userIconHover : userIcon;
@@ -58,16 +65,27 @@ const Navbar = () => {
         <Link to="/">
           <img className={styles.bigIcon} src={tinoName} alt="icon" />
         </Link>
-        <div className={styles.navMenu}>
-          <Link smooth to="/#howItWorks">
-            <p className={styles.item}>Jak to działa?</p>
-          </Link>
-          <Link smooth to="/#about">
-            <p className={styles.item}>O nas</p>
-          </Link>
-          <Link smooth to="/order">
-            <p className={styles.item}>Zamów</p>
-          </Link>
+
+        {/* Przycisk menu dla urządzeń mobilnych */}
+        
+        <div className={styles.mobileMenuIcon} onClick={toggleMobileMenu}>
+          <div className={`${styles.bar} ${isMobileMenuOpen ? styles.rotate : ''}`}></div>
+          <div className={`${styles.bar} ${isMobileMenuOpen ? styles.hide : ''}`}></div>
+          <div className={`${styles.bar} ${isMobileMenuOpen ? styles.rotateNeg : ''}`}></div> 
+        </div>
+        
+        {/* Menu nawigacyjne */}
+        
+          <div className={`${styles.navMenu} ${isMobileMenuOpen ? styles.open : ''}`}>
+            <Link smooth to="/#howItWorks">
+              <p className={styles.item}>Jak to działa?</p>
+            </Link>
+            <Link smooth to="/#about">
+              <p className={styles.item}>O nas</p>
+            </Link>
+            <Link smooth to="/order">
+              <p className={styles.item}>Zamów</p>
+            </Link>  
           <div className={styles.loginPanel}>
             {user ? (
               <div
