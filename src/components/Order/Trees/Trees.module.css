@@ -5,7 +5,8 @@
   align-items: center;
   gap: 50px;
   margin-top: 50px;
-  overflow: auto;
+  overflow: hidden;
+  padding-bottom: 20px;
 }
 
 .carousel {
@@ -73,4 +74,58 @@
 
 .warning {
   color: red;
+}
+
+/* Styl dla telefonów */
+@media (max-width: 767px) {
+  .slide {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-row-gap: 20px;
+    overflow: hidden;
+  }
+  .carousel {
+    width: 80%;
+  }
+
+  .info {
+    padding: 30px;
+    font-size: 16px;
+  }
+
+  .price {
+    font-size: 18px;
+  }
+  .img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px 15px 0 0;
+  }
+}
+
+/* Styl dla tabletów */
+@media (min-width: 768px) and (max-width: 1080px) {
+  .carousel {
+    width: 90%;
+  }
+
+  .slide {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-row-gap: 20px;
+  }
+
+  .info {
+    padding: 50px;
+    font-size: 18px;
+  }
+
+  .price {
+    font-size: 20px;
+  }
+  .img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px 15px 0 0;
+  }
 }
