@@ -37,7 +37,7 @@ const CustomerDashboard = () => {
       <div className={styles.main}>
         <h1 className={styles.h1}>Witaj {firstName} 😊</h1>
         <p>Cieszymy się, że z nami jesteś i&nbsp;pomagasz nam zmieniać świat na&nbsp;lepsze!</p>
-        <div>
+        <div className={styles.timer}>
           {/* Przekazanie latestOrderDate i setLatestOrderDate do OrderTable */}
           <CountDownTimer latestOrderDate={latestOrderDate} />
         </div>

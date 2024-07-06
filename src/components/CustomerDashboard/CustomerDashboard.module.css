@@ -126,6 +126,7 @@ body {
   .main p {
     margin-left: 170px;
   }
+
   .main p {
     width: 60vw;
   }
@@ -163,7 +164,7 @@ body {
 
   .main .h1,
   .main p {
-    margin-left: 20vw;
+    margin-left: 180px;
   }
   .main p {
     width: 70vw;

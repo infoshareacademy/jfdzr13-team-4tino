@@ -14,7 +14,6 @@ import { db } from "../../../firebase";
 import '../../../tailwind.css';
 import Tooltip from '../Tooltip';
 import styles from "./OrderTable.module.css";
-
 const formatDate = (date) => {
   const options = {
     year: "numeric",
@@ -23,20 +22,16 @@ const formatDate = (date) => {
   };
   return date.toLocaleDateString(undefined, options);
 };
-
 const OrderTable = ({ onUpdateLatestOrderDate }) => {
   const { user } = useUser();
   const [orders, setOrders] = useState([]);
-
   useEffect(() => {
     const fetchOrders = async () => {
       try {
         if (!user) return;
-
         const ordersRef = collection(db, "orders");
         const q = query(ordersRef, where("email", "==", user.email));
         const querySnapshot = await getDocs(q);
-
         const ordersList = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           orderId: doc.data().orderId,
@@ -49,22 +44,17 @@ const OrderTable = ({ onUpdateLatestOrderDate }) => {
           location: doc.data().location,
           payment: doc.data().payment,
         }));
-
         ordersList.sort((a, b) => b.time - a.time);
-
         if (ordersList.length > 0) {
           onUpdateLatestOrderDate(ordersList[0].time);
         }
-
         setOrders(ordersList);
       } catch (error) {
         console.error("Błąd pobierania zamówień", error);
       }
     };
-
     fetchOrders();
   }, [user, onUpdateLatestOrderDate]);
-
   const handleCancelOrder = async (id) => {
     try {
       const orderRef = doc(db, "orders", id);
@@ -72,7 +62,6 @@ const OrderTable = ({ onUpdateLatestOrderDate }) => {
         payment: "zwrócona",
         status: "anulowane przez Klienta",
       });
-
       setOrders((prevOrders) =>
         prevOrders.map((order) =>
           order.id === id
@@ -80,7 +69,6 @@ const OrderTable = ({ onUpdateLatestOrderDate }) => {
             : order
         )
       );
-
       toast.success("Zgłoszono anulację zamówienia. Płatność zostanie zwrócona do 14 dni.", {
         position: "top-right",
         autoClose: 5000,
@@ -90,15 +78,13 @@ const OrderTable = ({ onUpdateLatestOrderDate }) => {
           marginTop: "120px",
         },
       });
-
       console.log("Zamówienie zostało pomyślnie anulowane!");
     } catch (error) {
       console.error("Błąd podczas anulowania zamówienia:", error);
     }
   };
-
   return (
-    <div>
+    <div className={styles.tableContainer}>
       <table className={styles.orderTable}>
         <thead>
           <tr>
@@ -158,5 +144,4 @@ const OrderTable = ({ onUpdateLatestOrderDate }) => {
     </div>
   );
 };
-
 export default OrderTable;
