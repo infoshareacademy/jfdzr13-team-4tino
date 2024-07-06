@@ -23,7 +23,8 @@ export const getLastOrderDate = async (userEmail) => {
       const lastOrderDoc = querySnapshot.docs[0];
       const lastOrderData = lastOrderDoc.data();
       const lastOrderDate = lastOrderData.date.toDate();
-      return lastOrderDate;
+      const lastOrderStatus = lastOrderData.status; // Zakładamy, że status jest przechowywany w polu "status"
+      return { date: lastOrderDate, status: lastOrderStatus };
     } else {
       return null;
     }

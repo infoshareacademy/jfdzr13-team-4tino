@@ -1,28 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../../firebase';
 import CountDownTimer from './CountDownTimer/CountDownTimer';
 import styles from './CustomerDashboard.module.css';
 import OrderTable from './OrderTable/OrderTable';
+import { useUser } from '../../context/UserContext/UserContext';
 
 const CustomerDashboard = () => {
-  const { currentUser } = useAuth();
-  const [firstName, setFirstName] = useState('');
+  const { user, reloadUser } = useUser(); // Pobierz usera i funkcję reloadUser z kontekstu
   const [latestOrderDate, setLatestOrderDate] = useState(null);
 
   useEffect(() => {
-    const fetchUserData = async () => {
-      if (currentUser) {
-        try {
-          setFirstName(currentUser.displayName || 'User');
-        } catch (error) {
-          console.error('Błąd pobierania danych użytkownika: ', error);
-        }
-      }
-    };
-
-    fetchUserData();
-  }, [currentUser]);
+    // Sprawdź, czy użytkownik jest już zalogowany i czy ma ustawione dane, zanim wywołasz reloadUser
+    if (user && Object.keys(user).length === 0) {
+      reloadUser(); // Wywołaj reloadUser przy każdym montowaniu komponentu, jeśli user jest pusty
+    }
+  }, [reloadUser, user]);
 
   return (
     <div className={styles.container}>
@@ -35,7 +27,7 @@ const CustomerDashboard = () => {
         </Link>
       </div>
       <div className={styles.main}>
-        <h1 className={styles.h1}>Witaj {firstName} 😊</h1>
+        <h1 className={styles.h1}>Witaj {user?.firstName || ''} 😊</h1>
         <p>Cieszymy się, że z nami jesteś i&nbsp;pomagasz nam zmieniać świat na&nbsp;lepsze!</p>
         <div>
           {/* Przekazanie latestOrderDate i setLatestOrderDate do OrderTable */}

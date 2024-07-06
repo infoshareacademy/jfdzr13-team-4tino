@@ -22,10 +22,11 @@ const Basket = ({
     const checkLastOrderDate = async () => {
       if (user && user.email) {
         try {
-          const { date: lastOrderDate, status: lastOrderStatus } = await getLastOrderDate(user.email);
-          if (lastOrderDate) {
+          const lastOrder = await getLastOrderDate(user.email);
+          if (lastOrder) {
+            const { date: lastOrderDate, status: lastOrderStatus } = lastOrder;
             const currentDate = new Date();
-            const daysDiff = (currentDate - new Date(lastOrderDate)) / (1000 * 60 * 60 * 24);
+            const daysDiff = (currentDate - lastOrderDate) / (1000 * 60 * 60 * 24);
             if (daysDiff < 92 && lastOrderStatus !== "anulowane przez Klienta") {
               setIsAllowedToProceed(false);
               setDaysRemaining(91 - Math.floor(daysDiff));
