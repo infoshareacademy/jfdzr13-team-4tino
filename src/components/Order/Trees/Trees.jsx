@@ -127,8 +127,11 @@ const Trees = ({ onSelectTree }) => {
       <h2>Wybierz swoje drzewo</h2>
       <SimpleSlider onSelectTree={onSelectTree} />
       <div className={styles.disclaimer}>
-        <p className={styles.warning}>Uwaga!</p> Cena drzewa zawiera opłatę za
-        zasadzenie, tabliczkę oraz wykonanie dedykacji.
+        <p className={styles.warning}>Uwaga!</p>
+        <p>
+          Cena drzewa zawiera opłatę za zasadzenie, tabliczkę oraz wykonanie
+          dedykacji.
+        </p>
       </div>
     </div>
   );
