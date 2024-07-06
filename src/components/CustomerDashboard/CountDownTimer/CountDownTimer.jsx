@@ -33,7 +33,7 @@ const CountDownTimer = ({ latestOrderDate }) => {
 
     let timeLeft = {};
     if (difference > 0) {
-      const months = Math.floor(difference / (1000 * 60 * 60 * 24 * 30.44));  // Średnia długość miesiąca
+      const months = Math.floor(difference / (1000 * 60 * 60 * 24 * 30.44));
       const days = Math.floor((difference % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
       const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
       const minutes = Math.floor((difference / 1000 / 60) % 60);
@@ -71,23 +71,29 @@ const CountDownTimer = ({ latestOrderDate }) => {
 
   return (
     <div className={styles.container}>
-      <p>
-        Gratulujemy! 
-        <a
-          href="#"
-          className="inline-block rounded-full bg-white px-4 py-1 pb-1 pt-1 text-s font-bold leading-normal text-gray-700 transition duration-150 ease-in-out hover:bg-gray-200 ml-2"
-          data-twe-toggle="tooltip"
-          data-twe-placement="top"
-          data-twe-ripple-init
-          data-twe-ripple-color="light"
-          title="Ten wyjątkowy prezent jest dostępny tylko raz na 3 miesiące. Nasze drzewko to unikalny i ponadczasowy prezent!">
-          i
-        </a>
-      </p>
-      <p className={styles.text}>Już niedługo będziesz mieć możliwość obdarowania kolejnej osoby:</p>
-      <span>
-        {timeLeft.months}m:{formatTime(timeLeft.days)}d:{formatTime(timeLeft.hours)}h:{formatTime(timeLeft.minutes)}m:{formatTime(timeLeft.seconds)}s
-      </span>
+      {!latestOrderDate ? (
+        <p className={styles.text}>Czekamy na Twoje pierwsze zamówienie!</p>
+      ) : (
+        <>
+          <p>
+            Gratulujemy! 
+            <a
+              href="#"
+              className="inline-block rounded-full bg-white px-4 py-1 pb-1 pt-1 text-s font-bold leading-normal text-gray-700 transition duration-150 ease-in-out hover:bg-gray-200 ml-2"
+              data-twe-toggle="tooltip"
+              data-twe-placement="top"
+              data-twe-ripple-init
+              data-twe-ripple-color="light"
+              title="Ten wyjątkowy prezent jest dostępny tylko raz na 3 miesiące. Nasze drzewko to unikalny i ponadczasowy prezent!">
+              i
+            </a>
+          </p>
+          <p className={styles.text}>Już niedługo będziesz mieć możliwość obdarowania kolejnej osoby:</p>
+          <span>
+            {timeLeft.months}m:{formatTime(timeLeft.days)}d:{formatTime(timeLeft.hours)}h:{formatTime(timeLeft.minutes)}m:{formatTime(timeLeft.seconds)}s
+          </span>
+        </>
+      )}
     </div>
   );
 };

@@ -1,11 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { MapContainer, TileLayer, Circle, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import styles from "./Map.module.css";
+import "./customLeafletStyles.css"; // Import custom styles for Leaflet zoom buttons
 import { TERipple } from "tw-elements-react";
 
 const Map = ({ onSelectLocation }) => {
-  const [locations] = useState([
+  const mapRef = useRef(null);
+  const [zoomLevel, setZoomLevel] = useState(7);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width <= 767) {
+        setZoomLevel(6); // telefony
+      } else if (width <= 1080) {
+        setZoomLevel(7); // tablety
+      } else {
+        setZoomLevel(7); // kompy
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const locations = [
     {
       coordinates: [53.5, 17.5],
       radius: 10000,
@@ -27,7 +48,7 @@ const Map = ({ onSelectLocation }) => {
       fillOpacity: 0.5,
       name: "Nadleśnictwo 3",
     },
-  ]);
+  ];
 
   const [selectedLocation, setSelectedLocation] = useState("");
 
@@ -39,62 +60,70 @@ const Map = ({ onSelectLocation }) => {
     onSelectLocation(selectedLocation);
   };
 
+  useEffect(() => {
+    if (mapRef.current) {
+      mapRef.current.setZoom(zoomLevel);
+    }
+  }, [zoomLevel]);
+
   return (
     <div className={styles.mapContainer}>
       <h2>Gdzie chcesz posadzić swoje drzewo</h2>
-      <MapContainer
-        center={[52.5, 19.1]}
-        zoom={7}
-        scrollWheelZoom={false}
-        style={{ height: "600px", width: "800px" }}
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        {locations.map((location, index) => (
-          <Circle
-            key={index}
-            center={location.coordinates}
-            radius={location.radius}
-            color={location.color}
-            fillColor={location.fillColor}
-            fillOpacity={location.fillOpacity}
-          >
-            <Popup className={styles.customPopup}>
-              <TERipple rippleColor="light">
-                <button
-                  type="button"
-                  onClick={() => handleButtonClick(location.name)}
-                  className={`buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active m-5`}
-                >
-                  Wybierz {location.name}
-                </button>
-              </TERipple>
-            </Popup>
-          </Circle>
-        ))}
-      </MapContainer>
+      <div className={styles.map}>
+        <MapContainer
+          ref={mapRef}
+          center={[52.8, 19.1]}
+          zoom={zoomLevel}
+          scrollWheelZoom={false}
+          style={{ height: "600px", width: "100%" }}
+          maxZoom={10} // Maksymalne zbliżenie
+          minZoom={4}  // Minimalne zbliżenie
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          {locations.map((location, index) => (
+            <Circle
+              key={index}
+              center={location.coordinates}
+              radius={location.radius}
+              fillColor={location.fillColor}
+              fillOpacity={location.fillOpacity}
+            >
+              <Popup className={styles.customPopup}>
+                <TERipple rippleColor="light">
+                  <button
+                    type="button"
+                    onClick={() => handleButtonClick(location.name)}
+                    className={`buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active m-5`}
+                  >
+                    Wybierz {location.name}
+                  </button>
+                </TERipple>
+              </Popup>
+            </Circle>
+          ))}
+        </MapContainer>
+      </div>
       <div className={styles.confirm}>
         <div className={styles.capturedLocation}>
           <h4>Wybrane nadleśnictwo:</h4>
           {selectedLocation || "Wybierz lokalizację"}
         </div>
         <TERipple rippleColor="light">
-        <button
-          type="button"
-          onClick={handleConfirmLocation}
-          className={`buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active m-5`}
-        >
-          Potwierdź lokalizację
-        </button>
-      </TERipple>
-        {/* <button className={styles.confirm} onClick={handleConfirmLocation}>
-          Potwierdź lokalizację
-        </button> */}
+          <button
+            type="button"
+            onClick={handleConfirmLocation}
+            className={`buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active m-5`}
+          >
+            Potwierdź lokalizację
+          </button>
+        </TERipple>
       </div>
     </div>
   );
 };
 
 export default Map;
+
