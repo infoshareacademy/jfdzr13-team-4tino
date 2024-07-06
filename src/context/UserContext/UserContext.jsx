@@ -10,7 +10,7 @@ export const useUser = () => {
 };
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);  // Początkowy stan ustawiony na null
   const [loadingState, setLoadingState] = useState(true);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export const UserProvider = ({ children }) => {
           setLoadingState(false);
         });
       } else {
-        setUser({});
+        setUser(null);
         setLoadingState(false);
       }
     });
@@ -66,7 +66,7 @@ export const UserProvider = ({ children }) => {
   }
 
   const resetUser = () => {
-    setUser({});
+    setUser(null);  // Resetuje stan użytkownika na null
   };
 
   return (
