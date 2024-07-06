@@ -52,7 +52,9 @@
 
 .form input {
   margin-bottom: 9px;
+  width: 49%;
 }
+
 .inputContainer input {
   width: 100%;
 }
@@ -96,6 +98,7 @@ input[type="password"] {
   padding: 0;
   margin: 0;
 }
+
 .togglePasswordButton:hover {
   background: none;
 }

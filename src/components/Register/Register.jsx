@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useUser } from '../../context/UserContext/UserContext';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import showIcon from '../../assets/LoginRegister/show.svg';
-import hideIcon from '../../assets/LoginRegister/hide.svg';
+import {
+    createUserWithEmailAndPassword,
+    getAuth,
+    updateProfile,
+} from "firebase/auth";
+import { doc, getFirestore, setDoc } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { TERipple } from "tw-elements-react";
-import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { collection, addDoc, getFirestore } from "firebase/firestore";
+import hideIcon from "../../assets/LoginRegister/hide.svg";
+import showIcon from "../../assets/LoginRegister/show.svg";
+import { useUser } from "../../context/UserContext/UserContext";
 import styles from "./Register.module.css";
 
 function Register() {
@@ -29,10 +32,10 @@ function Register() {
 
     useEffect(() => {
         if (user) {
-            if (user.email === 'admin@admin.com') {
-                navigate('/admin');
+            if (user.email === "admin@admin.com") {
+                navigate("/admin");
             } else {
-                navigate('/');
+                navigate("/");
             }
         }
     }, [user, navigate]);
@@ -57,31 +60,36 @@ function Register() {
         if (!nameRegex.test(fields.firstName)) {
             newErrors.firstName = "Nieprawidłowe Imię";
             toast.error('Nieprawidłowe Imię', {
-                toastId: 'firstNameError'
+                hideProgressBar: true,
+                style: { marginTop: "120px" },
             });
         }
         if (!nameRegex.test(fields.lastName)) {
             newErrors.lastName = "Nieprawidłowe Nazwisko";
             toast.error('Nieprawidłowe Nazwisko', {
-                toastId: 'lastNameError'
+                hideProgressBar: true,
+                style: { marginTop: "120px" },
             });
         }
         if (!phoneRegex.test(fields.phone)) {
             newErrors.phone = "Nieprawidłowy numer telefonu";
             toast.error('Nieprawidłowy numer telefonu', {
-                toastId: 'phoneError'
+                hideProgressBar: true,
+                style: { marginTop: "120px" },
             });
         }
         if (!emailRegex.test(fields.email)) {
             newErrors.email = "Nieprawidłowy e-mail";
             toast.error('Nieprawidłowy e-mail', {
-                toastId: 'emailError'
+                hideProgressBar: true,
+                style: { marginTop: "120px" },
             });
         }
         if (!passwordRegex.test(fields.password)) {
             newErrors.password = "Błędne hasło";
             toast.error('Błędne hasło', {
-                toastId: 'passwordError'
+                hideProgressBar: true,
+                style: { marginTop: "120px" },
             });
         }
 
@@ -93,53 +101,60 @@ function Register() {
     const register = async (e) => {
         e.preventDefault();
         const form = new FormData(e.target);
-        const firstName = form.get("name");
+        const firstName = form.get("firstName");
         const lastName = form.get("lastName");
         const phone = form.get("phone");
         const email = form.get("email");
         const password = form.get("password");
 
-        const newErrors = validate({
-            firstName,
-            lastName,
-            phone,
-            email,
-            password
-        });
+        const newErrors = validate({ firstName, lastName, phone, email, password });
 
-        if (Object.values(newErrors).some(error => error !== "")) {
+        if (Object.values(newErrors).some((error) => error !== "")) {
             return;
         }
 
         if (password !== confirmPassword) {
             toast.error('Hasła nie pasują do siebie.', {
-                toastId: 'passwordMismatchError'
+                hideProgressBar: true,
+                style: { marginTop: "120px" },
             });
             return;
         }
 
         try {
-            const authUser = await createUserWithEmailAndPassword(auth, email, password);
+            const authUser = await createUserWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
             await updateProfile(authUser.user, {
-                displayName: firstName + ' ' + lastName,
+                displayName: `${firstName} ${lastName}`,
                 phoneNumber: phone,
             });
-            toast.success('Użytkownik został pomyślnie zarejestrowany!', {
-                toastId: 'registrationSuccess'
+            await setDoc(doc(db, "users", authUser.user.uid), {
+                firstName,
+                lastName,
+                phone,
+                email,
+                id: authUser.user.uid,
             });
-            await addDoc(collection(db, "users"), { firstName, lastName, phone, email, id: authUser.user.uid });
-            navigate('/');
+            toast.success("Użytkownik został pomyślnie zarejestrowany!", {
+                hideProgressBar: true,
+                style: { marginTop: "120px" },
+            });
+            navigate("/");
         } catch (error) {
             toast.error('Rejestracja nie powiodła się', {
-                toastId: 'registrationError'
+                hideProgressBar: true,
+                style: { marginTop: "120px" },
             });
         }
     };
 
     const togglePasswordVisibility = (field) => {
-        if (field === 'password') {
+        if (field === "password") {
             setPasswordVisible(!passwordVisible);
-        } else if (field === 'confirmPassword') {
+        } else if (field === "confirmPassword") {
             setConfirmPasswordVisible(!confirmPasswordVisible);
         }
     };
@@ -151,18 +166,18 @@ function Register() {
                 <p className={styles.loginLink}>Masz już konto? <Link className={styles.link} to="/login">Zaloguj się</Link></p>
                 <div className={styles.registerTitle}>Rejestracja</div>
                 <form className={styles.form} onSubmit={register} >
-                    <input type="text" name="name" placeholder="Imię" required className={Boolean(errors.firstName) ? styles.fieldError : null} />
+                    <input type="text" name="firstName" placeholder="Imię" required className={Boolean(errors.firstName) ? styles.fieldError : null} />
                     <input type="text" name="lastName" placeholder="Nazwisko" required className={Boolean(errors.lastName) ? styles.fieldError : null} />
                     <input type="tel" name="phone" placeholder="Numer telefonu" required className={Boolean(errors.phone) ? styles.fieldError : null} />
-                    <input type="email" name="email" placeholder="Adres e-mail: example@gmail.com" required className={Boolean(errors.email) ? styles.fieldError : null} autoComplete="off"/>
-                    
+                    <input type="email" name="email" placeholder="Adres e-mail: example@gmail.com" required className={Boolean(errors.email) ? styles.fieldError : null} autoComplete="off" />
+
                     <div className={styles.inputContainer}>
-                        <input 
-                            type={passwordVisible ? "text" : "password"} 
-                            name="password" 
-                            placeholder="Wpisz hasło" 
-                            required 
-                            className={Boolean(errors.password) ? styles.fieldError : null} 
+                        <input
+                            type={passwordVisible ? "text" : "password"}
+                            name="password"
+                            placeholder="Wpisz hasło"
+                            required
+                            className={Boolean(errors.password) ? styles.fieldError : null}
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             autoComplete="new-password"
@@ -171,14 +186,14 @@ function Register() {
                             <img src={passwordVisible ? hideIcon : showIcon} alt={passwordVisible ? "Hide" : "Show"} />
                         </button>
                     </div>
-                    
+
                     <div className={styles.inputContainer}>
-                        <input 
-                            type={confirmPasswordVisible ? "text" : "password"} 
-                            name="confirmPassword" 
-                            placeholder="Potwierdź hasło" 
-                            required 
-                            className={Boolean(errors.password) ? styles.fieldError : null} 
+                        <input
+                            type={confirmPasswordVisible ? "text" : "password"}
+                            name="confirmPassword"
+                            placeholder="Potwierdź hasło"
+                            required
+                            className={Boolean(errors.password) ? styles.fieldError : null}
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             autoComplete="new-password"
@@ -200,7 +215,6 @@ function Register() {
                     </div>
                 </form>
             </div>
-            <ToastContainer position="top-right" autoClose={3000} hideProgressBar newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover style={{ marginTop: '120px' }} />
         </div>
     );
 }
