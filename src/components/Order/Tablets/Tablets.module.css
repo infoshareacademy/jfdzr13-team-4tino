@@ -3,8 +3,7 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  gap: 50px;
-  margin-top: 50px;
+  gap: 30px;
 }
 
 .desc {
@@ -16,7 +15,7 @@
 
 .carousel {
   width: 90%;
-  height: 600px;
+  height: fit-content;
   margin: 0 auto;
   border-radius: 15px;
   margin-bottom: 5%;

@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  gap: 50px;
+  gap: 40px;
   margin-top: 50px;
   overflow: hidden;
   padding-bottom: 20px;
@@ -63,7 +63,7 @@
 
 .disclaimer {
   margin-top: 10px;
-  width: 100%;
+  width: 90%;
   height: 50px;
   display: flex;
   justify-content: center;
