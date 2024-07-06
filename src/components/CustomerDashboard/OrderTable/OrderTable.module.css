@@ -9,31 +9,28 @@
   overflow: hidden;
   border: 2px solid rgb(255, 255, 255);
 }
-
+.tableContainer {
+  overflow-x: auto;
+}
 .orderTable th,
 .orderTable td {
   padding: 12px 15px;
   border: 1px solid rgb(255, 255, 255);
   font-weight: normal;
 }
-
 .orderTable th {
   text-align: center;
 }
-
 .orderTable thead {
   background-color: #84b05e;
   color: #ffffff;
 }
-
 .orderTable tbody tr:nth-of-type(even) {
   background-color: #ddebce;
 }
-
 .orderTable tbody tr:hover {
-  background-color: #ffffff;
+  background-color: rgba(211, 211, 211, 0.46);
 }
-
 .cancelButton,
 .deleteButton {
   display: flex;
@@ -51,17 +48,32 @@
   border-radius: 50%;
   font-weight: bold;
 }
-
 .cancelButton:hover,
 .deleteButton:hover {
   background-color: #cf1313;
   transform: scale(1.2);
 }
-
 @media (max-width: 767px) {
+  .tableContainer {
+    overflow-x: auto;
+  }
+  .orderTable {
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+  }
 }
-
 @media (min-width: 768px) and (max-width: 1080px) {
+  .table-container {
+    overflow-x: auto;
+  }
+
+  .orderTable {
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+  }
+
   .orderTable {
     max-width: 90%;
     border-collapse: separate;
@@ -73,31 +85,25 @@
     overflow: hidden;
     border: 2px solid rgb(255, 255, 255);
   }
-
   .orderTable th,
   .orderTable td {
     padding: 12px 15px;
     border: 1px solid rgb(255, 255, 255);
     font-weight: normal;
   }
-
   .orderTable th {
     text-align: center;
   }
-
   .orderTable thead {
     background-color: #84b05e;
     color: #ffffff;
   }
-
   .orderTable tbody tr:nth-of-type(even) {
     background-color: #ddebce;
   }
-
   .orderTable tbody tr:hover {
     background-color: #ffffff;
   }
-
   .cancelButton,
   .deleteButton {
     display: flex;
@@ -115,7 +121,6 @@
     border-radius: 50%;
     font-weight: bold;
   }
-
   .cancelButton:hover,
   .deleteButton:hover {
     background-color: #cf1313;

@@ -68,8 +68,8 @@ const CountDownTimer = ({ latestOrderDate }) => {
       {!latestOrderDate ? (
         <p className={styles.text}>Czekamy na Twoje pierwsze zamówienie!</p>
       ) : (
-        <>
-          <p>
+        <div className={styles.text2}>
+          <p className={styles.text}>
             Gratulujemy! 
             <Tooltip message="Ten wyjątkowy prezent jest dostępny tylko raz na 3 miesiące. Nasze drzewko to unikalny i ponadczasowy prezent!">
               <button
@@ -84,7 +84,7 @@ const CountDownTimer = ({ latestOrderDate }) => {
           <span>
             {timeLeft.months}m:{formatTime(timeLeft.days)}d:{formatTime(timeLeft.hours)}h:{formatTime(timeLeft.minutes)}m:{formatTime(timeLeft.seconds)}s
           </span>
-        </>
+        </div>
       )}
     </div>
   );
