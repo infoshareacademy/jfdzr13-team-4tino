@@ -52,6 +52,7 @@ body {
   padding-top: 6vh;
   padding-left: 6vw;
   position: fixed;
+  margin-top: 3px;
 }
 
 .panel p {
