@@ -69,10 +69,17 @@ const Navbar = () => {
     return userIcon;
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <div className={styles.navbarContainer}>
       <div className={styles.navbar}>
-        <Link to="/">
+        <Link to="/" onClick={scrollToTop}>
           <img className={styles.bigIcon} src={tinoName} alt="icon" />
         </Link>
 

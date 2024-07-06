@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import styles from './CountDownTimer.module.css';
 import '../../../tailwind.css';
-import {
-  Ripple,
-  Tooltip,
-  initTWE,
-} from "tw-elements";
-
-initTWE({ Ripple, Tooltip });
+import Tooltip from '../Tooltip';
+import styles from './CountDownTimer.module.css';
 
 const CountDownTimer = ({ latestOrderDate }) => {
   const [timeLeft, setTimeLeft] = useState({});
@@ -77,16 +71,14 @@ const CountDownTimer = ({ latestOrderDate }) => {
         <>
           <p>
             Gratulujemy! 
-            <a
-              href="#"
-              className="inline-block rounded-full bg-white px-4 py-1 pb-1 pt-1 text-s font-bold leading-normal text-gray-700 transition duration-150 ease-in-out hover:bg-gray-200 ml-2"
-              data-twe-toggle="tooltip"
-              data-twe-placement="top"
-              data-twe-ripple-init
-              data-twe-ripple-color="light"
-              title="Ten wyjątkowy prezent jest dostępny tylko raz na 3 miesiące. Nasze drzewko to unikalny i ponadczasowy prezent!">
-              i
-            </a>
+            <Tooltip message="Ten wyjątkowy prezent jest dostępny tylko raz na 3 miesiące. Nasze drzewko to unikalny i ponadczasowy prezent!">
+              <button
+                type="button"
+                className="inline-flex items-center justify-center rounded-full bg-white text-black border border-gray-500 h-10 w-10 text-center text-sm font-medium hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 ml-2"
+              >
+                i
+              </button>
+            </Tooltip>
           </p>
           <p className={styles.text}>Już niedługo będziesz mieć możliwość obdarowania kolejnej osoby:</p>
           <span>
