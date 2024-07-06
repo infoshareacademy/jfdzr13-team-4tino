@@ -13,7 +13,7 @@
   flex-direction: column;
   justify-content: space-around;
   background-color: rgb(221, 235, 206);
-  gap: 100px;
+  gap: 50px;
   border-radius: 10px;
   margin-top: 120px;
   padding-bottom: 50px;
@@ -21,7 +21,6 @@
 
 .right {
   width: 35%;
-  /* max-height: 75vh; */
   border-radius: 10px;
   background-color: rgb(221, 235, 206);
   margin-top: 120px;
