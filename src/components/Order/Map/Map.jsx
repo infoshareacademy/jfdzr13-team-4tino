@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
-import { MapContainer, TileLayer, Circle, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import styles from "./Map.module.css";
-import "./customLeafletStyles.css"; // Import custom styles for Leaflet zoom buttons
+import React, { useEffect, useRef, useState } from "react";
+import { Circle, MapContainer, Popup, TileLayer } from "react-leaflet";
 import { TERipple } from "tw-elements-react";
+import styles from "./Map.module.css";
+import "./customLeafletStyles.css";
 
 const Map = ({ onSelectLocation }) => {
   const mapRef = useRef(null);

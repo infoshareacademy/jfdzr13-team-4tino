@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useUser } from '../../context/UserContext/UserContext';
 import CountDownTimer from './CountDownTimer/CountDownTimer';
 import styles from './CustomerDashboard.module.css';
 import OrderTable from './OrderTable/OrderTable';
-import { useUser } from '../../context/UserContext/UserContext';
 
 const CustomerDashboard = () => {
   const { user, reloadUser } = useUser(); // Pobierz usera i funkcję reloadUser z kontekstu
@@ -28,7 +28,7 @@ const CustomerDashboard = () => {
       </div>
       <div className={styles.main}>
         <h1 className={styles.h1}>Witaj {user?.firstName || ''} 😊</h1>
-        <p>Cieszymy się, że z nami jesteś i&nbsp;pomagasz nam zmieniać świat na&nbsp;lepsze!</p>
+        <p className={styles.mainP}>Cieszymy się, że z nami jesteś i&nbsp;pomagasz nam zmieniać świat na&nbsp;lepsze!</p>
         <div className={styles.timer}>
           {/* Przekazanie latestOrderDate i setLatestOrderDate do OrderTable */}
           <CountDownTimer latestOrderDate={latestOrderDate} />
