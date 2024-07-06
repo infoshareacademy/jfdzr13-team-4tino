@@ -16,6 +16,16 @@ const Navbar = () => {
   const timerRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     setIsMenuVisible(false);
@@ -76,16 +86,16 @@ const Navbar = () => {
         
         {/* Menu nawigacyjne */}
         
-          <div className={`${styles.navMenu} ${isMobileMenuOpen ? styles.open : ''}`}>
-            <Link smooth to="/#howItWorks">
-              <p className={styles.item}>Jak to działa?</p>
-            </Link>
-            <Link smooth to="/#about">
-              <p className={styles.item}>O nas</p>
-            </Link>
-            <Link smooth to="/order">
-              <p className={styles.item}>Zamów</p>
-            </Link>  
+        <div className={`${styles.navMenu} ${isMobileMenuOpen ? styles.open : ''}`}>
+          <Link smooth to="/#howItWorks" className={styles.item}>
+            Jak to działa?
+          </Link>
+          <Link smooth to="/#about" className={styles.item}>
+            O nas
+          </Link>
+          <Link smooth to="/order" className={styles.item}>
+            Zamów
+          </Link>  
           <div className={styles.loginPanel}>
             {user ? (
               <div
@@ -93,17 +103,27 @@ const Navbar = () => {
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
-                <img
-                  src={getUserIcon()}
-                  alt="user"
-                  className={styles.userIcon}
-                />
-                {isMenuVisible && (
+                {!isMobile && (
+                  <img
+                    src={getUserIcon()}
+                    alt="user"
+                    className={styles.userIcon}
+                  />
+                )}
+                {isMenuVisible && !isMobile && (
                   <div className={styles.dropdownMenu}>
                     <Link to={user.email === 'admin@admin.com' ? '/admin' : '/user'} className={styles.menuItem}>
                       Konto
                     </Link>
-                    <Logout className={styles.menuItem} />
+                    <Logout className={styles.item} />
+                  </div>
+                )}
+                {isMobileMenuOpen && isMobile && (
+                  <div className={styles.dropdownMenuMobile}>
+                    <Link to={user.email === 'admin@admin.com' ? '/admin' : '/user'} className={styles.menuItem}>
+                      Konto
+                    </Link>
+                    <Logout className={styles.item} />
                   </div>
                 )}
               </div>

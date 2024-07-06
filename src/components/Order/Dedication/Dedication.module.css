@@ -4,20 +4,25 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 50px;
-  /* border-top: 10px solid rgb(242, 247, 236); */
-  padding-top: 50px;
 }
+
 .dedicationArea {
   display: flex;
   justify-content: space-around;
   gap: 100px;
+  margin-top: 20px;
 }
+
 .here select {
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  font-size: 16px;
   border-radius: 10px;
   border: 2px solid rgb(87, 171, 39);
-  font-size: 16px;
+  background-color: white;
 }
+
 .here select:hover {
   cursor: pointer;
 }
@@ -26,48 +31,48 @@
   outline: none;
 }
 
-.existing input {
-  cursor: default;
-}
-.existing input:hover {
-  cursor: default;
-}
-
-.dedicationSelect {
+.existing,
+.custom {
   width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  box-sizing: border-box;
-}
-
-.dedicationText {
-  margin-top: 10px;
-  padding: 10px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.dedicationSelect,
-.customInput {
-  width: 100%;
-  height: 50px;
-  padding: 10px;
-  margin-top: 10px;
-  font-size: 16px;
-  background-color: white;
 }
 
 .customInput {
+  width: 100%;
   height: 40px;
+  padding: 10px;
   font-size: 16px;
   border: 1px solid rgb(87, 171, 39);
   border-radius: 4px;
 }
 
-.customInput:focus,
-.dedicationSelect:focus {
+.customInput:focus {
   outline: none;
 }
+
 .warning {
   color: red;
+}
+
+@media (max-width: 767px) {
+  .dedicationArea {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .here select,
+  .customInput {
+    height: 40px;
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1080px) {
+  .dedicationArea {
+    gap: 30px;
+  }
+
+  .here select {
+    margin-top: 0;
+  }
 }
