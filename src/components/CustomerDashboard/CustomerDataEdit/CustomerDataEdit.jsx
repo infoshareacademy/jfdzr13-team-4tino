@@ -155,7 +155,7 @@ const CustomerDataEdit = () => {
         </Link>
 
         <Link to="/user/data" className={styles.link}>
-          <p className={styles.dataText}>Edytuj dane</p>
+          <p className={styles.dataText}>Edytuj&nbsp;dane</p>
         </Link>
       </div>
 
@@ -210,7 +210,7 @@ const CustomerDataEdit = () => {
               </div>
 
               <div className={styles.inputType}>
-                <p>Adres email</p>
+                <p>Adres&nbsp;email</p>
                 <input
                   type="email"
                   value={email}
@@ -222,7 +222,7 @@ const CustomerDataEdit = () => {
                 />
               </div>
               <div className={styles.inputType}>
-                <p>Aktualne hasło</p>
+                <p>Aktualne&nbsp;hasło</p>
                 <input
                   type="password"
                   value={currentPassword}
@@ -236,7 +236,7 @@ const CustomerDataEdit = () => {
               </div>
 
               <div className={styles.inputType}>
-                <p>Nowe hasło</p>
+                <p>Nowe&nbsp;hasło</p>
                 <input
                   type="password"
                   value={newPassword}
@@ -250,7 +250,7 @@ const CustomerDataEdit = () => {
               </div>
 
               <div className={styles.inputType}>
-                <p>Potwierdź nowe hasło</p>
+                <p>Potwierdź&nbsp;nowe&nbsp;hasło</p>
                 <input
                   type="password"
                   value={confirmPassword}
