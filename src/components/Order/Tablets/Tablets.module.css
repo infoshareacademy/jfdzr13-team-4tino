@@ -59,7 +59,6 @@
 @media (max-width: 767px) {
   .carousel {
     height: 250px;
-    /* margin-bottom: 50px; */
     width: 80%;
   }
 
