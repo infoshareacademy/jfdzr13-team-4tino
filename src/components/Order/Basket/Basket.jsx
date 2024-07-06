@@ -18,38 +18,39 @@ const Basket = ({
   const [isAllowedToProceed, setIsAllowedToProceed] = useState(true);
   const [daysRemaining, setDaysRemaining] = useState(0);
 
-  // useEffect(() => {
-  //   const checkLastOrderDate = async () => {
-  //     if (user && user.email) {
-  //       try {
-  //         const lastOrderDate = await getLastOrderDate(user.email);
-  //         if (lastOrderDate) {
-  //           const currentDate = new Date();
-  //           const daysDiff =
-  //             (currentDate - lastOrderDate) / (1000 * 60 * 60 * 24);
-  //           if (daysDiff < 92) {
-  //             setIsAllowedToProceed(false);
-  //             setDaysRemaining(91 - Math.floor(daysDiff));
-  //           } else {
-  //             setIsAllowedToProceed(true);
-  //           }
-  //         }
-  //       } catch (error) {
-  //         console.error("Error fetching last order date:", error);
-  //         toast.error(
-  //           "Wystąpił problem podczas sprawdzania daty ostatniego zamówienia.",
-  //           {
-  //             autoClose: 3000,
-  //             hideProgressBar: true,
-  //             style: { marginTop: "120px" },
-  //           }
-  //         );
-  //       }
-  //     }
-  //   };
 
-  //   checkLastOrderDate();
-  // }, [user]);
+  useEffect(() => {
+    const checkLastOrderDate = async () => {
+      if (user && user.email) {
+        try {
+          const lastOrderDate = await getLastOrderDate(user.email);
+          if (lastOrderDate) {
+            const currentDate = new Date();
+            const daysDiff =
+              (currentDate - lastOrderDate) / (1000 * 60 * 60 * 24);
+            if (daysDiff < 92) {
+              setIsAllowedToProceed(false);
+              setDaysRemaining(91 - Math.floor(daysDiff));
+            } else {
+              setIsAllowedToProceed(true);
+            }
+          }
+        } catch (error) {
+          console.error("Error fetching last order date:", error);
+          toast.error(
+            "Wystąpił problem podczas sprawdzania daty ostatniego zamówienia.",
+            {
+              autoClose: 3000,
+              hideProgressBar: true,
+              style: { marginTop: "120px" },
+            }
+          );
+        }
+      }
+    };
+
+     checkLastOrderDate();
+   }, [user]);
 
   const handleProceed = () => {
     if (!user || !user.email) {
