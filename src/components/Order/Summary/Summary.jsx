@@ -84,8 +84,10 @@ const Summary = ({ clearSelections }) => {
                 <b>{selectedTablet?.name || "Brak wybranej tabliczki"}</b>
               </div>
               <div className={styles.item}>
-                Dedykacja :&nbsp;
-                <b>{selectedDedication || "Brak dedykacji"}</b>
+                <p>
+                  Dedykacja : &nbsp;
+                  <b>{selectedDedication || "Brak dedykacji"}</b>
+                </p>
               </div>
               <div className={styles.item}>
                 Lokalizacja :&nbsp;
