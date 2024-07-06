@@ -18,7 +18,6 @@ const Basket = ({
   const [isAllowedToProceed, setIsAllowedToProceed] = useState(true);
   const [daysRemaining, setDaysRemaining] = useState(0);
 
-
   useEffect(() => {
     const checkLastOrderDate = async () => {
       if (user && user.email) {
@@ -49,8 +48,14 @@ const Basket = ({
       }
     };
 
-     checkLastOrderDate();
-   }, [user]);
+    checkLastOrderDate();
+  }, [user]);
+
+  const isComplete = () => {
+    return (
+      selectedTree && selectedTablet && selectedLocation && selectedDedication
+    );
+  };
 
   const handleProceed = () => {
     if (!user || !user.email) {
@@ -91,12 +96,6 @@ const Basket = ({
         selectedDedication,
       },
     });
-  };
-
-  const isComplete = () => {
-    return (
-      selectedTree && selectedTablet && selectedLocation && selectedDedication
-    );
   };
 
   return (
