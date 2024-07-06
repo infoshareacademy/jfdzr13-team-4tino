@@ -16,7 +16,7 @@
 
 .carousel {
   width: 90%;
-  height: fit-content;
+  height: auto;
   margin: 0 auto;
   border-radius: 15px;
   margin-bottom: 5%;
@@ -58,8 +58,8 @@
 /* Styl dla telefonów */
 @media (max-width: 767px) {
   .carousel {
-    height: 220px;
-    /* margin-bottom: 50px; */
+    height: 350px;
+    margin-bottom: 50px;
     width: 80%;
   }
 
@@ -69,6 +69,11 @@
 
   .desc {
     font-size: 16px;
+  }
+  .heading {
+    width: 90%;
+    justify-self: center;
+    text-align: center;
   }
 }
 

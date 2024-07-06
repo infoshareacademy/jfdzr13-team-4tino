@@ -108,7 +108,7 @@ function SimpleSlider({ onSelectTree }) {
                       onClick={() => onSelectTree(tree)}
                       className={`buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active m-5`}
                     >
-                      Dodaj do koszyka
+                      Dodaj do zamówienia
                     </button>
                   </TERipple>
                 </div>
