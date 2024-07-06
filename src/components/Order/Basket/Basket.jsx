@@ -137,10 +137,14 @@ const Basket = ({
       <TERipple rippleColor="light">
         <button
           type="button"
-          onClick={handleProceed}
-          className={`buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active m-5`}
+          onClick={user ? handleProceed : null}
+          className={`blok px-6 py-3 text-base font-semibold leading-normal transition duration-150 ease-in-out m-5 ${user
+            ? 'buttonCss text-white bg-custom-green hover:bg-custom-green-hover focus:bg-custom-green-hover active:bg-custom-green-active'
+            : 'buttonCssDisabled text-gray-500 bg-gray-300 cursor-not-allowed'
+            }`}
+          disabled={!user}
         >
-          Przejdź do potwierdzenia
+          {user ? 'Przejdź do potwierdzenia' : 'Zaloguj się, aby zamówić'}
         </button>
       </TERipple>
     </div>

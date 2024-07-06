@@ -34,3 +34,17 @@ input[type="tel"] {
   cursor: pointer;
   background-color: #5da746;
 }
+
+.buttonCssDisabled {
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: lightgray;
+  background-color: gray;
+  font-weight: 700;
+}
+
+.buttonDisabled:hover {
+  cursor: not-allowed;
+}
