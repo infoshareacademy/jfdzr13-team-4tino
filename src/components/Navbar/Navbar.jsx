@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { HashLink as Link } from 'react-router-hash-link';
 import { TERipple } from "tw-elements-react";
-import '../.././tailwind.css';
 import tinoName from "../../assets/4tino-logo.png";
 import userIcon from "../../assets/user.svg";
 import userIconHover from '../../assets/user2.svg';
@@ -16,6 +15,17 @@ const Navbar = () => {
   const [isLoading, setIsLoading] = useState(true);
   const timerRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     setIsMenuVisible(false);
@@ -26,7 +36,6 @@ const Navbar = () => {
   }, [user]);
 
   useEffect(() => {
-    // PulsingBar uruchomi się od razu po zamontowaniu komponentu
     setIsLoading(true);
   }, []);
 
@@ -45,6 +54,14 @@ const Navbar = () => {
     }, 500);
   };
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   const getUserIcon = () => {
     if (user) {
       return isHovered ? userIconHover : userIcon;
@@ -58,16 +75,27 @@ const Navbar = () => {
         <Link to="/">
           <img className={styles.bigIcon} src={tinoName} alt="icon" />
         </Link>
-        <div className={styles.navMenu}>
-          <Link smooth to="/#howItWorks">
-            <p className={styles.item}>Jak to działa?</p>
+
+        {/* Przycisk menu dla urządzeń mobilnych */}
+        
+        <div className={styles.mobileMenuIcon} onClick={toggleMobileMenu}>
+          <div className={`${styles.bar} ${isMobileMenuOpen ? styles.rotate : ''}`}></div>
+          <div className={`${styles.bar} ${isMobileMenuOpen ? styles.hide : ''}`}></div>
+          <div className={`${styles.bar} ${isMobileMenuOpen ? styles.rotateNeg : ''}`}></div> 
+        </div>
+        
+        {/* Menu nawigacyjne */}
+        
+        <div className={`${styles.navMenu} ${isMobileMenuOpen ? styles.open : ''}`}>
+          <Link smooth to="/#howItWorks" className={styles.item}>
+            Jak to działa?
           </Link>
-          <Link smooth to="/#about">
-            <p className={styles.item}>O nas</p>
+          <Link smooth to="/#about" className={styles.item}>
+            O nas
           </Link>
-          <Link smooth to="/order">
-            <p className={styles.item}>Zamów</p>
-          </Link>
+          <Link smooth to="/order" className={styles.item}>
+            Zamów
+          </Link>  
           <div className={styles.loginPanel}>
             {user ? (
               <div
@@ -75,17 +103,27 @@ const Navbar = () => {
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
-                <img
-                  src={getUserIcon()}
-                  alt="user"
-                  className={styles.userIcon}
-                />
-                {isMenuVisible && (
+                {!isMobile && (
+                  <img
+                    src={getUserIcon()}
+                    alt="user"
+                    className={styles.userIcon}
+                  />
+                )}
+                {isMenuVisible && !isMobile && (
                   <div className={styles.dropdownMenu}>
                     <Link to={user.email === 'admin@admin.com' ? '/admin' : '/user'} className={styles.menuItem}>
                       Konto
                     </Link>
-                    <Logout className={styles.menuItem} />
+                    <Logout className={styles.item} />
+                  </div>
+                )}
+                {isMobileMenuOpen && isMobile && (
+                  <div className={styles.dropdownMenuMobile}>
+                    <Link to={user.email === 'admin@admin.com' ? '/admin' : '/user'} className={styles.menuItem}>
+                      Konto
+                    </Link>
+                    <Logout className={styles.item} />
                   </div>
                 )}
               </div>
