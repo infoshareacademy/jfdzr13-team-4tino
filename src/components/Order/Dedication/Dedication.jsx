@@ -92,15 +92,17 @@ const Dedication = ({ onSelectDedication }) => {
           <p className={styles.warning}>Max 40 znaków</p>
         </div>
       </div>
-      <TERipple rippleColor="light">
-        <button
-          type="button"
-          onClick={handleConfirmDedication}
-          className={`buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active m-5`}
-        >
-          Potwierdź dedykację
-        </button>
-      </TERipple>
+      <div className={styles.buttonBox}>
+        <TERipple rippleColor="light">
+          <button
+            type="button"
+            onClick={handleConfirmDedication}
+            className={`buttonCss blok px-6 py-3 text-base font-semibold leading-normal text-white transition duration-150 ease-in-out bg-custom-green hover:bg-custom-green-hover focus:bg-custom-green-hover focus:outline-none focus:ring-0 active:bg-custom-green-active m-5`}
+          >
+            Potwierdź dedykację
+          </button>
+        </TERipple>
+      </div>
     </div>
   );
 };
