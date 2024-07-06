@@ -31,12 +31,12 @@ const CustomerDashboard = () => {
           <p className={styles.orderText}>Zamówienia</p>
         </Link>
         <Link to="/user/data" className={styles.link}>
-          <p className={styles.dataText}>Edytuj dane</p>
+          <p className={styles.dataText}>Edytuj&nbsp;dane</p>
         </Link>
       </div>
       <div className={styles.main}>
         <h1 className={styles.h1}>Witaj {firstName} 😊</h1>
-        <p>Cieszymy się, że z nami jesteś i pomagasz nam zmieniać świat na lepsze!</p>
+        <p>Cieszymy się, że z nami jesteś i&nbsp;pomagasz nam zmieniać świat na&nbsp;lepsze!</p>
         <div>
           {/* Przekazanie latestOrderDate i setLatestOrderDate do OrderTable */}
           <CountDownTimer latestOrderDate={latestOrderDate} />
