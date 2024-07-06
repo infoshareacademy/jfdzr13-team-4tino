@@ -10,7 +10,7 @@ W sklepie 4Tino znajdziesz:
 
 Drzewo to niezwykły prezent dla wyjątkowej osoby. Obdarowując kogoś drzewem, nie tylko dajesz coś trwałego i symbolicznego, ale również wspierasz działania proekologiczne. To idealny sposób, aby wyrazić troskę o środowisko i jednocześnie uczcić ważne chwile w życiu bliskich.
 
-Firma 4Tino stosuje politykę, która dopuszcza jeden zakup na 3 miesiące. Taki ograniczenie ma na celu promowanie przemyślanych i świadomych decyzji zakupowych. Dzięki temu, każdy zakup w naszym sklepie jest starannie rozważany i ma wyjątkowe znaczenie.
+Firma 4Tino stosuje politykę, która dopuszcza jeden zakup na 3 miesiące. Takie ograniczenie ma na celu promowanie przemyślanych i świadomych decyzji zakupowych. Dzięki temu, każdy zakup w naszym sklepie jest starannie rozważany i ma wyjątkowe znaczenie.
 
 4Tino to nie tylko sklep internetowy, ale również misja i filozofia. Oferując drzewa do zasadzenia, dajemy Ci możliwość wzięcia aktywnego udziału w ochronie środowiska, jednocześnie obdarowując swoich bliskich czymś naprawdę wyjątkowym. Przemyślane zakupy, piękne lokalizacje i personalizowane tabliczki z dedykacjami sprawiają, że każdy prezent od 4Tino jest niepowtarzalny. Dołącz do nas i wspólnie twórzmy zieleń na przyszłość!
 
