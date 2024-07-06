@@ -86,7 +86,7 @@ body {
   border-radius: 10px 0px 0px 10px;
 }
 
-.main p {
+.mainP {
   display: flex;
   justify-content: start;
   align-items: center;
@@ -122,12 +122,12 @@ body {
     padding-left: 10px;
   }
 
-  .main .h1,
-  .main p {
+  .h1,
+  .mainP {
     margin-left: 170px;
   }
 
-  .main p {
+  .mainP {
     width: 60vw;
   }
 }
@@ -162,11 +162,11 @@ body {
     padding-left: 2vw;
   }
 
-  .main .h1,
-  .main p {
+  .h1,
+  .mainP {
     margin-left: 180px;
   }
-  .main p {
+  .mainP {
     width: 70vw;
   }
 }
