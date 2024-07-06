@@ -76,7 +76,7 @@ const OrderTable = ({ onUpdateLatestOrderDate }) => {
       setOrders((prevOrders) =>
         prevOrders.map((order) =>
           order.id === id
-            ? { ...order, status: "anulowane przez Klienta" }
+            ? { ...order, payment: "zwrócona", status: "anulowane przez Klienta" }
             : order
         )
       );
@@ -87,7 +87,7 @@ const OrderTable = ({ onUpdateLatestOrderDate }) => {
         hideProgressBar: true,
         closeButton: false,
         style: {
-          marginTop: "200px",
+          marginTop: "120px",
         },
       });
 
@@ -141,7 +141,7 @@ const OrderTable = ({ onUpdateLatestOrderDate }) => {
                 )}
                 {order.status === "anulowane przez Klienta" && (
                   <Tooltip message="Zgłoszono anulację zamówienia. Czekaj na potwierdzenie anulacji."
-                  position="left">
+                    position="left">
                     <button
                       type="button"
                       className="inline-flex items-center justify-center rounded-full bg-white text-black h-8 w-8 text-center text-sm font-medium hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 ml-1"
