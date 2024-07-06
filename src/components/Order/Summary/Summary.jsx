@@ -76,20 +76,28 @@ const Summary = ({ clearSelections }) => {
             <h1 className={styles.header}>Podsumowanie zamówienia</h1>
             <div className={styles.content}>
               <div className={styles.item}>
-                Drzewo :&nbsp;
-                <b>{selectedTree?.name || "Brak wybranego drzewa"}</b>
+                <p>
+                  Drzewo :&nbsp;
+                  <b>{selectedTree?.name || "Brak wybranego drzewa"}</b>
+                </p>
               </div>
               <div className={styles.item}>
-                Tabliczka :&nbsp;
-                <b>{selectedTablet?.name || "Brak wybranej tabliczki"}</b>
+                <p>
+                  Tabliczka :&nbsp;
+                  <b>{selectedTablet?.name || "Brak wybranej tabliczki"}</b>
+                </p>
               </div>
               <div className={styles.item}>
-                Dedykacja :&nbsp;
-                <b>{selectedDedication || "Brak dedykacji"}</b>
+                <p>
+                  Dedykacja : &nbsp;
+                  <b>{selectedDedication || "Brak dedykacji"}</b>
+                </p>
               </div>
               <div className={styles.item}>
-                Lokalizacja :&nbsp;
-                <b>{selectedLocation || "Brak lokalizacji"}</b>
+                <p>
+                  Lokalizacja :&nbsp;
+                  <b>{selectedLocation || "Brak lokalizacji"}</b>
+                </p>
               </div>
             </div>
             <div className={styles.money}>

@@ -67,6 +67,8 @@
   height: 50px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
   gap: 10px;
   font-size: 20px;
   font-weight: 500;
@@ -104,6 +106,12 @@
   .disclaimer {
     height: fit-content;
   }
+  .disclaimer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 /* Styl dla tabletów */
@@ -130,5 +138,11 @@
     width: 100%;
     height: 100%;
     border-radius: 15px 15px 0 0;
+  }
+  .disclaimer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
 }

@@ -58,8 +58,8 @@
 /* Styl dla telefonów */
 @media (max-width: 767px) {
   .carousel {
-    height: 350px;
-    margin-bottom: 50px;
+    height: 250px;
+    /* margin-bottom: 50px; */
     width: 80%;
   }
 
