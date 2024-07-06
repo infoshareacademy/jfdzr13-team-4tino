@@ -32,21 +32,21 @@ const Map = ({ onSelectLocation }) => {
       radius: 10000,
       fillColor: "#f03",
       fillOpacity: 0.5,
-      name: "Nadleśnictwo 1",
+      name: "Nadleśnictwo Płocicz",
     },
     {
       coordinates: [51.5, 19.0],
       radius: 10000,
       fillColor: "#30f",
       fillOpacity: 0.5,
-      name: "Nadleśnictwo 2",
+      name: "Nadleśnictwo Stare Kozuby",
     },
     {
       coordinates: [52.7, 21.2],
       radius: 10000,
       fillColor: "#3f0",
       fillOpacity: 0.5,
-      name: "Nadleśnictwo 3",
+      name: "Nadleśnictwo Bartodzieje",
     },
   ];
 
@@ -77,7 +77,7 @@ const Map = ({ onSelectLocation }) => {
           scrollWheelZoom={false}
           style={{ height: "600px", width: "100%" }}
           maxZoom={10} // Maksymalne zbliżenie
-          minZoom={4}  // Minimalne zbliżenie
+          minZoom={4} // Minimalne zbliżenie
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -126,4 +126,3 @@ const Map = ({ onSelectLocation }) => {
 };
 
 export default Map;
-
