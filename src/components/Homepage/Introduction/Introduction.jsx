@@ -36,26 +36,26 @@ const Introduction = () => {
         </div>
 
         <div className={styles.map}>
-        <MapContainer
-          center={[52, 19]}
-          zoom={6}
-          scrollWheelZoom={false}
-          style={{ height: "100%", width: "100%" }}
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <Marker position={[53.5, 17.5]}>
-            <Popup>Nadleśnictwo 1</Popup>
-          </Marker>
-          <Marker position={[51.5, 19.0]}>
-            <Popup>Nadleśnictwo 2</Popup>
-          </Marker>
-          <Marker position={[52.7, 21.2]}>
-            <Popup>Nadleśnictwo 3</Popup>
-          </Marker>
-        </MapContainer>
+          <MapContainer
+            center={[52, 19]}
+            zoom={6}
+            scrollWheelZoom={false}
+            style={{ height: "100%", width: "100%" }}
+          >
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <Marker position={[53.5, 17.5]}>
+              <Popup>Płocicz</Popup>
+            </Marker>
+            <Marker position={[51.5, 19.0]}>
+              <Popup>Bartodzieje</Popup>
+            </Marker>
+            <Marker position={[52.7, 21.2]}>
+              <Popup>Stare Kozuby</Popup>
+            </Marker>
+          </MapContainer>
         </div>
       </div>
     </div>
