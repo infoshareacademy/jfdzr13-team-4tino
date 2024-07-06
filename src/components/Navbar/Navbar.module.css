@@ -25,6 +25,8 @@
 
 .navMenu {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
   font-size: 20px;
   font-weight: 700;
@@ -34,20 +36,6 @@
   display: flex;
   gap: 10px;
   align-items: center;
-}
-
-.item {
-  color: black;
-  font-size: 18px;
-  font-weight: 700;
-  padding: 10px 15px;
-  cursor: pointer;
-  transition: color 0.3s ease, background-color 0.3s ease;
-}
-
-.item:hover {
-  color: #42811e;
-  background-color: rgba(245, 245, 245, 0);
 }
 
 .userMenuContainer {
@@ -75,18 +63,35 @@
   padding-top: 10px;
 }
 
+.item {
+  color: black;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.item:hover {
+  color: #42811e;
+  background-color: rgba(245, 245, 245, 0);
+}
+
 .menuItem {
-  display: block;
-  padding: 15px 20px 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: black;
   text-decoration: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #42811e;
 }
 
 .menuItem:hover {
-  color: #42811e;
+  color: black;
 }
 
 .preloader {
