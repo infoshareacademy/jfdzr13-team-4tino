@@ -1,15 +1,15 @@
+import {
+  EmailAuthProvider,
+  getAuth,
+  reauthenticateWithCredential,
+  updatePassword,
+} from "firebase/auth";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { TERipple } from "tw-elements-react";
 import { db } from "../../../firebase";
-import { doc, getDoc, setDoc } from "firebase/firestore";
-import {
-  getAuth,
-  EmailAuthProvider,
-  reauthenticateWithCredential,
-  updatePassword,
-} from "firebase/auth";
 import "../../../tailwind.css";
 import styles from "../CustomerDataEdit/CustomerDataEdit.module.css";
 
