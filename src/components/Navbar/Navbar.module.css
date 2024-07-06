@@ -143,14 +143,12 @@
   .navMenu {
     display: none;
   }
-
   .mobileMenuIcon {
     display: block;
     cursor: pointer;
     margin-left: auto;
     padding: 15px;
   }
-
   .bar {
     width: 35px;
     height: 3px;
@@ -158,32 +156,28 @@
     margin: 5px 0;
     transition: 0.4s;
   }
-
   .rotate {
     transform: rotate(-45deg) translate(-5px, 6px);
   }
-
   .rotateNeg {
     transform: rotate(45deg) translate(-5px, -6px);
   }
-
   .hide {
     opacity: 0;
   }
-
   .navMenu.open {
     display: flex;
     flex-direction: column;
     position: absolute;
     align-items: center;
-    background-color: rgba(245, 245, 245, 0.663);
+    background-color: rgb(245, 245, 245);
     border-bottom: solid #5da746 1px;
     top: 100px;
     left: 0;
     right: 0;
     z-index: 9999;
+    padding-bottom: 20px;
   }
-
   .navMenu.open .item {
     padding: 10px 15px;
     color: black;
@@ -191,9 +185,11 @@
     font-weight: 700;
     transition: color 0.3s ease, background-color 0.3s ease;
   }
-
   .navMenu.open .item:hover {
     color: #42811e;
     background-color: rgba(245, 245, 245, 0);
+  }
+  .navbar {
+    background-color: rgb(245, 245, 245);
   }
 }
