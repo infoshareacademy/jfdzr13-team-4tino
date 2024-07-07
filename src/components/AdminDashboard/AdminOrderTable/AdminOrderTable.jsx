@@ -88,6 +88,9 @@ const AdminOrderTable = () => {
     };
 
     const handleDelete = async (id) => {
+        const confirmed = window.confirm("Czy na pewno chcesz usunąć to zamówienie?");
+        if (!confirmed) return;
+
         try {
             await deleteDoc(doc(db, "orders", id));
             setOrders(prevOrders => prevOrders.filter(order => order.id !== id));
@@ -99,6 +102,11 @@ const AdminOrderTable = () => {
             });
         } catch (error) {
             console.error("Error deleting order:", error);
+            toast.error('Błąd usuwania zamówienia', {
+                hideProgressBar: true,
+                autoClose: 3000,
+                style: { marginTop: '120px' }
+            });
         }
     };
 
