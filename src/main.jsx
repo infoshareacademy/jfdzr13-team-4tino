@@ -10,7 +10,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <UserProvider>
       <App />
-      <ToastContainer stacked />
     </UserProvider>
+    <ToastContainer stacked />
   </React.StrictMode>,
 )

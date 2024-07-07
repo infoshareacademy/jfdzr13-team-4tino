@@ -119,14 +119,14 @@ const Login = () => {
               <button type="button" onClick={() => togglePasswordVisibility('password')} className={styles.togglePasswordButton}>
                 <img src={passwordVisible ? hideIcon : showIcon} alt={passwordVisible ? "Ukryj" : "Pokaż"} />
               </button>
-              
+
             </div>
           </label>
           <div>
-          <Link className={styles.link} to="/PasswordReminder">Zresetuj Hasło</Link>
+            <Link className={styles.link} to="/PasswordReminder">Zresetuj Hasło</Link>
 
-        </div>
-        <div className={styles.buttonContainer}>
+          </div>
+          <div className={styles.buttonContainer}>
             <TERipple rippleColor="light">
               <button
                 type="submit"
@@ -137,7 +137,7 @@ const Login = () => {
             </TERipple>
           </div>
         </form>
-        </div>
+      </div>
     </div>
   );
 };

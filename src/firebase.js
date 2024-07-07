@@ -6,12 +6,12 @@ import { useEffect, useState } from 'react'; // Importowanie useState i useEffec
 
 // Konfiguracja Twojej aplikacji Firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyDiWFFyJsuRygOMasakt2Tn60RRnXJfm-8",
-  authDomain: "fourtino2024.firebaseapp.com",
-  projectId: "fourtino2024",
-  storageBucket: "fourtino2024.appspot.com",
-  messagingSenderId: "508480827908",
-  appId: "1:508480827908:web:9cdcc2e8b48d1172d1bb51"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId
 };
 
 // Inicjalizacja aplikacji Firebase
