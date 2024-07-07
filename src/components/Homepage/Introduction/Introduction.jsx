@@ -1,12 +1,37 @@
 import "leaflet/dist/leaflet.css";
 import React from "react";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import { Circle, MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { Link } from "react-router-dom";
 import { TERipple } from "tw-elements-react";
 import '../../../tailwind.css';
 import styles from "./Introduction.module.css";
 
 const Introduction = () => {
+
+  const locations = [
+    {
+      coordinates: [53.5, 17.5],
+      radius: 10000,
+      fillColor: "#f03",
+      fillOpacity: 0.5,
+      name: "Nadleśnictwo Płocicz",
+    },
+    {
+      coordinates: [51.5, 19.0],
+      radius: 10000,
+      fillColor: "#30f",
+      fillOpacity: 0.5,
+      name: "Nadleśnictwo Stare Kozuby",
+    },
+    {
+      coordinates: [52.7, 21.2],
+      radius: 10000,
+      fillColor: "#3f0",
+      fillOpacity: 0.5,
+      name: "Nadleśnictwo Bartodzieje",
+    },
+  ];
+
   return (
     <div className={styles.introduction}>
       <div className={styles.hero}>
@@ -46,15 +71,25 @@ const Introduction = () => {
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <Marker position={[53.5, 17.5]}>
-              <Popup>Płocicz</Popup>
-            </Marker>
-            <Marker position={[51.5, 19.0]}>
-              <Popup>Bartodzieje</Popup>
-            </Marker>
-            <Marker position={[52.7, 21.2]}>
-              <Popup>Stare Kozuby</Popup>
-            </Marker>
+            {locations.map((location, index) => (
+              <Circle
+                key={index}
+                center={location.coordinates}
+                radius={location.radius}
+                fillColor={location.fillColor}
+                fillOpacity={location.fillOpacity}
+              >
+                <Popup className={styles.customPopup}>
+                  <TERipple rippleColor="light">
+                    <button
+                      type="text"
+                    >
+                      {location.name}
+                    </button>
+                  </TERipple>
+                </Popup>
+              </Circle>
+            ))}
           </MapContainer>
         </div>
       </div>
